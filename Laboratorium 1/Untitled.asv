@@ -1,0 +1,85 @@
+
+addpath ('F:\SerialCommunication') ; % add a path
+initSerialControl COM5 % initialise com port
+y = zeros(1,1);
+u = zeros(1,1);
+k = 1 ;
+
+
+while (1)
+%% obtaining measurements
+measurements = readMeasurements (1:7) ; % read measurements
+
+y = [y ; measurements(1) ];
+
+%% processing of the measurements
+%%disp ( measurements ) ; % process measurements
+
+u = [u ; 32 ];
+ %% sending new values of control signals
+sendControls ([ 1 , 2 , 3 , 4 , 5 , 6] ,    [ 50 , 0 , 0 , 0 , u(end) , 0]) ;
+
+disp(y(end));
+disp(u(end));
+
+figure(1);
+    clf(1);
+    hold on;
+    title('y');
+    grid on;
+    xlabel('time');
+    ylabel('value');
+    plot(y); % wyswietlamy y w czasie
+   
+    %legend('y','y_z_a_d')
+
+drawnow;
+
+%% synchronising with the control process
+waitForNewIteration () ; % wait for new iteration
+end
+
+Tp = 1; % czas z jakim probkuje regulator
+y = zeros(1,500); % wektor wyjsc obiektu
+y_zad = zeros(1,500); % wektor wyjsc zadanych obiektu
+u = zeros(1,500); % wektor wejsc (sterowan) obiektu
+Y = 0;
+Yzad=0;
+U=0;
+while true % zbieramy 1000 pomiarow
+ 
+    
+    y(end)=measurements(1); % powiekszamy wektor y o element Y
+   %% y_zad(end)=Yzad; % powiekszamy wektor y o element Y
+    u(end)=32; % powiekszamy wektor u o element U
+    
+    figure(1);
+    clf(1);
+    hold on;
+    title('y');
+    grid on;
+    xlabel('time');
+    ylabel('value');
+    plot(y); % wyswietlamy y w czasie
+   %% plot(y_zad); % wyswietlamy y w czasie
+    %legend('y','y_z_a_d')
+    
+    figure(2); 
+    clf(2);
+    hold on;
+    title('u');
+    grid on;
+    xlabel('time');
+    ylabel('value');
+    plot(u); % wyswietlamy u w czasie
+    %legend('u')
+    
+    drawnow;
+    
+    y = circshift(y,[0,-1]);
+   %% y_zad = circshift(y_zad,[0,-1]);
+    u = circshift(u,[0,-1]);
+end
+
+figure; plot((0:(length(y)-1))*Tp,y); % wyswietlamy y w czasie
+figure; plot((0:(length(u)-1))*Tp,u); % wyswietlamy u w czasie
