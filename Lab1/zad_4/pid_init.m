@@ -19,9 +19,10 @@ Td = 0.12*Tk;
 %Ti = 0.45;
 %Td = 0;
 
-%Kr = 8;
-%Ti = 0.07;
-%Td = 1.3;
+%recznie Grocha
+Kr = 3.5;
+Ti = 11.7;
+Td = 1.4;
 
 r0 = Kr*(1+Tp/(2*Ti)+Td/Tp);
 r1 = Kr*(Tp/(2*Ti)-2*Td/Tp-1);

@@ -34,7 +34,7 @@ for k=start:kk; %g³ówna ptla symulacyjna
     %% obtaining measurements
     measurements = readMeasurements (1:7) ; % read measurements
     y(k)=measurements(1); % powiekszamy wektor y o element Y
-    
+    y(k)
     if regulator == 'PID'
         %uchyb regulacji
         e(k)=yzad(k)-y(k);
@@ -75,7 +75,7 @@ for k=start:kk; %g³ówna ptla symulacyjna
     if u(k)<0.0
         u(k) = 0.0;
     end
-
+    u(k)
     %% sending new values of control signals
     sendControls ([ 1 , 2 , 3 , 4 , 5 , 6] ,    [ 50 , 0 , 0 , 0 , u(k) , 0]) ;
     %% synchronising with the control process
