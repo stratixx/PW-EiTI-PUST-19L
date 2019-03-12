@@ -1,11 +1,11 @@
 %Skrypt realizujacy algorytm cyfrowego regulatora PID
 %inicjalizacja
-kk=2000; %koniec symulacji
+kk=420; %koniec symulacji
 
 Tp = 0.5;
-Kr = 32;
-Ti = 10;
-Td = 5;
+Kr = 1.35;
+Ti = 12;
+Td = 2.2;
 
 %nastawy regulatora dyskretnego
 r2 = Kr*Td/Tp;
@@ -17,7 +17,7 @@ u = 0.1*ones(1,kk);
 y = zeros(1,kk);
 e = zeros(1,kk);
 yzad = zeros(1,kk); 
-yzad(1,20:kk) = 1;
+yzad(1,20:kk) = 2;
 
 for k=20:kk %g³ówna pêtla symulacyjna 
 %symulacja obiektu 
