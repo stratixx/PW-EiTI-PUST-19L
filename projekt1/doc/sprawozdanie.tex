@@ -8,12 +8,13 @@
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{tikz}
+\usepackage{float}
 \usetikzlibrary{arrows,calc,decorations.markings,math,arrows.meta}
 \usepackage{rotating}
 \usepackage[percent]{overpic}
 \usepackage[utf8]{inputenc}
 \usepackage{xcolor}
-\usepackage{pgfplots}
+%\usepackage{pgfplots}
 \usetikzlibrary{pgfplots.groupplots}
 \usepackage{listings}
 \usepackage{matlab-prettifier}
@@ -63,12 +64,12 @@
 \textwidth 160mm \textheight 247mm
 
 %ustawienia pakietu pgfplots
-\pgfplotsset{
-tick label style={font=\scriptsize},
-label style={font=\small},
-legend style={font=\small},
-title style={font=\small}
-}
+%\pgfplotsset{
+%tick label style={font=\scriptsize},
+%label style={font=\small},
+%legend style={font=\small},
+%title style={font=\small}
+%}
 
 \def\figurename{Rys.}
 \def\tablename{Tab.}
@@ -88,7 +89,7 @@ title style={font=\small}
 
 %strona tytu?owa
 \title{\bf Sprawozdanie z projektu i ćwiczenia laboratoryjnego nr 1, zadanie nr 7\vskip 0.1cm}
-\author{Mauteusz Grochowina \\ Konrad Winnicki \\ Jan Zgorzelski}
+\author{Grochowina Mauteusz\\Winnicki Konrad\\Zgorzelski Jan}
 \date{19 marca 2019}
 
 \makeatletter
@@ -123,11 +124,20 @@ title style={font=\small}
 \maketitle
 
 \tableofcontents
-\input{zad1}
-\input{zad2}
-\input{zad3}
-\input{zad4}
-\input{zad5}
-\input{zad6}
+\chapter{Projekt}
+\input{projekt/zad1}
+\input{projekt/zad2}
+\input{projekt/zad3}
+\input{projekt/zad4}
+\input{projekt/zad5}
+\input{projekt/zad6}
+
+\chapter{Laboratorium}
+\input{lab/zad1}
+\input{lab/zad2}
+\input{lab/zad3}
+\input{lab/zad4}
+\input{lab/zad5}
+
 \end{document}
 
