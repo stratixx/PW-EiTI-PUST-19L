@@ -7,6 +7,7 @@ start = 50; %start symulacji
 u=0.8*ones(1,kk);%sygnal sterujacy
 y=zeros(1,kk);%odpowiedz skokowa obiektu
 ogr = 1;
+E =0;
 load('s.mat')
 
 % Macierz predykcji
@@ -70,8 +71,9 @@ for k = 20:kk
      if u(k) < 0.1
          u(k) = 0.1;
      end
+     E = E + (y_zad(k) - y_mod(k))^2;
 end
-
+E
 %wyniki
 figure(1); 
 subplot(2,1,1);
