@@ -1,3 +1,5 @@
+
+kk=800; %koniec symulacji
 addpath ('F:\SerialCommunication') ; % add a path
 initSerialControl COM5 % initialise com port
 
@@ -8,20 +10,20 @@ run('pid_init.m');
 %inicjacja dmc
 %run('step_response.m');
 D = length(s); % horyzont dynamiki
-N=5;
-Nu=2;
-lambda = 1
+N=200;
+Nu=10;
+lambda = 1;
 run('DMC_init.m');
 
 %inicjalizacja symulacji
 regulator = 'PID';
 start = 20;
-kk=500; %koniec symulacji
+kk=800; %koniec symulacji
 %warunki pocztkowe
 u=ones(1,kk)*32;
 y=ones(1,kk)*36.87;
 e=zeros(1,kk);
-yzad=ones(1,kk+100)*36.87; yzad(1,start+200:kk+100)=40;
+yzad=ones(1,kk+100)*36.87; yzad(1,start+200:kk+100)=40; yzad(1,start+500:kk+100)=36.87;
 
 ui_past = 0;
 uw = 0;
@@ -75,7 +77,31 @@ for k=start:kk; %g³ówna ptla symulacyjna
     if u(k)<0.0
         u(k) = 0.0;
     end
-    u(k)
+    
+    figure(1);
+    clf(1);
+    hold on;
+    title('y');
+    grid on;
+    xlabel('time');
+    ylabel('value');
+    plot(y(start:k)); % wyswietlamy y w czasie
+    
+    
+    plot(yzad(start:k)); % wyswietlamy y w czasie
+    legend('y','y_z_a_d')
+    
+    figure(2); 
+    clf(2);
+    hold on;
+    title('u');
+    grid on;
+    xlabel('time');
+    ylabel('value');
+    plot(u(start:k)); % wyswietlamy u w czasie
+    %legend('u')
+    
+    drawnow
     %% sending new values of control signals
     sendControls ([ 1 , 2 , 3 , 4 , 5 , 6] ,    [ 50 , 0 , 0 , 0 , u(k) , 0]) ;
     %% synchronising with the control process
