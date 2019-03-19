@@ -1,8 +1,100 @@
 \section{Cyfrowy algorytm PID i DMC}
-Napisac i omówic program w jezyku Matlab do symulacji cyfrowego algorytmu PID
-oraz algorytmu DMC (w najprostszej wersji analitycznej) dla symulowanego procesu.
-Istniejace ograniczenia wartosci sygnału sterujacego oraz ograniczenie szybkosci zmian
-tego sygnału
-%−4Umax ¬ 4U(k) ¬ 4Umax
-gdzie 4Umax = 0,2, uwzglednic odpowiednio ograniczajac (przycinajac) wyznaczony
-przez regulator sygnał sterujacy.
+
+\subsection{Algorytm PID}
+
+Regulator PID to regulator składający się z 3 członów:
+proporcjonalnego P o wzmocnieniu , kompensuje uchyb bieżący
+	całkującego I o czasie zdwojenia , kompensuje akumulację uchybów z przeszłości
+	różniczkującego D o czasie wyprzedzania  kompensuje przewidywane uchyby w przyszłości
+Ważona suma tych trzech działań stanowi podstawę sygnału podawanego na człon wykonawczy w celu regulacji procesu (np. zmiana położenia zaworu regulacyjnego albo zwiększenie mocy grzejnika).
+
+Regulator realizuje algorytm:
+
+gdzie  – sygnał wyjścia regulatora,  – uchyb regulacji.
+Transmitancja regulatora PID
+
+W realizacji naszego zadania wykorzystany był dyskretny regulator PID. Sterowanie regulatora wyznaczane było z poniższych wzorów, które zostały otrzymane dzięki metodzie Eulera i całkowania metodą trapezów:
+
+gdzie
+
+
+
+Gdzie
+  – okres próbkowania,
+ – uchyb w chwili k-1,
+ – sterowanie od członu różniczkującego w chwili k-1.
+
+
+\subsection{Algorytm DMC}
+
+Algorytm DMC (Dynamic Matrix Control) algorytm regulacji predykcyjnej. Do predykcji wykorzystuje się model procesu w postaci odpowiedzi skokowych. 
+ 
+(wstaw obrazek od maruboya z doktoratu o dmc)
+W algorytmie DMC dynamika obiektu regulacji modelowana jest dyskretnymi odpowiedziami skokowymi, które opisują reakcję wyjścia na skok jednostkowy sygnału sterującego.
+
+Algorytm DMC w wersji analitycznej (bez ograniczeń)
+W algorytmie DMC, każdej chwili k (iteracji) wyznacza się ciąg przyszłych przyrostów sygnału sterującego wielkości  w wyniku minimalizacji wskaźnika jakości
+
+
+W celu wyprowadzenia prawa regulacji warto zastosować zapis wektorowo-macierzowy:
+Definiujemy wektory  o długości N oraz wektor  o długości .
+Następnie definiujemy macierze kwadratowe:
+ - o wymiarach NxN
+ - o wymiarach x
+
+Wtedy funkcję kryterialną zapisać można w postaci:
+
+
+
+Ponieważ prognozowana trajektoria wyjścia jest sumą składowej swobodnej i wymuszonej, w zapisie wektorowym:
+, gdzie wektory te mają długość N
+Podstawiając do funkcji kryterialnej otrzymujemy:
+
+
+
+Do predykcji wyjścia w algorytmie DMC stosuje się model procesu w postaci skończonej odpowiedzi skokowej. Oznacza to, że wektory  orazwyznaczane są na podstawie współczynników { , , da  } Składowa swobodna wyjścia w postaci wektorowej:
+
+
+
+gdzie macierz ma wymiarowość N×(D–1) 
+
+Górny indeks „P” macierzy wprowadzono w tym celu, aby podkreślić fakt, że określa ona predykcję wyjścia w zależności jedynie od przeszłych przyrostów sterowania. Dla każdego elementu  przy  zachodzi  
+
+Składowa wymuszona wyjścia w postaci wektorowej:
+
+
+Wykorzystując powyższe równania otrzymujemy:
+
+
+Zakłada się, że i  czyli i. Oznacza to, że funkcja kryterialna jest ściśle wypukła. Przyrównując do zera wektor gradientu trzymuje się wektor optymalnych przyrostów sterowania:
+
+
+
+gdzie K jest macierzą o wymiarowości. Macierz K wyznaczana jest jednokrotnie w trakcie projektowania algorytmu (ang. off-line).
+
+
+
+Ponieważ macierz drugich pochodnych jest dodatnio określona, a więc uzyskane rozwiązanie problemu optymalizacji bez ograniczeń jest rzeczywiście minimum globalnym funkcji kryterialnej 
+
+
+
+
+
+
+Parametry algorytmu DMC
+	Horyzont dynamiki
+
+Horyzont dynamiki jest to liczba współczynników odpowiedzi skokowej, tzn. liczbę kroków dyskretyzacji, po której można uznać odpowiedź skokową za stabilną równą  Dla badanego obiektu ta wartość wyniosła   Wyznaczona ona została z odpowiedzi skokowej obiektu poprzez wyznaczenie z niej chwili, w której odpowiedź jest stabilna.
+
+	Horyzont predykcji
+
+Horyzont predykcji jest to wartość na podstawie, której prognozuje się zachowanie modelu. Zwiększając ten parametr uzyskaliśmy bardzo dobry czas regulacji oraz praktycznie zerowe przesterowanie. Wynika z tego, że jest to ważny parametr i dzięki zwiększeniu go uzyskaliśmy predykcję większej ilości chwil do przodu.
+
+	Horyzont sterowania
+
+Horyzont sterowania tak jak horyzont predykcji jest parametrem dostrajania regulatora, zależnymi od szybkości dynamiki procesu, możliwości obliczeniowych oraz dokładności modelu. Zwiększając ten parametr zbliżyliśmy się jego wartością do horyzontu predykcji co spowodowało pogorszenie działania regulatora, wynika z tego, że wartość horyzontu sterowania powinna być znacznie mniejsza od wartości horyzontu predykcji.
+
+	Współczynnik kary lambda(znaczek wstaw)
+
+Ostatnim krokiem w dostrajaniu naszego regulatora było wyznaczenie współczynnika kary lambda(wstaw znaczek), za pomocą którego można zapewnić kompromis pomiędzy szybkością regulacji a postacią sygnału sterującego. Ponownie był on wyznaczany metodą testowania. Zwiększenie współczynnika kary pogorszyło wynik działania regulatora, ustawienie go na dużo większą wartość od horyzontów nie jest dobrym rozwiązaniem, należy utrzymywać jego wartości poniżej powyższych parametrów.
+

@@ -1,13 +1,23 @@
-\section{Dobór parametrów algorytmów PID i DMC}
-\subsection{Metoda inżynierska}
-Dla zaproponowanej trajektorii zmian sygnału zadanego (kilka skoków o róznej amplitudzie)
-dobrac nastawy regulatora PID i parametry algorytmu DMC metoda eksperymentalna.
-Jakosc regulacji oceniac jakosciowo (na podstawie rysunków przebiegów
-sygnałów) oraz ilosciowo, wyznaczajac wskaznik jakosci regulacji
-E =
-kXkonc
-k=1
-%(yzad(k) − y(k))2
-gdzie kkonc oznacza koniec symulacji (zawsze taki sam). Zamiescic wybrane wyniki
-symulacji (przebiegi sygnałów wejsciowych i wyjsciowych procesu oraz wartosci wskaznika
-E).
+\section{Dobór parametrów regulatorów PID i DMC}
+\subsection{Regulator PID}
+
+Do doboru nastaw regulatora PID zastosowano metodę inżynierską, 
+która polega na przeprowadzeniu doświadczeń i analizy uzyskanych wyników. 
+Na podstawie wyciągniętych wniosków modyfikowane są nastawy regulatora. 
+Parametry  dobierane są metodą prób i błędów, aż do osiągnięcia oczekiwanych wyników. 
+Jako pierwszy dobierany był parametr wzmocnienia członu proporcjonalnego, 
+poprzez obserwację zachowania się uchybu regulacji w stanie ustalonym oraz przeregulowanie. 
+Zmniejszając stopniowo wzmocnienie zmniejszano przeregulowanie, a uchyb zwiększał się. 
+Ostatecznie dobrano wartość parametru ??. 
+Parametr  zwiększając go co likwidowało uchyb regulacji,  
+zbyt duży czas zdwojenia zwiększał czas regulacji. 
+Ostatnim elementem strojenia jest wyznaczenie parametru czasu wyprzedzenia , 
+również metodą prób i błędów, tak by zminimalizować czas regulacji. 
+Po wykonaniu tej czynności kończy się proces strojenia regulatora.
+
+\subsection{Regulator DMC}
+
+Do doboru nastaw regulatora DMC zastosowano metodę inżynierską, 
+która polega na przeprowadzeniu doświadczeń i analizy uzyskanych wyników. 
+Na podstawie wyciągniętych wniosków modyfikowane są nastawy regulatora. 
+Parametry  dobierane są metodą prób i błędów, aż do osiągnięcia oczekiwanych wyników.
