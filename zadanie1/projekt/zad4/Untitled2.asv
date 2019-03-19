@@ -1,0 +1,13 @@
+x0 = [1; 2; 3];
+A = [];
+b = [];
+Aeq = [];
+beq = [];
+lb = [0.1;  0.001;  0.001];
+ub = [400;  20000;    200];
+
+options = optimoptions('fmincon');
+options.StepTolerance=100;
+[options.OptimalityTolerance,options.FunctionTolerance,options.StepTolerance];
+
+x = fmincon(@fun,x0,A,b,Aeq,beq,lb,ub)

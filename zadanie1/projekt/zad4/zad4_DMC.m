@@ -2,7 +2,7 @@
 D = 200;%horyzont dynamiki
 N = 70;%horyzont predykcji
 Nu = 10;%horyzont sterowania
-kk = 1000; %koniec symulacji
+kk = 1500; %koniec symulacji
 start = 50; %start symulacji
 u=0.8*ones(1,kk);%sygnal sterujacy
 y=zeros(1,kk);%odpowiedz skokowa obiektu
@@ -42,7 +42,9 @@ u_delta=zeros(1,D-1);
 y_zad=zeros(kk,1);
 y_zad(1:kk) = 2;
 y_mod = 2*ones(kk,1);
-y_zad(start:kk) = 2.5;
+y_zad(start:500) = 2.5;
+y_zad(500:1000) = 1.5;
+y_zad(1000:1500) = 1.8;
 
 % Symulacja
 for k = 20:kk
@@ -83,7 +85,7 @@ hold on;
 ylabel('y,yzad')
 stairs(y_zad,'k--')
 title(['Regulator DMC D = ',sprintf('%g',D),'; N = ',sprintf('%g',N),'; Nu = ',sprintf('%g',Nu),'; Lambda = ',sprintf('%g',lambda)]);
-legend('wyjœcie modelu','wartoœæ zadana','Location', 'southeast');
+legend('wyjœcie modelu','wartoœæ zadana','Location', 'northeast');
 subplot(2,1,2);
 stairs(u)
 ylabel('u')
