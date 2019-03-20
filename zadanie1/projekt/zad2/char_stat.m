@@ -1,9 +1,8 @@
+%skrypt do realizacji zadania 2 - rysowanie charakterystyki statycznej
 run('../danePoczatkowe.m');
 start = 20;
 kk=410; %koniec symulacji
 %warunki poczatkowe
-%y=ones(1,kk)*Ypp;
-%yzad=ones(1,kk)*Upp; yzad(1,start:kk)=Upp;
 Y = zeros(1,29);
 U = zeros(1,29);
 for i = 0.1:0.05:1.5
@@ -19,7 +18,7 @@ for i = 0.1:0.05:1.5
     U = circshift(U,[0,-1]);
     
 end
-figure(1);
+f = figure('visible','on');
 hold on; 
 grid on; 
 plot(U,Y); 
@@ -27,3 +26,6 @@ legend('y(u)','Location','East')
 title('Charakterystyka statyczna obiektu Y(U)')
 xlabel('U')
 ylabel('Y')
+fig_pos = f.PaperPosition;
+f.PaperSize = [fig_pos(3) fig_pos(4)];
+print(f, 'char_stat','-dpdf','-bestfit')
