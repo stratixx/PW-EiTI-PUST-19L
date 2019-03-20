@@ -8,10 +8,8 @@ y(1:450)=0;
 u(1:450)=1;
 Tpp=36.8;
 
-tmp = load('newss.mat');
-Yskok = tmp.news;
-Ypp=ones(450,1)*Tpp;
-OdpSkok = Yskok;
+
+OdpSkok = news;
 
 alpha1 = exp(-1/T1);
 alpha2 = exp(-1/T2);
@@ -26,8 +24,8 @@ end
 e = OdpSkok' - y;
 E=(norm(e))^2;
 
-OdpSkok=OdpSkok(1:350);
-y=y(1:350);
+OdpSkok=OdpSkok(1:450);
+y=y(1:450);
 
 f = figure('visible','on');
 stairs(OdpSkok);
