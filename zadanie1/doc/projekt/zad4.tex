@@ -79,22 +79,3 @@ Ponieważ macierz drugich pochodnych jest dodatnio określona, a więc uzyskane 
 
 
 
-
-
-Parametry algorytmu DMC
-	Horyzont dynamiki
-
-Horyzont dynamiki jest to liczba współczynników odpowiedzi skokowej, tzn. liczbę kroków dyskretyzacji, po której można uznać odpowiedź skokową za stabilną równą  Dla badanego obiektu ta wartość wyniosła   Wyznaczona ona została z odpowiedzi skokowej obiektu poprzez wyznaczenie z niej chwili, w której odpowiedź jest stabilna.
-
-	Horyzont predykcji
-
-Horyzont predykcji jest to wartość na podstawie, której prognozuje się zachowanie modelu. Zwiększając ten parametr uzyskaliśmy bardzo dobry czas regulacji oraz praktycznie zerowe przesterowanie. Wynika z tego, że jest to ważny parametr i dzięki zwiększeniu go uzyskaliśmy predykcję większej ilości chwil do przodu.
-
-	Horyzont sterowania
-
-Horyzont sterowania tak jak horyzont predykcji jest parametrem dostrajania regulatora, zależnymi od szybkości dynamiki procesu, możliwości obliczeniowych oraz dokładności modelu. Zwiększając ten parametr zbliżyliśmy się jego wartością do horyzontu predykcji co spowodowało pogorszenie działania regulatora, wynika z tego, że wartość horyzontu sterowania powinna być znacznie mniejsza od wartości horyzontu predykcji.
-
-	Współczynnik kary lambda(znaczek wstaw)
-
-Ostatnim krokiem w dostrajaniu naszego regulatora było wyznaczenie współczynnika kary lambda(wstaw znaczek), za pomocą którego można zapewnić kompromis pomiędzy szybkością regulacji a postacią sygnału sterującego. Ponownie był on wyznaczany metodą testowania. Zwiększenie współczynnika kary pogorszyło wynik działania regulatora, ustawienie go na dużo większą wartość od horyzontów nie jest dobrym rozwiązaniem, należy utrzymywać jego wartości poniżej powyższych parametrów.
-
