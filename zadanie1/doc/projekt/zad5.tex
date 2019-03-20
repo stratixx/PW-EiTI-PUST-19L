@@ -1,9 +1,28 @@
 \section{Dobór parametrów regulatorów PID i DMC}
-Ocena jakości regulacji na podstawie rysunków przebiegów sygnałów polega na ocenie jakościowej, analizowane są takie kryteria jak czas regulacji czy przeregulowanie. Na podstawie tych kryteriów oceny dobierane są nastawy regulatora PID.
+Ocena jakości regulacji na podstawie rysunków przebiegów sygnałów polega na ocenie jakościowej, 
+analizowane są takie kryteria jak czas regulacji czy przeregulowanie. 
+Na podstawie tych kryteriów oceny dobierane są nastawy regulatora PID.
 
-Ocena jakości regulacji ilościowa polega na wyznaczaniu wskaźnika jakości regulacji, którym jest suma kwadratów uchybów. 
+Ocena jakości regulacji ilościowa polega na wyznaczaniu wskaźnika jakości regulacji, 
+którym jest suma kwadratów uchybów. 
 
-Ocena jakości regulacji jakościowa jest metodą mniej dokładną od oceny ilościowej, nie występują tam obliczenia a jedynie analiza rysunków przebiegów. Podczas analizy rysunku osoba oceniająca jakość regulacji narażona jest na mało precyzyjne wnioski, gdyż należy wtedy zwracać uwagę na skalę rysunku i wiele innych parametrów. Ocena ilościowa nie bierze pod uwagę takich czynników jak np. oscylacje, jedynym kryterium jest suma kwadratów uchybów. Jeżeli do oceny jakości regulacji wymagane są inne kryteria niż podany wskaźnik jakości należy rozpatrzeć metodę oceny jakościowej.
+
+kkonc
+
+E=(yzad(k)-y(k))2
+
+k=1
+
+gdzie kkonc oznacza koniec symulacji (zawsze taki sam). 
+
+Ocena jakości regulacji jakościowa jest metodą mniej dokładną od oceny ilościowej, 
+nie występują tam obliczenia a jedynie analiza rysunków przebiegów. 
+Podczas analizy rysunku osoba oceniająca jakość regulacji narażona jest na mało precyzyjne wnioski, 
+gdyż należy wtedy zwracać uwagę na skalę rysunku i wiele innych parametrów. 
+Ocena ilościowa nie bierze pod uwagę takich czynników jak np. oscylacje, 
+jedynym kryterium jest suma kwadratów uchybów. 
+Jeżeli do oceny jakości regulacji wymagane są inne kryteria niż podany wskaźnik jakości 
+należy rozpatrzeć metodę oceny jakościowej.
 
 \subsection{Regulator PID}
 
@@ -20,43 +39,83 @@ Ostatnim elementem strojenia jest wyznaczenie parametru czasu wyprzedzenia ,
 również metodą prób i błędów, tak by zminimalizować czas regulacji. 
 Po wykonaniu tej czynności kończy się proces strojenia regulatora.
 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.90]{../projekt/zad4_5/PID_pdf/PID_1.pdf}
+    \caption{PID1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.90]{../projekt/zad4_5/PID_pdf/PID_2.pdf}
+    \caption{PID2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.90]{../projekt/zad4_5/PID_pdf/PID_2.pdf}
+    \caption{PID2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.90]{../projekt/zad4_5/PID_pdf/PID_best.pdf}
+    \caption{PIDbest}
+\end{figure}
+
 \subsection{Regulator DMC}
 
 Do doboru nastaw regulatora DMC zastosowano metodę inżynierską, 
 która polega na przeprowadzeniu doświadczeń i analizy uzyskanych wyników. 
 Na podstawie wyciągniętych wniosków modyfikowane są nastawy regulatora. 
 Parametry  dobierane są metodą prób i błędów, aż do osiągnięcia oczekiwanych wyników.
-Horyzont dynamiki jest to liczba współczynników odpowiedzi skokowej, tzn. liczbę kroków dyskretyzacji, po której można uznać odpowiedź skokową za stabilną równą K_stat. Wyznaczona ona została z odpowiedzi skokowej obiektu poprzez wyznaczenie z niej chwili, w której odpowiedź jest stabilna. Horyzont predykcji N jest to wartość na podstawie, której prognozuje się zachowanie modelu. Zwiększając ten parametr uzyskaliśmy bardzo dobry czas regulacji oraz praktycznie zerowe przesterowanie. Horyzont sterowania tak jak horyzont predykcji jest parametrem dostrajania regulatora, zależnymi od szybkości dynamiki procesu, możliwości obliczeniowych oraz dokładności modelu, eksperymentalnie dobrano wartość tero parametru. Ostatnim krokiem w dostrajaniu naszego regulatora było wyznaczenie współczynnika kary lambda, za pomocą którego można zapewnić kompromis pomiędzy szybkością regulacji a postacią sygnału sterującego. Ponownie był on wyznaczany metodą testowania. Zwiększenie współczynnika kary pogorszyło wynik działania regulatora, został więc on zmniejszony.
-
-
-----------------------
-
-
-
-
-kkonc
-E=(yzad(k)-y(k))2
-k=1
-
-
-gdzie kkonc oznacza koniec symulacji (zawsze taki sam). 
-Zamieścić wybrane wyniki symulacji 
-przebiegi sygnałów wejściowych i 
-wyjsściowych procesu oraz wartosści wskaźnika E. 
-
-1.5.1 
- 
-
-
-1.5.2
-
+Horyzont dynamiki jest to liczba współczynników odpowiedzi skokowej, 
+tzn. liczbę kroków dyskretyzacji, po której można uznać odpowiedź skokową za stabilną równą Kstat. 
+Wyznaczona ona została z odpowiedzi skokowej obiektu poprzez wyznaczenie z niej chwili, 
+w której odpowiedź jest stabilna. Horyzont predykcji N jest to wartość na podstawie, 
+której prognozuje się zachowanie modelu. 
+Zwiększając ten parametr uzyskaliśmy bardzo dobry czas regulacji oraz praktycznie zerowe przesterowanie. 
+Horyzont sterowania tak jak horyzont predykcji jest parametrem dostrajania regulatora, 
+zależnymi od szybkości dynamiki procesu, możliwości obliczeniowych oraz dokładności modelu, 
+eksperymentalnie dobrano wartość tero parametru. 
+Ostatnim krokiem w dostrajaniu naszego regulatora było wyznaczenie współczynnika kary lambda, 
+za pomocą którego można zapewnić kompromis pomiędzy szybkością regulacji, a postacią sygnału sterującego. 
+Ponownie był on wyznaczany metodą testowania. 
+Zwiększenie współczynnika kary pogorszyło wynik działania regulatora, został więc on zmniejszony.
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{../projekt/zad4_5/DMC_pdf/DMC_1.pdf}
-    \caption{char stat}
+    \includegraphics[scale=0.90]{../projekt/zad4_5/DMC_pdf/DMC_1.pdf}
+    \caption{DMC1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.90]{../projekt/zad4_5/DMC_pdf/DMC_2.pdf}
+    \caption{DMC2}
 \end{figure}
 
 
---------------------
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.90]{../projekt/zad4_5/DMC_pdf/DMC_3.pdf}
+    \caption{DMC3}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.90]{../projekt/zad4_5/DMC_pdf/DMC_4.pdf}
+    \caption{DMC4}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.90]{../projekt/zad4_5/DMC_pdf/DMC_best.pdf}
+    \caption{DMCbest}
+\end{figure}
+
+
