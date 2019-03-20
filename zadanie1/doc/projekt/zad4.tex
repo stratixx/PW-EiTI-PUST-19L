@@ -2,80 +2,46 @@
 
 \subsection{Algorytm PID}
 
-Regulator PID to regulator składający się z 3 członów:
-proporcjonalnego P o wzmocnieniu , kompensuje uchyb bieżący
-	całkującego I o czasie zdwojenia , kompensuje akumulację uchybów z przeszłości
-	różniczkującego D o czasie wyprzedzania  kompensuje przewidywane uchyby w przyszłości
-Ważona suma tych trzech działań stanowi podstawę sygnału podawanego na człon wykonawczy w celu regulacji procesu (np. zmiana położenia zaworu regulacyjnego albo zwiększenie mocy grzejnika).
+Regulator PID to regulator składający się z 3 członów:\newline
+\indent- proporcjonalnego P o wzmocnieniu $K_{r}$, kompensuje uchyb
+bieżący\newline
+\indent- całkującego I o czasie zdwojenia $T_{i}$, kompensuje akumulację
+uchybów z przeszłości\newline
+\indent- różniczkującego D o czasie wyprzedzania $T_{d}$, kompensuje
+przewidywane uchyby w przyszłości\newline
 
+Ważona suma tych trzech działań stanowi podstawę sygnału
+podawanego na człon wykonawczy w celu regulacji procesu (np.
+zmiana położenia zaworu regulacyjnego albo zwiększenie mocy
+grzałki).
 Regulator realizuje algorytm:
+$$u(t) = Kr\Bigg(e(t)+\int e(\tau)d\tau+T_{d}\frac{de(t)}{dt}\Bigg)$$
+gdzie $u(t)$ - sygnał wyjścia regulatora, $e(t)$ - uchyb regulacji.
 
-gdzie  – sygnał wyjścia regulatora,  – uchyb regulacji.
 Transmitancja regulatora PID
+$$G(s) = K_{r}\Bigg( 1 +\frac{1}{T_{i}s}+T_{d}s\Bigg)$$
+W realizacji naszego zadania wykorzystany był dyskretny regulator PID.
+Sterowanie regulatora wyznaczane było z poniższych wzorów, które
+zostały otrzymane dzięki metodzie Eulera i całkowania metodą
+trapezów:
 
-W realizacji naszego zadania wykorzystany był dyskretny regulator PID. Sterowanie regulatora wyznaczane było z poniższych wzorów, które zostały otrzymane dzięki metodzie Eulera i całkowania metodą trapezów:
+$$u(k)=u_{P}(k)+u_{I}(k)+u_{D}(k)$$
 
-gdzie
-
-
-
-Gdzie
-  – okres próbkowania,
- – uchyb w chwili k-1,
- – sterowanie od członu różniczkującego w chwili k-1.
+\indent gdzie
+$$u_{P}(k)=K_{r}e(k)$$
+$$u_{I}(k)=u_{I}(k-1)+\frac{K_{r}}{T_{I}}T_{p}\frac{e(k-1)+e(k)}{2}$$
+$$u_{D}=K_{r}T_{D}\frac{e(k)-e(k-1)}{T_{p}}$$
 
 
 \subsection{Algorytm DMC}
 
-Algorytm DMC (Dynamic Matrix Control) algorytm regulacji predykcyjnej. Do predykcji wykorzystuje się model procesu w postaci odpowiedzi skokowych. 
+Algorytm DMC (Dynamic Matrix Control) algorytm regulacji predykcyjnej. 
+Do predykcji wykorzystuje się model procesu w postaci odpowiedzi skokowych. 
+W algorytmie DMC dynamika obiektu regulacji modelowana jest dyskretnymi odpowiedziami skokowymi, 
+które opisują reakcję wyjścia na skok jednostkowy sygnału sterującego.
  
-(wstaw obrazek od maruboya z doktoratu o dmc)
-W algorytmie DMC dynamika obiektu regulacji modelowana jest dyskretnymi odpowiedziami skokowymi, które opisują reakcję wyjścia na skok jednostkowy sygnału sterującego.
-
-Algorytm DMC w wersji analitycznej (bez ograniczeń)
-W algorytmie DMC, każdej chwili k (iteracji) wyznacza się ciąg przyszłych przyrostów sygnału sterującego wielkości  w wyniku minimalizacji wskaźnika jakości
-
-
-W celu wyprowadzenia prawa regulacji warto zastosować zapis wektorowo-macierzowy:
-Definiujemy wektory  o długości N oraz wektor  o długości .
-Następnie definiujemy macierze kwadratowe:
- - o wymiarach NxN
- - o wymiarach x
-
-Wtedy funkcję kryterialną zapisać można w postaci:
-
-
-
-Ponieważ prognozowana trajektoria wyjścia jest sumą składowej swobodnej i wymuszonej, w zapisie wektorowym:
-, gdzie wektory te mają długość N
-Podstawiając do funkcji kryterialnej otrzymujemy:
-
-
-
-Do predykcji wyjścia w algorytmie DMC stosuje się model procesu w postaci skończonej odpowiedzi skokowej. Oznacza to, że wektory  orazwyznaczane są na podstawie współczynników { , , da  } Składowa swobodna wyjścia w postaci wektorowej:
-
-
-
-gdzie macierz ma wymiarowość N×(D–1) 
-
-Górny indeks „P” macierzy wprowadzono w tym celu, aby podkreślić fakt, że określa ona predykcję wyjścia w zależności jedynie od przeszłych przyrostów sterowania. Dla każdego elementu  przy  zachodzi  
-
-Składowa wymuszona wyjścia w postaci wektorowej:
-
-
-Wykorzystując powyższe równania otrzymujemy:
-
-
-Zakłada się, że i  czyli i. Oznacza to, że funkcja kryterialna jest ściśle wypukła. Przyrównując do zera wektor gradientu trzymuje się wektor optymalnych przyrostów sterowania:
-
-
-
-gdzie K jest macierzą o wymiarowości. Macierz K wyznaczana jest jednokrotnie w trakcie projektowania algorytmu (ang. off-line).
-
-
-
-Ponieważ macierz drugich pochodnych jest dodatnio określona, a więc uzyskane rozwiązanie problemu optymalizacji bez ograniczeń jest rzeczywiście minimum globalnym funkcji kryterialnej 
-
-
-
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{dmc_idea.png}
+    \caption{Idea działania regulatora DMC}
+\end{figure}
