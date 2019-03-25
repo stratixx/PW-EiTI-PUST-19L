@@ -5,6 +5,7 @@ Dz = 75;%horyzont dynamiki zaklocen
 N = 180;%horyzont predykcji
 Nu = 4;%horyzont sterowania
 lambda = 9;
+sigma = 0.3;
 
 %warunki poczatkowe
 kk = 1000; %koniec symulacji
@@ -26,7 +27,7 @@ y_zad(start:kk) = 1;
 z = zeros(kk,1);
  if zakl == 1
     for i = start_z:kk
-    z(i) = 1 + normrnd(0,0.5);
+    z(i) = 1 + normrnd(0,sigma);
     end
  end
 
@@ -127,3 +128,13 @@ stairs(z,'c')
 title('Zaklocenie modelu')
 ylabel('z')
 xlabel('k');
+
+if licz_z == 1
+    dlmwrite("../Dane/Zad7/zad7_y_best_licz_zakl_sigma0_3.csv", y_mod, '\t');
+    dlmwrite("../Dane/Zad7/zad7_u_best_licz_zakl_sigma0_3.csv", u, '\t');
+    dlmwrite("../Dane/Zad7/zad7_z_best_licz_zakl_sigma0_3.csv", z, '\t');
+else
+    dlmwrite("../Dane/Zad7/zad7_y_best_nie_licz_zakl_sigma0_3.csv", y_mod, '\t');
+    dlmwrite("../Dane/Zad7/zad7_u_best_nie_licz_zakl_sigma0_3.csv", u, '\t');
+    dlmwrite("../Dane/Zad7/zad7_z_best_nie_licz_zakl_sigma0_3.csv", z, '\t');
+end

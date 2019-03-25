@@ -126,3 +126,13 @@ stairs(z,'c')
 title('Zaklocenie modelu')
 ylabel('z')
 xlabel('k');
+
+if licz_z == 1
+    dlmwrite("../Dane/Zad6/zad6_y_best_licz_zakl.csv", y_mod, '\t');
+    dlmwrite("../Dane/Zad6/zad6_u_best_licz_zakl.csv", u, '\t');
+    dlmwrite("../Dane/Zad6/zad6_z_best_licz_zakl.csv", z, '\t');
+else
+    dlmwrite("../Dane/Zad6/zad6_y_best_nie_licz_zakl.csv", y_mod, '\t');
+    dlmwrite("../Dane/Zad6/zad6_u_best_nie_licz_zakl.csv", u, '\t');
+    dlmwrite("../Dane/Zad6/zad6_z_best_nie_licz_zakl.csv", z, '\t');
+end

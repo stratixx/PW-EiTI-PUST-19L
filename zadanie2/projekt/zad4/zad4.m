@@ -1,4 +1,5 @@
 %zadanie 4 - Skrypt relizujacy algorytm DMC regulatora
+clear all
 %nastawy regulatora DMC
 D = 180;%horyzont dynamiki
 N = 180;%horyzont predykcji
@@ -80,3 +81,6 @@ stairs(u,'c')
 title('Sterowanie modelu')
 ylabel('u')
 xlabel('k');
+
+dlmwrite("../Dane/Zad4/zad4_y_best.csv", y_mod, '\t');
+dlmwrite("../Dane/Zad4/zad4_u_best.csv", u, '\t');

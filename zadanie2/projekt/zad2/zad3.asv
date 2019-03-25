@@ -30,7 +30,7 @@ grid on;
 plot(y1);
 title('Odpowiedzi skokowe modelu')
 if uz == 1
-    s_u = y1(2:181);
+    s_u = y1(2:
     subplot(2,1,2)
     hold on; 
     grid on; 
@@ -40,7 +40,6 @@ if uz == 1
     xlabel('k');
     ylabel('U');
 else
-    s_z = y1(2:76);
     subplot(2,1,2)
     hold on; 
     grid on; 
@@ -49,11 +48,4 @@ else
     legend('z')
     xlabel('k');
     ylabel('Z');
-end
-if uz == 1
-    dlmwrite("../Dane/Zad3/zad3_s_u.csv", s_u, '\t');
-    dlmwrite("../Dane/Zad3/zad3_u.csv", u(start:189), '\t');
-else
-    dlmwrite("../Dane/Zad3/zad3_s_z.csv", s_z, '\t');
-    dlmwrite("../Dane/Zad3/zad3_z.csv", z(start:84), '\t');
 end

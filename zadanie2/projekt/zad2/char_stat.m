@@ -25,3 +25,6 @@ xlabel('U')
 ylabel('Z')
 zlabel('Y')
 title('Charakterystyka statyczna obiektu Y(U,Z)')
+dlmwrite("../Dane/Zad2/zad2_char_stat_u.csv", u, '\t');
+dlmwrite("../Dane/Zad2/zad2_char_stat_z.csv", z, '\t');
+dlmwrite("../Dane/Zad2/zad2_char_stat_y.csv", y, '\t');

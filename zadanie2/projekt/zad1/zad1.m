@@ -34,3 +34,6 @@ title('Zaklocenie modelu')
 legend('z');
 xlabel('k');
 ylabel('z(k)');
+dlmwrite("../Dane/Zad1/zad1_u.csv", u, '\t');
+dlmwrite("../Dane/Zad1/zad1_y.csv", y, '\t');
+dlmwrite("../Dane/Zad1/zad1_z.csv", z, '\t');
