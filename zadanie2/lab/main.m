@@ -4,9 +4,9 @@ initSerialControl COM5 % initialise com port
 
 
 Tp = 1; % czas z jakim probkuje regulator
-y = ones(1,1000)*36.3347; % wektor wyjsc obiektu
+y = ones(1,1000)*35.4; % wektor wyjsc obiektu
 y_zad = zeros(1,1000); % wektor wyjsc zadanych obiektu
-u = ones(1,1000)*32; % wektor wejsc (sterowan) obiektu
+u = ones(1,1000)*39; % wektor wejsc (sterowan) obiektu
 z = zeros(1,1000); % wektor zak³óceñ
 Y = 0;
 Yzad=0;
@@ -23,15 +23,15 @@ measurements = readMeasurements (1:7) ; % read measurements
     
     y(end)=measurements(1); % powiekszamy wektor y o element Y
    %% y_zad(end)=Yzad; % powiekszamy wektor y o element Y
-%    if(k<150)
+%    if(k<200)
 %     u(end)=32; % powiekszamy wektor u o element U
 %    else u(end)=55;
 %    end
    
-      if(k<150)
-      z(end)=0; 
-      else z(end)=10;
-      end
+%       if(k<150)
+%       z(end)=0; 
+%       else z(end)=10;
+%       end
     
     figure(1);
     clf(1);
