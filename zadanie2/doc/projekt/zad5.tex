@@ -1,14 +1,44 @@
 \section{Wpływ skokowej zmiany sygnału zakłócenia}
 
+-------POLECENIE--------
+
 Załozyc, ze oprócz zmian sygnału wartosci zadanej nastepuje skokowa zmiana sygnału
 zakłócenia z wartosci 0 do 1 (zmiana ta ma miejsce po osiagnieciu przez proces wartosci
 zadanej wyjscia). Dobrac parametr Dz. Zamiescic wybrane wyniki symulacji. Pokazac,
 ze pomiar zakłócenia i jego uwzglednienie prowadzi do lepszej regulacji niz gdy brak
 jest tego pomiaru.
 
+-------POLECENIE--------
+
+
 
 \subsection{Dobór parametru $D_z$}
 
+Parametr Dz jest to liczba próbek, dla której następuje stabilizacja odpowiedzi skokowych toru zakłóceń, 
+dobrano go na podstawie analizy odpowiedzi skoku
+zakłócenia z 0 na 1.
+Dz wynosi = 75
+
 \subsection{Regulacja bez uwzględnienia zakłócenia}
 
+Po osiągnięciu przez proces wartości zadanej wyjścia następuje zmiana sygnału
+zakłócenia z wartości 0 na 1.
+
 \subsection{Regulacja z uwzględnieniem zakłócenia}
+
+Po osiągnięciu przez proces wartości zadanej wyjścia następuje zmiana sygnału
+zakłócenia z wartości 0 na 1.
+
+\subsection{Porównanie wskaźnika jakości}
+
+Dla symulacji regulowanego obiektu bez pomiaru zakłóceń wynosi on:
+
+Dla symulacji regulowanego obiektu z pomiarem zakłóceń wynosi on:
+
+Wnioski: 
+
+Uwzględnienie mierzalnego zakłócenia w algorytmie regulacji jest bardzo dobrym rozwiązaniem, 
+odsprzęganie zakłócenia powoduje kompensację uchybu regulacji, 
+a co za tym idzie wskaźnik jakości jest lepszy, 
+a sama regulacja uznana jest za lepszą.
+

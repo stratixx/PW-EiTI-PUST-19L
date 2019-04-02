@@ -26,7 +26,7 @@ xlim([min(x) max(x)]);
 %title('y');
 %xlabel('k');
 ylabel('y');
-legend('Wyjœcie', 'Location', 'NorthEast');
+legend('Wyjï¿½cie', 'Location', 'NorthEast');
 grid on;
 box on;
 
@@ -37,12 +37,12 @@ xlim([min(x) max(x)]);
 %title('z');
 xlabel('k');
 ylabel('z');
-legend('Zak³ócenie', 'Location', 'NorthEast');
+legend('Zakï¿½ï¿½cenie', 'Location', 'NorthEast');
 grid on;
 box on;
 
-% dwie linijki poni¿ej zapewniaj¹ poprawne ustawienie wykresu w pdf-ie
-% oraz pozwalaj¹ nazwaæ wykres pod spodem
+% dwie linijki poniï¿½ej zapewniajï¿½ poprawne ustawienie wykresu w pdf-ie
+% oraz pozwalajï¿½ nazwaï¿½ wykres pod spodem
 beforeFigure = [sprintf('\\begin{figure}[H] \n\\centering')];
 afterFigure = [sprintf('\\caption{%s}\n\\end{figure}', title)];
 matlab2tikz(name, ...

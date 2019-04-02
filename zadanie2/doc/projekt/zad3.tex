@@ -1,5 +1,7 @@
 \section{Wyznaczenie wektorów $s$ i $s_z$ }
 
+-------POLECENIE--------
+
 Wyznaczyc odpowiedzi skokowe obu torów wykorzystywane w algorytmie DMC, tzn.
 zestaw liczb s1, s2, . . . oraz sz
 1, sz
@@ -7,6 +9,39 @@ zestaw liczb s1, s2, . . . oraz sz
 sterujacego i zakłócajacego: od chwili k = 0 włacznie sygnał wymuszenia ma wartosc
 1, w przeszłosci jest zerowy). Zamiescic rysunki odpowiedzi skokowych obu torów.
 
+-------POLECENIE--------
+
+
+
 \subsection{Wyznaczenie wektora $s$}
 
+Uzyskaną odpowiedź procesu na zmianę sygnału sterującego z punktu pracy Upp=32 na
+Umax=55 przekształcono w następujący sposób: 
+
+-Ograniczono (przycięto) czas zmiany sterowania u oraz wyjścia y od chwili skoku do ustabilizowania.  
+
+-Wykres sterowania u przesunięty został o wartość początkową Upp=? w dół 
+
+-Wykres wyjścia y przesunięty został o wartość początkową Ypp=? w dół 
+
+-Wykres sterowania u i wyjścia y podzielono przez delta u=23
+
+
+Uzyskana odpowiedź skokowa daje nam zestaw liczb s1,s2. . . ,która wykorzystana będzie w algorytmie DMC.
+
 \subsection{Wyznaczenie wektora $s_z$}
+
+Uzyskaną odpowiedź procesu na zmianę sygnału zakłócenia z punktu pracy Zpp=0 na
+Zmax =30 przekształcono w następujący sposób: 
+
+-Ograniczono (przycięto) czas zmiany sterowania u oraz wyjścia y od chwili skoku do ustabilizowania. 
+
+-Wykres sterowania u przesunięty został o wartość początkową Upp=? w dół 
+
+-Wykres wyjścia y przesunięty został o wartość początkową Ypp=? w dół 
+
+-Wykres sterowania u i wyjścia y podzielono przez delta z= 30
+
+
+Uzyskana odpowiedź skokowa toru zakłócenie wyjście daje nam zestaw liczb s1z,s2z. . .
+,która wykorzystana będzie w algorytmie DMC.

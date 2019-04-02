@@ -1,5 +1,22 @@
 \section{Odporność algorytmu przy błędach pomiarowych sygnału zakłócenia}
 
+-------POLECENIE--------
+
 Dla dobranych parametrów algorytmu zbadac jego odpornosc przy błedach pomiaru
 sygnału zakłócenia (szum pomiarowy). Rozwazyc kilka wartosci błedów. Zamiescic
 wybrane wyniki symulacji.
+
+-------POLECENIE--------
+
+Szum pomiarowy wygenerowano za pomocą dodania do wartości sygnału zakłócenia
+dodajemy funkcję MATLAB’a normrnd(), 
+gdzie jako parametry podajemy 0 oraz sigma.
+
+Dzięki tej funkcji sygnał zakłócenia zmienia się zgodnie z rozkładem Gauss’a.
+Poprzez zwiększanie parametru simga, zwiększamy zmiany sygnału zakłócenia, 
+a co za tym idzie - większe zakłócenia. 
+Rozważono trzy różne wartości zakłócenia:
+
+Wnioski: 
+
+Im większe zakłócenia tym jakość regulacji jest mniejsza.
