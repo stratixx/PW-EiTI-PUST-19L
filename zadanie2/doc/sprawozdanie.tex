@@ -16,6 +16,16 @@
 \usepackage{xcolor}
 \usepackage{pgfplots}
 \usetikzlibrary{pgfplots.groupplots}
+%klikalne odnoścniki w spisie treści
+\usepackage{color}   %May be necessary if you want to color links
+\usepackage[pdfencoding=auto]{hyperref}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+	linkcolor=black,  %choose some color if you want links to stand out
+	bookmarksopen=true, % 
+}
+
 \usepackage{listings}
 \usepackage{matlab-prettifier}
 \usepackage{enumitem,amssymb}
@@ -65,11 +75,19 @@
 
 % ustawienia pakietu pgfplots
 \pgfplotsset{
-tick label style={font=\scriptsize},
-label style={font=\small},
-legend style={font=\small},
-title style={font=\small}
+	compat=1.16, % tryb kompatybilności
+	tick label style={font=\scriptsize},
+	label style={font=\small},
+	legend style={font=\small},
+	title style={font=\small}
 }
+
+% ustawienia znaczników kolejnych poziomów list typu itemize
+\renewcommand\labelitemi{\textbullet} % duża kropka
+\renewcommand\labelitemii{\textasteriskcentered} % gwiazdka
+\renewcommand\labelitemiii{\textperiodcentered} % 
+\renewcommand\labelitemiv{\textendash} % 
+
 
 \def\figurename{Rys.}
 \def\tablename{Tab.}
@@ -90,7 +108,7 @@ title style={font=\small}
 %strona tytu?owa
 \title{\bf Sprawozdanie z projektu i ćwiczenia laboratoryjnego nr 2, zadanie nr 7\vskip 0.1cm}
 \author{Grochowina Mateusz\\Winnicki Konrad\\Zgorzelski Jan}
-\date{ 4 kwietnia 2019}
+\date{4 kwietnia 2019}
 
 \makeatletter
 \renewcommand{\maketitle}{\begin{titlepage}

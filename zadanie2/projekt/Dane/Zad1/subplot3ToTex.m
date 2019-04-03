@@ -1,6 +1,6 @@
-name = '../../../doc/projekt/zad1charstat_u_y_z.tex';
+addpath('../../../../matlab2tikz-master/src/');
+outputFile = '../../../doc/projekt/figure/zad1charstat_u_y_z.tex';
 
-title = 'Punkt pracy obiektu symulacji';
 u = dlmread('zad1_u.csv','\t');
 y = dlmread('zad1_y.csv','\t');
 z = dlmread('zad1_z.csv','\t');
@@ -26,7 +26,7 @@ xlim([min(x) max(x)]);
 %title('y');
 %xlabel('k');
 ylabel('y');
-legend('Wyjï¿½cie', 'Location', 'NorthEast');
+legend('Wyjœcie', 'Location', 'NorthEast');
 grid on;
 box on;
 
@@ -37,18 +37,19 @@ xlim([min(x) max(x)]);
 %title('z');
 xlabel('k');
 ylabel('z');
-legend('Zakï¿½ï¿½cenie', 'Location', 'NorthEast');
+legend('Zak³ócenie', 'Location', 'NorthEast');
 grid on;
 box on;
 
 % dwie linijki poniï¿½ej zapewniajï¿½ poprawne ustawienie wykresu w pdf-ie
 % oraz pozwalajï¿½ nazwaï¿½ wykres pod spodem
-beforeFigure = [sprintf('\\begin{figure}[H] \n\\centering')];
-afterFigure = [sprintf('\\caption{%s}\n\\end{figure}', title)];
-matlab2tikz(name, ...
+%beforeFigure = [sprintf('\\begin{figure}[H] \n\\centering')];
+%afterFigure = [sprintf('\\caption{%s}\n\\end{figure}', title)];
+
+matlab2tikz(outputFile, ...
     'showInfo', false, ...
-    'encoding', 'UTF-8', ...
-    'extraCode', beforeFigure, ...
-    'extraCodeAtEnd', afterFigure);
+    'encoding', 'UTF-8');
+%    'extraCode', beforeFigure, ...
+%    'extraCodeAtEnd', afterFigure);
 
 close(1)
