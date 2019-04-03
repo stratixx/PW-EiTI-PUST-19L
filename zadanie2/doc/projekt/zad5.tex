@@ -1,5 +1,5 @@
 \section{Wpływ skokowej zmiany sygnału zakłócenia}
-
+\label{projekt:zad5}
 -------POLECENIE--------
 
 Załozyc, ze oprócz zmian sygnału wartosci zadanej nastepuje skokowa zmiana sygnału
@@ -13,6 +13,7 @@ jest tego pomiaru.
 
 
 \subsection{Dobór parametru $D_z$}
+\label{projekt:zad5:Dz}
 
 Parametr Dz jest to liczba próbek, dla której następuje stabilizacja odpowiedzi skokowych toru zakłóceń, 
 dobrano go na podstawie analizy odpowiedzi skoku
@@ -20,16 +21,33 @@ zakłócenia z 0 na 1.
 Dz wynosi = 75
 
 \subsection{Regulacja bez uwzględnienia zakłócenia}
+\label{projekt:zad5:regulacjaBezUwzg}
 
 Po osiągnięciu przez proces wartości zadanej wyjścia następuje zmiana sygnału
 zakłócenia z wartości 0 na 1.
+
+\begin{figure}[H] 
+    \centering
+    \input{projekt/figure/zad5BezUwzglZ.tex}
+    \caption{Regulacja bez uwzględnienia zakłócenia}
+    \label{projekt:zad5:regulacjaBezUwzgZ:figure}
+\end{figure}
 
 \subsection{Regulacja z uwzględnieniem zakłócenia}
+\label{projekt:zad5:regulacjaZUwzg}
 
 Po osiągnięciu przez proces wartości zadanej wyjścia następuje zmiana sygnału
 zakłócenia z wartości 0 na 1.
 
+\begin{figure}[H] 
+    \centering
+    \input{projekt/figure/zad5UwzglZ.tex}
+    \caption{Regulacja z uwzględnieniem zakłócenia}
+    \label{projekt:zad5:regulacjaUwzgZ:figure}
+\end{figure}
+
 \subsection{Porównanie wskaźnika jakości}
+\label{projekt:zad5:porownanie}
 
 Dla symulacji regulowanego obiektu bez pomiaru zakłóceń wynosi on:
 

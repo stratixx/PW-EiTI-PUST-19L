@@ -13,7 +13,7 @@ start_z = 150; %start symulacji
 u = zeros(1,kk);%sygnal sterujacy
 E = 0;
 zakl = 1;%czy sa zaklocenia 1-T/0-N
-licz_z = 1;%czy mamy uwzgledniac 1-T/0-N
+licz_z = 0;%czy mamy uwzgledniac 1-T/0-N
 load('s_u.mat')
 load('s_z.mat')
 s = s_u;
@@ -22,7 +22,7 @@ u_delta = zeros(1,D-1);
 z_delta = zeros(1,Dz);
 y_zad = zeros(kk,1);
 y_mod = zeros(kk,1);
-y_zad(start:500) = 1;
+y_zad(start:end) = 1;
 z = zeros(kk,1);
 if zakl == 1
     z(start_z:kk) = 1;
@@ -128,10 +128,12 @@ xlabel('k');
 
 if licz_z == 1
     dlmwrite("../Dane/Zad5/zad5_y_best_licz_zakl.csv", y_mod, '\t');
+    dlmwrite("../Dane/Zad5/zad5_y_zad_best_licz_zakl.csv", y_zad, '\t');
     dlmwrite("../Dane/Zad5/zad5_u_best_licz_zakl.csv", u, '\t');
     dlmwrite("../Dane/Zad5/zad5_z_best_licz_zakl.csv", z, '\t');
 else
     dlmwrite("../Dane/Zad5/zad5_y_best_nie_licz_zakl.csv", y_mod, '\t');
+    dlmwrite("../Dane/Zad5/zad5_y_zad_best_nie_licz_zakl.csv", y_zad, '\t');
     dlmwrite("../Dane/Zad5/zad5_u_best_nie_licz_zakl.csv", u, '\t');
     dlmwrite("../Dane/Zad5/zad5_z_best_nie_licz_zakl.csv", z, '\t');
 end

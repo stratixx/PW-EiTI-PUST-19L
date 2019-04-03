@@ -1,4 +1,5 @@
 \section{Wyznaczenie odpowiedzi skokowej toru zakłócenie-wyjście}
+\label{lab:zad2}
 
 
 -------POLECENIE--------
@@ -14,21 +15,32 @@ Odpowiedzi skokowe toru zakłócenie-wyjście zostały wyznaczone symulacyjnie d
 zmian sygnału zakłócenia .
 
 \subsection{Odpowiedzi skokowe obiektu}
+\label{lab:zad2:odpSkok}
 
 Do uzyskania odpowiedzi skokowych dla tego toru ustawiono sygnał wejściowy na stałą
 wartość U=32, 
 przy ustabilizowanej temperaturze T1=35.4 stp C przeprowadzone zostały
 skoki sterowania z Z =0 na 10, 15 oraz 30.
+
+\begin{figure}[H] 
+    \centering
+    \input{lab/figure/zad2StepsZ.tex}
+    \caption{Odpowiedzi skokowe obiektu od zakłócenia}
+    \label{lab:zad2:odpSkok:figure}
+\end{figure}
+
+
+\subsection{Właściwości statyczne obiektu}
+\label{lab:zad2:charStat}
+
 Dzięki uzyskanym odpowiedziom skokowym otrzymano charakterystykę statyczną
 zakłócenia.
 
-Wniosek: 
 
 Na podstawie wykresu charakterystyki statycznej można ustalić, 
 że właściwości statyczne procesu są liniowe. 
-Wzmocnienie statyczne procesu określone zostało na K=0,1046.
-
-\subsection{Właściwości statyczne obiektu}
 
 \subsection{Wzmocnienie statyczne}
+\label{lab:zad2:wzmStat}
 
+Wzmocnienie statyczne procesu określone zostało na K=0,1046.
