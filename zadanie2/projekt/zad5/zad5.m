@@ -1,4 +1,4 @@
-%zadanie 5 - Skrypt relizujacy algorytm DMC regulatora z zakloceniem
+%Skrypt relizujacy algorytm DMC regulatora z zakloceniem
 %nastawy regulatora DMC
 D = 180;%horyzont dynamiki
 Dz = 75;%horyzont dynamiki zaklocen
@@ -22,7 +22,7 @@ u_delta = zeros(1,D-1);
 z_delta = zeros(1,Dz);
 y_zad = zeros(kk,1);
 y_mod = zeros(kk,1);
-y_zad(start:end) = 1;
+y_zad(start:end) = 10
 z = zeros(kk,1);
 if zakl == 1
     z(start_z:kk) = 1;

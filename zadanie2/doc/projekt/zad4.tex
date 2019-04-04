@@ -1,23 +1,36 @@
 \section{Regulator DMC}
 \label{projekt:zad4}
 
-
-to samo co w proj 1
-
 Algorytm DMC (Dynamic Matrix Control) algorytm regulacji predykcyjnej. 
 Do predykcji wykorzystuje się model procesu w postaci odpowiedzi skokowych. 
 W algorytmie DMC dynamika obiektu regulacji modelowana jest dyskretnymi odpowiedziami skokowymi, 
-które opisują reakcję wyjścia na skok jednostkowy sygnału sterującego.
 
+które opisują reakcję wyjścia na skok jednostkowy sygnału sterującego.
 \subsection{Program do symulacji algorytmu DMC}
-\label{projekt:zad4:programDMC}
+\label{projekt:zad4:program}
+
+\subsubsection{Inicjacja parametrów}
+\lstinputlisting[language=Matlab, firstline=1, lastline=30]{../projekt/zad5/zad5.m}
+\newpage
+
+\subsubsection{Obliczanie macierzy DMC}
+\lstinputlisting[language=Matlab, firstline=30, lastline=75]{../projekt/zad5/zad5.m}
+\newpage
+
+
+\subsubsection{Pętla główna regualtora}
+\lstinputlisting[language=Matlab, firstline=75, lastline=101]{../projekt/zad5/zad5.m}
 
 \subsection{Dobór parametrów regulatora}
 \label{projekt:zad4:parametry}
 
-\begin{figure}[H] 
-    \centering
-    \input{projekt/figure/zad4YU.tex}
-    \caption{Przebiegi dla różnych nastaw regulatorów}
-    \label{projekt:zad4:parametry:figure}
-\end{figure}
+Dobrane parametry regulatora DMC:
+\begin{itemize}
+    \item $D=180$, 
+    \item $N=180$, 
+    \item $N_{u}=4$, 
+    \item $lambda=9$, 
+    \item $D_{z}=75$.
+\end{itemize}
+
+\newpage

@@ -1,17 +1,6 @@
 \section{Wyznaczenie symulacyjne odpowiedzi skokowych}
 \label{projekt:zad2}
 
--------POLECENIE--------
-
-Wyznaczyc symulacyjnie odpowiedzi skokowe torów wejscie-wyjscie i zakłócenie-wyjscie
-procesu dla kilku zmian sygnału sterujacego. Narysowac te odpowiedzi, oddzielnie dla
-obydwu torów. Narysowac charakterystyke statyczna procesu y(u, z). Czy własciwosci
-statyczne i dynamiczne procesu sa (w przyblizeniu) liniowe? Jezeli tak, okreslic
-wzmocnienie statyczne obu torów procesu.
-
--------POLECENIE--------
-
-
 Odpowiedzi skokowe torów wejście-wyjście i zakłócenie-wyjście zostały wyznaczone
 symulacyjnie dla pięciu zmian sygnału sterującego oraz pięciu zmian zakłócenia .
 
@@ -19,7 +8,7 @@ symulacyjnie dla pięciu zmian sygnału sterującego oraz pięciu zmian zakłóc
 \label{projekt:zad2:StepYU}
 
 Do uzyskania odpowiedzi skokowych dla tego toru ustawiono zakłócenie na stałą
-wartość Z=0 oraz przeprowadzone zostały skoki sterowania z Upp =0 na …
+wartość $Z_{pp}=0$ oraz przeprowadzona została seria skoków sterowania $U$ 
 
 \begin{figure}[H] 
     \centering
@@ -27,12 +16,13 @@ wartość Z=0 oraz przeprowadzone zostały skoki sterowania z Upp =0 na …
     \caption{Odpowiedzi skokowe obiektu od sterowania}
     \label{projekt:zad2:StepYU:figure}
 \end{figure}
+\newpage
 
 \subsection{Odpowiedź wyjścia na skok zakłócenia}
 \label{projekt:zad2:StepYZ}
 
 Do uzyskania odpowiedzi skokowych dla tego toru ustawiono sygnał wejściowy na stałą
-wartość U=0 oraz przeprowadzone zostały skoki sterowania z Zpp =0 na …
+wartość $U_{pp}=0$ oraz przeprowadzona została seria skoków zakłócenia $Z$ 
 
 \begin{figure}[H] 
     \centering
@@ -40,11 +30,13 @@ wartość U=0 oraz przeprowadzone zostały skoki sterowania z Zpp =0 na …
     \caption{Odpowiedzi skokowe obiektu od zakłócenia}
     \label{projekt:zad2:StepYZ:figure}
 \end{figure}
+\newpage
 
 \subsection{Charakterystyka statyczna Y(U, Z)}
 \label{projekt:zad2:charStat}
 
-Dzięki uzyskanym odpowiedziom skokowym otrzymano charakterystykę statyczną y(u,z)
+Wykonując zestaw symulacji dla każdej kombinacji wartości sygnałów U i Z z ich zakresu \newline 
+wyznaczono charakterystykę statyczną Y(U, Z)
 
 \begin{figure}[H] 
     \centering
@@ -53,8 +45,9 @@ Dzięki uzyskanym odpowiedziom skokowym otrzymano charakterystykę statyczną y(
     \label{projekt:zad2:charStat:figure}
 \end{figure}
 
-Wniosek: 
-
 Na podstawie wykresu charakterystyki statycznej można ustalić, że właściwości
-statyczne procesu są liniowe. Wzmocnienie statyczne procesu określone zostało dzieki …,
-wynosi on K=1,0305.
+statyczne procesu są liniowe. \newline
+Wzmocnienie statyczne toru wejście-wyjście wynosi  $K_{u}$ = \num{2,4893}. \newline
+Wzmocnienie statyczne toru zakłócenie-wyjście wynosi  $K_{z}$ = \num{1,8933}.
+
+\newpage

@@ -1,11 +1,11 @@
 addpath('../../../../matlab2tikz-master/src/');
-%outputFile = '../../../doc/projekt/figure/zad5UwzglZ.tex';
- outputFile = '../../../doc/projekt/figure/zad5BezUwzglZ.tex';
+outputFile = '../../../doc/projekt/figure/zad6licz.tex';
+% outputFile = '../../../doc/projekt/figure/zad6.tex';
 
-u = dlmread('zad5_u_best_nie_licz_zakl.csv','\t');
-y = dlmread('zad5_y_best_nie_licz_zakl.csv','\t');
-y_zad = dlmread('zad5_y_zad_best_nie_licz_zakl.csv','\t');
-z = dlmread('zad5_z_best_nie_licz_zakl.csv','\t');
+u = dlmread('zad6_u_best_licz_zakl.csv','\t');
+y = dlmread('zad6_y_best_licz_zakl.csv','\t');
+%y_zad = dlmread('zad6_y_zad_best_nie_licz_zakl.csv','\t');
+z = dlmread('zad6_z_best_licz_zakl.csv','\t');
 
 % u = dlmread('zad5_u_best_nie_licz_zakl.csv','\t');
 % y = dlmread('zad5_y_best_nie_licz_zakl.csv','\t');
@@ -30,12 +30,12 @@ box on;
 subplot(3,1,1);
 hold on;
 stairs(x,y);
-stairs(x,y_zad);
+%stairs(x,y_zad);
 xlim([min(x) max(x)]);
 %title('y');
 %xlabel('k');
 ylabel('y');
-legend('Wyjœcie', 'Wartoœæ zadana', 'Location', 'NorthEast');
+legend('Wyjœcie',  'Location', 'NorthEast');
 grid on;
 box on;
 

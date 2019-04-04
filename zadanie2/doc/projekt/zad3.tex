@@ -4,19 +4,16 @@
 \subsection{Wyznaczenie wektora $s$}
 \label{projekt:zad3:s}
 
-Uzyskaną odpowiedź procesu na zmianę sygnału sterującego z punktu pracy Upp=32 na
-Umax=55 przekształcono w następujący sposób: 
+Uzyskaną odpowiedź procesu na zmianę sygnału sterującego z punktu pracy $U_{pp} = 32$ na
+$U_{max} = 55$ przekształcono w następujący sposób: 
 \begin{itemize}
     \item Ograniczono (przycięto) czas zmiany sterowania u oraz wyjścia y od chwili skoku do ustabilizowania, 
-    \begin{itemize}
-        \item subsec
-    \end{itemize}
-    \item Wykres sterowania u przesunięty został o wartość początkową Upp=? w dół, 
-    \item Wykres wyjścia y przesunięty został o wartość początkową Ypp=? w dół, 
-    \item Wykres sterowania u i wyjścia y podzielono przez delta u=23. 
+    \item Wykres sterowania u przesunięty został o wartość początkową $U_{pp}$ w dół, 
+    \item Wykres wyjścia y przesunięty został o wartość początkową $Y_{pp}$ w dół, 
+    \item Wykres sterowania u i wyjścia y podzielono przez wysokość skoku sterowania u. 
 \end{itemize}
 
-Uzyskana odpowiedź skokowa daje nam zestaw liczb s1,s2. . . ,która wykorzystana będzie w algorytmie DMC.
+\subsection{Wykres wektora $s$}
 
 \begin{figure}[H] 
     \centering
@@ -25,21 +22,22 @@ Uzyskana odpowiedź skokowa daje nam zestaw liczb s1,s2. . . ,która wykorzystan
     \label{projekt:zad3:s:figure}
 \end{figure}
 
+\newpage
+
 \subsection{Wyznaczenie wektora $s_z$}
 \label{projekt:zad3:sz}
 
-Uzyskaną odpowiedź procesu na zmianę sygnału zakłócenia z punktu pracy Zpp=0 na
-Zmax =30 przekształcono w następujący sposób: 
+Uzyskaną odpowiedź procesu na zmianę sygnału sterującego z punktu pracy $Z_{pp} = 0$ na
+$Z_{max} = 30$ przekształcono w następujący sposób: 
 \begin{itemize}
-\item Ograniczono (przycięto) czas zmiany sterowania u oraz wyjścia y od chwili skoku do ustabilizowania, 
-\item Wykres sterowania u przesunięty został o wartość początkową Upp=? w dół, 
-\item Wykres wyjścia y przesunięty został o wartość początkową Ypp=? w dół, 
-\item Wykres sterowania u i wyjścia y podzielono przez delta z= 30.
+    \item Ograniczono (przycięto) czas zmiany sterowania z oraz wyjścia y od chwili skoku do ustabilizowania, 
+    \item Wykres sterowania z przesunięty został o wartość początkową $Z_{pp}$ w dół, 
+    \item Wykres wyjścia y przesunięty został o wartość początkową $Y_{pp}$ w dół, 
+    \item Wykres sterowania z i wyjścia y podzielono przez wysokość skoku sterowania z. 
 \end{itemize}
 
 
-Uzyskana odpowiedź skokowa toru zakłócenie wyjście daje nam zestaw liczb s1z,s2z. . .
-,która wykorzystana będzie w algorytmie DMC.
+\subsection{Wykres wektora $s_{z}$}
 
 \begin{figure}[H] 
     \centering
@@ -47,3 +45,5 @@ Uzyskana odpowiedź skokowa toru zakłócenie wyjście daje nam zestaw liczb s1z
     \caption{Wektor $s_{z}$}
     \label{projekt:zad3:sz:figure}
 \end{figure}
+
+\newpage

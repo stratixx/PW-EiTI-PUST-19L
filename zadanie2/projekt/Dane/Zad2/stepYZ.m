@@ -1,8 +1,8 @@
 addpath('../../../../matlab2tikz-master/src/');
 outputFile = '../../../doc/projekt/figure/zad2StepYZ.tex';
 
-u = dlmread('zad2_u.csv','\t');
-y = dlmread('zad2_y_u.csv','\t');
+u = dlmread('zad2_z.csv','\t');
+y = dlmread('zad2_y_z.csv','\t');
 %z = dlmread('zad1_z.csv','\t');
 x = 1:length(u);
 
