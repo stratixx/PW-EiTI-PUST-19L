@@ -1,14 +1,6 @@
 \section{Odporność algorytmu przy błędach pomiarowych sygnału zakłócenia}
 \label{projekt:zad7}
 
--------POLECENIE--------
-
-Dla dobranych parametrów algorytmu zbadac jego odpornosc przy błedach pomiaru
-sygnału zakłócenia (szum pomiarowy). Rozwazyc kilka wartosci błedów. Zamiescic
-wybrane wyniki symulacji.
-
--------POLECENIE--------
-
 Szum pomiarowy wygenerowano za pomocą dodania do wartości sygnału zakłócenia
 dodajemy funkcję MATLAB’a normrnd(), 
 gdzie jako parametry podajemy 0 oraz sigma.
@@ -17,6 +9,55 @@ Dzięki tej funkcji sygnał zakłócenia zmienia się zgodnie z rozkładem Gauss
 Poprzez zwiększanie parametru simga, zwiększamy zmiany sygnału zakłócenia, 
 a co za tym idzie - większe zakłócenia. 
 Rozważono trzy różne wartości zakłócenia:
+
+
+\subsection{Regulacja bez uwzględnienia zakłócenia}
+\label{projekt:zad7:regulacjaBezUwzg}
+
+\begin{figure}[H] 
+    \centering
+    \input{projekt/figure/zad7nie_liczSigma0_3.tex}
+    \caption{Regulacja bez uwzględnienia zakłócenia, sigma = \num{0.3}}
+    \label{projekt:zad7:regulacjaBezUwzg:figureSigma0_3}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \input{projekt/figure/zad7nie_liczSigma0_5.tex}
+    \caption{Regulacja bez uwzględnienia zakłócenia, sigma = \num{0.5}}
+    \label{projekt:zad7:regulacjaBezUwzg:figureSigma0_5}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \input{projekt/figure/zad7nie_liczSigma0_8.tex}
+    \caption{Regulacja bez uwzględnienia zakłócenia, sigma = \num{0.8}}
+    \label{projekt:zad7:regulacjaBezUwzg:figureSigma0_8}
+\end{figure}
+
+\subsection{Regulacja z uwzględnieniem zakłócenia}
+\label{projekt:zad7:regulacjaZUwzg}
+
+\begin{figure}[H] 
+    \centering
+    \input{projekt/figure/zad7liczSigma0_3.tex}
+    \caption{Regulacja uwzględniająca zakłócenie, sigma = \num{0.3}}
+    \label{projekt:zad7:regulacjaZUwzg:figureSigma0_3}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \input{projekt/figure/zad7liczSigma0_5.tex}
+    \caption{Regulacja uwzględniająca zakłócenie, sigma = \num{0.5}}
+    \label{projekt:zad7:regulacjaZUwzg:figureSigma0_5}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \input{projekt/figure/zad7liczSigma0_8.tex}
+    \caption{Regulacja uwzględniająca zakłócenie, sigma = \num{0.8}}
+    \label{projekt:zad7:regulacjaZUwzg:figureSigma0_8}
+\end{figure}
 
 Wnioski: 
 

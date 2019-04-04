@@ -1,26 +1,14 @@
 \section{Wyznaczenie odpowiedzi skokowej toru zakłócenie-wyjście}
 \label{lab:zad2}
-
-
--------POLECENIE--------
-
-Wyznaczyc odpowiedzi skokowe toru zakłócenie-wyjscie procesu dla trzech róznych
-zmian sygnału zakłócajacego Z rozpoczynajac z punktu pracy. Narysowac otrzymane
-przebiegi na jednym rysunku. Czy własciwosci statyczne obiektu mozna okreslic jako
-(w przyblizeniu) liniowe? Jezeli tak, okreslic wzmocnienie statyczne tego toru procesu.
-
--------POLECENIE--------
-
-Odpowiedzi skokowe toru zakłócenie-wyjście zostały wyznaczone symulacyjnie dla pięciu
-zmian sygnału zakłócenia .
-
+Odpowiedzi skokowe toru zakłócenie-wyjście zostały wyznaczone symulacyjnie dla trzech
+zmian sygnału zakłócenia.
 \subsection{Odpowiedzi skokowe obiektu}
 \label{lab:zad2:odpSkok}
 
 Do uzyskania odpowiedzi skokowych dla tego toru ustawiono sygnał wejściowy na stałą
-wartość U=32, 
-przy ustabilizowanej temperaturze T1=35.4 stp C przeprowadzone zostały
-skoki sterowania z Z =0 na 10, 15 oraz 30.
+wartość U=\num{32}, 
+przy ustabilizowanej temperaturze T1 = $\num{35.4}^{\circ} C$ przeprowadzone zostały
+skoki sterowania z Z = \num{0} na \num{10}, \num{15} oraz \num{30}.
 
 \begin{figure}[H] 
     \centering
@@ -29,18 +17,25 @@ skoki sterowania z Z =0 na 10, 15 oraz 30.
     \label{lab:zad2:odpSkok:figure}
 \end{figure}
 
+\newpage
 
 \subsection{Właściwości statyczne obiektu}
 \label{lab:zad2:charStat}
 
 Dzięki uzyskanym odpowiedziom skokowym otrzymano charakterystykę statyczną
 zakłócenia.
+\newpage
 
+\begin{figure}[H] 
+    \centering
+    \input{lab/figure/zad2charStat.tex}
+    \caption{Charakterystyka statyczna wyjścia od zakłócenia}
+    \label{lab:zad2:charStat:figure}
+\end{figure}
 
-Na podstawie wykresu charakterystyki statycznej można ustalić, 
-że właściwości statyczne procesu są liniowe. 
+Na podstawie wykresu charakterystyki statycznej można założyć, 
+że właściwości statyczne procesu są z dobrym przybliżeniem liniowe. 
 
-\subsection{Wzmocnienie statyczne}
-\label{lab:zad2:wzmStat}
+Wzmocnienie statyczne procesu określone zostało na K = \num{0,1046}.
 
-Wzmocnienie statyczne procesu określone zostało na K=0,1046.
+\newpage

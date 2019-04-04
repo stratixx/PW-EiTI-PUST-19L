@@ -1,20 +1,37 @@
 \section{Regulator DMC}
 \label{lab:zad4}
-
-
--------POLECENIE--------
-
-Napisac i omówic program w jezyku Matlab do regulacji algorytmu DMC (w najprostszej
-wersji analitycznej) dla procesu stanowiska. Dobrac parametry D, N, Nu, lambda
-algorytmu DMC przy skokowej zmianie sygnału wartosci zadanej i zerowym zakłóceniu.
-Uwzglednic istniejace ograniczenia wartosci sygnału sterujacego 0 ¬ G1(k) ¬ 100.
-
--------POLECENIE--------
-
-Tutaj z proj 1 DMC
-
 \subsection{Program do symulacji algorytmu DMC}
 \label{lab:zad4:program}
 
+\subsubsection{Inicjacja parametrów}
+\lstinputlisting[language=Matlab, firstline=1, lastline=38]{../lab/zad4/zad4.m}
+\newpage
+
+\subsubsection{Obliczanie macierzy DMC}
+\lstinputlisting[language=Matlab, firstline=39, lastline=82]{../lab/zad4/zad4.m}
+\newpage
+
+
+\subsubsection{Pętla główna regualtora}
+\lstinputlisting[language=Matlab, firstline=85, lastline=127]{../lab/zad4/zad4.m}
+\newpage
+
+
+\subsubsection{Generacja wykresów w czasie rzeczywistym}
+\lstinputlisting[language=Matlab, firstline=129, lastline=169]{../lab/zad4/zad4.m}
+\newpage
+
+
 \subsection{Dobór parametrów regulatora}
 \label{lab:zad4:parametry}
+
+Dobrane parametry regulatora DMC:
+\begin{itemize}
+    \item $D=684$, 
+    \item $N=200$, 
+    \item $N_{u}=10$, 
+    \item $lambda=0.8$, 
+    \item $D_{z}=316$.
+\end{itemize}
+
+\newpage

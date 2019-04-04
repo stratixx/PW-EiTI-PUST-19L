@@ -83,6 +83,7 @@ for k = 20:kk
        u_delta(n) = u_delta(n-1);
    end
    
+   %delta z od zaklocen
    if zakl == 1 && licz_z == 1
        for n = Dz:-1:2
             z_delta(n) = z_delta(n-1);
@@ -90,6 +91,7 @@ for k = 20:kk
        z_delta(1) = z(k) - z(k-1);
    end
    
+   %oblciznie zmiany sterowania
    uchyb = y_zad(k) - y_mod(k);
    if zakl == 1 && licz_z == 1
        u_delta(1) = sum(K(1,:))*uchyb - K(1,:)*(Mp*u_delta' + Mzp*z_delta');

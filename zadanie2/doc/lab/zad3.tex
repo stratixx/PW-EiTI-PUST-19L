@@ -1,27 +1,49 @@
 \section{Wyznaczenie aproksymowanych wektorów $s$ i $s_z$ }
 \label{lab:zad3}
 
--------POLECENIE--------
+\subsection{Odpowiedź skokowa wyjścia od zakłócenia}
+\label{lab:zad3:odpSkokZ}
 
-Przygotowac odpowiedzi skokowe wykorzystywane w algorytmie DMC, tzn. zestaw
-liczb s1, s2, . . . oraz sz
-1, sz
-2, . . .. Zamiescic rysunki odpowiedzi skokowych. Nalezy wykonac
-aproksymacje odpowiedzi skokowych. W celu mozna wykorzystac dowolne narzedzie.
-Zamiescic rysunek porównujacy odpowiedz skokowa oryginalna i wersje aproksymowana.
-Opisac zastosowana metode (pozwalajac na odtworzenie procesu aproksymacji)
-oraz uzasadnic wybór wszystkich parametrów z tym zwiazanych.
-
--------POLECENIE--------
-
-tutaj aproksymacja jak w proj 1 tylko zmiana na sz1
-
-Do labki aproksymacja jeszcze
-Wykresy
-T1 = 4.59 T2 = 100.4 K = 0.345 Td = 7
-
-\subsection{Odpowiedzi skokowe}
-\label{lab:zad3:odpSkok}
+\begin{figure}[H] 
+    \centering
+    \input{lab/figure/zad3s.tex}
+    \caption{Odpowiedź skokowa obiektu od zakłócenia}
+    \label{lab:zad3:odpSkokZ:figure}
+\end{figure}
 
 \subsection{Aproksymacja odpowiedzi skokowych}
 \label{lab:zad3:approxOdpSkok}
+
+Aproksymacja została wykonana jako człon inercyjny drugiego rzędu z opóźnieniem. 
+Opisany jest on następującą transmitancją: 
+
+$$G(s)=\frac{K}{(sT_{1}+1)(sT_{2}+1)}e^{-T_{d}s}$$
+
+Powyższa transmitancja po przekształceniu do dziedziny czasu dyskretnego i przejściu na postać równania różnicowego:
+%$$G(z)=\frac{z-1}{z}Z\Big[\frac{G(s)}{s})\Big]$$
+
+$$y[k]=b_{1}u[k-T_{D}-1]+b_{2}u[k-T_{D}-2]+a_{1}y[k-1]+a_{2}y[k-2]$$
+ 
+Na podstawie danych pozyskanych ze stanowiska laboratoryjnego dobrano parametry 
+$T_{1}$, $T_{2}$, $K$, $T_{d}$, tak aby błąd dopasowania, 
+rozumiany jako suma kwadratów kolejnych uchybów sterowania, był jak najmniejszy. 
+Należy jednak pamiętać, że wielkość Td może przyjmować tylko wartości całkowite 
+(ze względu na zastosowany czas dyskretny). 
+W celu doboru parametrów modelu wykorzystano funkcję optymalizacyjną $fmincon$ programu MATLAB, 
+jako parametr optymalizacji wybrano błąd dopasowania 
+(rozumiany jako suma kwadratów błędów dla kolejnych elementów odpowiedzi skokowych), 
+ponieważ im mniejszy błąd dopasowania tym lepsza aproksymacja. \newline
+Otrzymane parametry aproksymacji odpowiedzi skokowej od zakłócenia to: \newline
+\indent $$T_{1}=\num{7.59}
+\indent T_{2}=\num{70.4}
+\indent K=\num{0.11}
+\indent T_{d}=\num{14.0}$$
+
+\begin{figure}[H] 
+    \centering
+    \input{lab/figure/zad3saprox.tex}
+    \caption{Aproksymowana odpowiedź skokowa od zakłócenia}
+    \label{lab:zad3:approxOdpSkokZ:figure}
+\end{figure}
+
+\newpage
