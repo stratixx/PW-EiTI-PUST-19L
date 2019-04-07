@@ -1,0 +1,162 @@
+\documentclass[a4paper,titlepage,11pt,twosides,floatssmall]{mwrep}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[OT1]{fontenc}
+\usepackage{polski}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows,calc,decorations.markings,math,arrows.meta}
+\usepackage{rotating}
+\usepackage[percent]{overpic}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\usetikzlibrary{pgfplots.groupplots}
+%klikalne odnoścniki w spisie treści
+\usepackage{color}   %May be necessary if you want to color links
+\usepackage[pdfencoding=auto]{hyperref}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+	linkcolor=black,  %choose some color if you want links to stand out
+	bookmarksopen=true, % 
+}
+
+\usepackage{listings}
+\usepackage{matlab-prettifier}
+\usepackage{enumitem,amssymb}
+\definecolor{szary}{rgb}{0.95,0.95,0.95}
+\usepackage{siunitx}
+\sisetup{detect-weight,exponent-product=\cdot,output-decimal-marker={,},per-mode=symbol,binary-units=true,range-phrase={-},range-units=single}
+\SendSettingsToPgf
+%konfiguracje pakietu listings
+\lstset{
+	backgroundcolor=\color{szary},
+	frame=single,
+	breaklines=true,
+}
+\lstdefinestyle{customlatex}{
+	basicstyle=\footnotesize\ttfamily,
+	%basicstyle=\small\ttfamily,
+}
+\lstdefinestyle{customc}{
+	breaklines=true,
+	frame=tb,
+	language=C,
+	xleftmargin=0pt,
+	showstringspaces=false,
+	basicstyle=\small\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+}
+\lstdefinestyle{custommatlab}{
+	captionpos=t,
+	breaklines=true,
+	frame=tb,
+	xleftmargin=0pt,
+	language=matlab,
+	showstringspaces=false,
+	%basicstyle=\footnotesize\ttfamily,
+	basicstyle=\scriptsize\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+}
+
+%wymiar tekstu (bez ?ywej paginy)
+\textwidth 160mm \textheight 247mm
+
+% ustawienia pakietu pgfplots
+\pgfplotsset{
+	compat=1.16, % tryb kompatybilności
+	tick label style={font=\scriptsize},
+	label style={font=\small},
+	legend style={font=\small},
+	title style={font=\small}
+}
+
+% ustawienia znaczników kolejnych poziomów list typu itemize
+\renewcommand\labelitemi{\textbullet} % duża kropka
+\renewcommand\labelitemii{\textasteriskcentered} % gwiazdka
+\renewcommand\labelitemiii{\textperiodcentered} % 
+\renewcommand\labelitemiv{\textendash} % 
+
+
+\def\figurename{Rys.}
+\def\tablename{Tab.}
+
+%konfiguracja liczby p?ywaj?cych element?w
+\setcounter{topnumber}{0}%2
+\setcounter{bottomnumber}{3}%1
+\setcounter{totalnumber}{5}%3
+\renewcommand{\textfraction}{0.01}%0.2
+\renewcommand{\topfraction}{0.95}%0.7
+\renewcommand{\bottomfraction}{0.95}%0.3
+\renewcommand{\floatpagefraction}{0.35}%0.5
+
+\begin{document}
+\frenchspacing
+\pagestyle{uheadings}
+
+%strona tytu?owa
+\title{\bf Sprawozdanie z projektu i ćwiczenia laboratoryjnego nr 2, zadanie nr 7\vskip 0.1cm}
+\author{Grochowina Mateusz\\Winnicki Konrad\\Zgorzelski Jan}
+\date{4 kwietnia 2019}
+
+\makeatletter
+\renewcommand{\maketitle}{\begin{titlepage}
+\begin{center}
+{\LARGE {\bf Politechnika Warszawska}}\\
+\vspace{0.4cm}
+{\LARGE {\bf Wydział Elektroniki i Technik Informacyjnych}}\\
+\vspace{0.2cm}
+{\LARGE {\bf Instytut Automatyki i Informatyki Stosowanej}}\\
+\end{center}
+\vspace{5cm}
+\begin{center}
+{\bf \LARGE Projektowanie ukladów sterowania\\ (projekt grupowy) \vskip 0.1cm}
+\end{center}
+\vspace{1cm}
+\begin{center}
+{\bf \LARGE \@title}
+\end{center}
+\vspace{7cm}
+%\begin{center}
+{\bf Autorzy:\\ \Large \@author \par}
+%\end{center}
+\vspace*{\stretch{6}}
+\begin{center}
+\bf{\large{Warszawa, \@date\vskip 0.1cm}}
+\end{center}
+\end{titlepage}
+}
+\makeatother
+
+\maketitle
+
+\tableofcontents
+\chapter{Projekt}
+\input{projekt/zad1}
+\input{projekt/zad2}
+\input{projekt/zad3}
+\input{projekt/zad4}
+\input{projekt/zad5}
+\input{projekt/zad6}
+\input{projekt/zad7}
+
+\chapter{Laboratorium}
+\input{lab/zad1}
+\input{lab/zad2}
+\input{lab/zad3}
+\input{lab/zad4}
+\input{lab/zad5}
+
+\end{document}
+
