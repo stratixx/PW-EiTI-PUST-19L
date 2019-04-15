@@ -30,15 +30,15 @@ for i = 27500:34001
 end
 y3(end)=0;
 for i = 1:34001
-    if z == x(i)
+    if round(z,3) == round(x(i),3)
         break
     end
 end
 g(1) = y(i);
 g(2) = y2(i);
 g(3) = y3(i);
-figure;
-plot(x,y)
-hold on
-plot(x,y2)
-plot(x,y3)    
+% figure;
+% plot(x,y)
+% hold on
+% plot(x,y2)
+% plot(x,y3)    

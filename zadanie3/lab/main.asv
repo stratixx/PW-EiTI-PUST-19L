@@ -7,7 +7,7 @@ initSerialControl COM5 % initialise com port
 action = 'stepsYzad';
 % wybór regulatora
 % none, PID_linear, DMC_linear, PID_fuzzy, DMC_fuzzy
-regulator = 'PID_fuzzy';
+regulator = 'DMC_linear';
 
 % parametry skryptu
 kk = 2500;
@@ -59,10 +59,10 @@ elseif( isequal(regulator, 'DMC_linear') )
 % regulacja z u?yciem regulatora PID fuzzy
 elseif( isequal(regulator, 'PID_fuzzy') )   
     %nastawy regulatorów DMC
-    Kr = [ 4.2 6.5 8.35        ];  % P
-    Ti = [ 67.8 83.7 90.4       ];  % I
-    Td = [ 0.0 0.0 0.3       ];  % D
-    Y0 = [ 27 35 40    ];  % punkt pracy
+    Kr = [ 5  10       ];  % P
+    Ti = [ 20 40      ];  % I
+    Td = [ 0.00007  0.01       ];  % D
+    Y0 = [ T1-5 T1+5    ];  % punkt pracy
     
     fuzzyN = length(Kr);
     settings(fuzzyN).N = fuzzyN;
@@ -89,8 +89,6 @@ elseif( isequal(regulator, 'DMC_fuzzy') )
 		lambda = lambdaVect(n);
 		load(strcat('s',num2str(n),'.mat'));
 		D = length(s); % horyzont dynamiki
-        N = D;
-        Nu = N;
 		run('DMC_init.m');
 			
 		settings(n).lambda = lambda;
@@ -100,7 +98,6 @@ elseif( isequal(regulator, 'DMC_fuzzy') )
 		settings(n).Mp = Mp;
 		settings(n).K = K;
 		settings(n).deltaUp = deltaUp;
-        settings(n).u1 = G1;
 	end
 	
 % regulacja bez u?ycia regulatora
@@ -198,10 +195,8 @@ measurements = readMeasurements (1:7) ; % read measurements
             %funkcja wagi regulatora
 			w = fun_przyn_lab(y(k));
 			w = w(n);
-            w
             u_(n) = u_(n) * w;
         end
-        u_
         % wyznaczenie sterowania rozmytego
         u(k) = sum(u_);
     % regulacja z u?yciem regulatora DMC fuzzy
@@ -223,8 +218,8 @@ measurements = readMeasurements (1:7) ; % read measurements
             
             %funkcja wagi regulatora
 			w = fun_przyn_lab(y(k));
-			w = w(n)
-            u_(n) = u_(n) * w
+			w = w(n);
+            u_(n) = u_(n) * w;
         end
         % wyznaczenie sterowania rozmytego
         u(k) = sum(u_);
