@@ -1,0 +1,64 @@
+%zadanie 5 - Skrypt realizujacy algorytm cyfrowego rozmytego regulatora PID
+%inicjalizacja
+kk=1800; %koniec symulacji
+start = 20;
+E = 0;%wspolczynnik jakosci regualcji
+% regulacja z u?yciem regulatora PID fuzzy
+%nastawy regulatorów PID
+Kr = [ 5  10       ];  % P
+Ti = [ 20 40      ];  % I
+Td = [ 0.00007  0.01       ];  % D
+Y0 = [ T1-5 T1+5    ];  % punkt pracy
+settings =[];
+fuzzyN = length(Kr);
+settings(fuzzyN).N = fuzzyN;
+for n=1:fuzzyN
+    settings(n).Tp = Tp;
+    settings(n).r0 = Kr(n)*(1+Tp/(2*Ti(n))+Td(n)/Tp);
+    settings(n).r1 = Kr(n)*(Tp/(2*Ti(n))-2*Td(n)/Tp-1);
+    settings(n).r2 = Kr(n)*Td(n)/Tp;
+    settings(n).u = zeros(;
+end
+
+%warunki pocz¹tkowe
+u = zeros(1,kk);
+y = zeros(1,kk);
+e = zeros(1,kk);
+
+for k=20:kk %glowna petla symulacyjna 
+%symulacja obiektu 
+     y(k)=symulacja_obiektu7y(u(k-5),u(k-6),y(k-1),y(k-2)); 
+
+     %uchyb regulacji 
+     e(k) = yzad(k)-y(k); 
+     %sygna³ steruj¹cy regulatora PID 
+     u(k) = r2*e(k-2)+r1*e(k-1)+r0*e(k)+u(k-1);
+     %ograniczenia
+     if u(k) > 1.0
+         u(k) = 1.0;
+     end
+     if u(k) < -1.0
+         u(k) = -1.0;
+     end
+     E = E + (yzad(k) - y(k))^2;
+end
+E
+%wyniki symulacji 
+subplot(2,1,1);
+stairs(y,'g'); 
+hold on;
+grid on;
+stairs(yzad,':'); 
+title({'Wykres wyjscia obiektu z PID-em y na tle wartosci zadanej y_z_a_d';['\color[rgb]{0 .5 .5}Kr = ',sprintf('%g',Kr),' Ti = ',sprintf('%g',Ti),' Td = ',sprintf('%g',Td),' E = ',sprintf('%g',E)]}); 
+legend('y(k)','yzad(k)','Location','Southeast')
+xlabel('k');
+ylabel('y,y_z_a_d');
+subplot(2,1,2);
+hold on;
+grid on;
+stairs(u,'m'); 
+title('Sygna³ sterujacy u regulatora PID');
+xlabel('k');
+ylabel('u(k)');
+dlmwrite('../Dane/zad3/u.csv', u, '\t');
+dlmwrite('../Dane/zad3/y.csv', y, '\t');
