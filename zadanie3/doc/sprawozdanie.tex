@@ -26,7 +26,8 @@
 	bookmarksopen=true, % 
 }
 
-\usepackage{listings}
+%spis wykresów i listingów kodu
+\usepackage{listing}
 \usepackage{matlab-prettifier}
 \usepackage{enumitem,amssymb}
 \definecolor{szary}{rgb}{0.95,0.95,0.95}
@@ -69,6 +70,9 @@
 	identifierstyle=\color{blue},
 	stringstyle=\color{orange},
 }
+
+%ustawienie stylu formatowania listingów kodu Matlaba
+\lstset{style=custommatlab}
 
 %wymiar tekstu (bez ?ywej paginy)
 \textwidth 160mm \textheight 247mm
@@ -139,9 +143,18 @@
 }
 \makeatother
 
+%strona tytułowa
 \maketitle
 
+%spis treści
 \tableofcontents
+
+%spis wykresów
+%\listoffigures
+
+%spis listingów kodu
+%\listoflistings  
+
 \chapter{Projekt}
 \input{projekt/zad1}
 \input{projekt/zad2}

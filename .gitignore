@@ -7,3 +7,5 @@
 *.asv
 *.out
 *.synctex(busy)
+*.lof
+*.lol
