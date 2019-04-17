@@ -1,29 +1,20 @@
-addpath('matlab2tikz-master/src/');
-outputFile = 'zad2.tex';
+addpath('../../../../matlab2tikz-master/src/');
+outputFile = '../../../doc/projekt/figure/zad3.tex';
 
-y = dlmread('zad2_y_u-0.5.csv','\t');
-y1 = dlmread('zad2_y_u-1.csv','\t');
-y2 = dlmread('zad2_y_u0.csv','\t');
-y3 = dlmread('zad2_y_u0.5.csv','\t');
-y4 = dlmread('zad2_y_u1.csv','\t');
-u = dlmread('zad2_u-0.5.csv','\t');
-u1 = dlmread('zad2_u-1.csv','\t');
-u2 = dlmread('zad2_u0.csv','\t');
-u3 = dlmread('zad2_u0.5.csv','\t');
-u4 = dlmread('zad2_u1.csv','\t');
+y = dlmread('y.csv','\t');
+
+u = dlmread('u.csv','\t');
+
 %z = dlmread('zad6_z_best_nie_licz_zakl.csv','\t');
 x = 1:length(u);
 
 figure(1);
 
 
-subplot(2,1, 1);
+%subplot(2,1, 1);
 hold on;
 plot(x,y);
-plot(x,y1);
-plot(x,y2);
-plot(x,y3);
-plot(x,y4);
+plot(x,u);
 xlim([min(x) max(x)]);
 %title('y');
 %xlabel('k');
@@ -33,21 +24,21 @@ legend('y', 'Location', 'NorthEast');
 grid on;
 box on;
 
-subplot(2,1, 2);
-hold on;
-%stairs(x,u);
-plot(x,u);
-plot(x,u1);
-plot(x,u2);
-plot(x,u3);
-plot(x,u4);
-xlim([min(x) max(x)]);
-%title('u');
-%xlabel('k');
-ylabel('u');
-legend('u', 'Location', 'NorthEast');
-grid on;
-box on;
+% subplot(,1, 2);
+% hold on;
+% %stairs(x,u);
+% plot(x,u);
+% plot(x,u1);
+% plot(x,u2);
+% plot(x,u3);
+% plot(x,u4);
+% xlim([min(x) max(x)]);
+% %title('u');
+% %xlabel('k');
+% ylabel('u');
+% legend('u', 'Location', 'NorthEast');
+% grid on;
+% box on;
 
 % subplot(3,1, 3);
 % hold on;

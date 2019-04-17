@@ -1,5 +1,5 @@
-addpath('matlab2tikz-master/src/');
-outputFile = 'zad1.tex';
+addpath('../../../../matlab2tikz-master/src/');
+outputFile = '../../../doc/projekt/figure/zad1.tex';
 
 y = dlmread('zad1_y.csv','\t');
 u = dlmread('zad1_u.csv','\t');

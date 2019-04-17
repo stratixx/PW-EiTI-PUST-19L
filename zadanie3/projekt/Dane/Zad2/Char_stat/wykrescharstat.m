@@ -1,9 +1,9 @@
-addpath('matlab2tikz-master/src/');
-outputFile = 'wykresy/zad3.tex';
+addpath('../../../../../matlab2tikz-master/src/');
+outputFile = '../../../../doc/projekt/figure/zad2charstat.tex';
 
-y = dlmread('y.csv','\t');
+y = dlmread('char_y.csv','\t');
 
-u = dlmread('u.csv','\t');
+u = dlmread('char_u.csv','\t');
 
 %z = dlmread('zad6_z_best_nie_licz_zakl.csv','\t');
 x = 1:length(u);
@@ -14,7 +14,6 @@ figure(1);
 %subplot(2,1, 1);
 hold on;
 plot(x,y);
-plot(x,u);
 xlim([min(x) max(x)]);
 %title('y');
 %xlabel('k');
