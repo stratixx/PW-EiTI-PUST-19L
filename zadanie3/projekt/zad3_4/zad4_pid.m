@@ -53,7 +53,7 @@ stairs(y,'g');
 hold on;
 grid on;
 stairs(yzad,':'); 
-title({'Wykres wyjscia obiektu z PID-em y na tle wartosci zadanej y_z_a_d';['\color[rgb]{0 .5 .5}Kr = ',sprintf('%g',Kr),' Ti = ',sprintf('%g',Ti),' Td = ',sprintf('%g',Td),' E = ',sprintf('%g',E)]}); 
+title({'Wykres wyjscia obiektu z PID-em rozmytym y na tle wartosci zadanej y_z_a_d';['\color[rgb]{0 .5 .5}Kr = ',sprintf('%g',Kr),' Ti = ',sprintf('%g',Ti),' Td = ',sprintf('%g',Td),' E = ',sprintf('%g',E)]}); 
 legend('y(k)','yzad(k)','Location','Southeast')
 xlabel('k');
 ylabel('y,y_z_a_d');
@@ -64,5 +64,6 @@ stairs(u,'m');
 title('Sygna³ sterujacy u regulatora PID');
 xlabel('k');
 ylabel('u(k)');
-dlmwrite('../Dane/zad3/u.csv', u, '\t');
-dlmwrite('../Dane/zad3/y.csv', y, '\t');
+dlmwrite('../Dane/zad3_4/PID/u.csv', u, '\t');
+dlmwrite('../Dane/zad3_4/PID/y.csv', y, '\t');
+dlmwrite('../Dane/zad3_4/PID/y_zad.csv', yzad, '\t');

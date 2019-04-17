@@ -93,3 +93,6 @@ stairs(u,'c')
 title('Sterowanie modelu')
 ylabel('u')
 xlabel('k');
+dlmwrite('../Dane/zad3_4/DMC/u.csv', u, '\t');
+dlmwrite('../Dane/zad3_4/DMC/y.csv', y_mod, '\t');
+dlmwrite('../Dane/zad3_4/DMC/y_zad.csv', y_zad, '\t');
