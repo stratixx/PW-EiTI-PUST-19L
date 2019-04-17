@@ -1,0 +1,38 @@
+% This file was created by matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=4.521in,
+height=3.566in,
+at={(0.758in,0.481in)},
+scale only axis,
+xmin=30,
+xmax=90,
+xlabel style={font=\color{white!15!black}},
+xlabel={U},
+ymin=39,
+ymax=59,
+ylabel style={font=\color{white!15!black}},
+ylabel={Y},
+axis background/.style={fill=white},
+xmajorgrids,
+ymajorgrids,
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1, mark=asterisk, mark options={solid, mycolor1}]
+  table[row sep=crcr]{%
+30	39.31\\
+40	44.06\\
+50	48.43\\
+60	50.62\\
+70	53.25\\
+80	55.5\\
+90	57.68\\
+};
+\addlegendentry{Y(U)}
+
+\end{axis}
+\end{tikzpicture}%

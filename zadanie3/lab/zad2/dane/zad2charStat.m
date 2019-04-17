@@ -1,47 +1,43 @@
-addpath('../../../matlab2tikz-master/src/');
-outputFile = '../../doc/lab/figure/zad1Setpoint.tex';
+addpath('../../../../matlab2tikz-master/src/');
+outputFile = '../../../doc/lab/figure/zad1Setpoint.tex';
 
-u = dlmread('u.csv','\t');
-y = dlmread('y.csv','\t');
-z = dlmread('z.csv','\t');
+% u = dlmread('u.csv','\t');
+% y = dlmread('y.csv','\t');
+load('u32.mat')
+start = 500;
+end_ = 1000;
+
+u = u(start:end);
+y = y(start:end);
+
 x = 1:length(u);
 
 figure(1);
 
 
-subplot(3,1, 1);
+subplot(2,1, 1);
 hold on;
 plot(x,y);
 xlim([min(x) max(x)]);
 %title('y');
 %xlabel('k');
 ylabel('y');
-legend('y', 'Location', 'NorthEast');
+legend('Wyjœcie', 'Location', 'NorthEast');
 ylim([floor(min(y)) ceil(0.5+max(y))]);
 grid on;
 box on;
 
-subplot(3,1, 2);
+subplot(2,1, 2);
 hold on;
 stairs(x,u);
 xlim([min(x) max(x)]);
 %title('u');
 %xlabel('k');
 ylabel('u');
-legend('u', 'Location', 'NorthEast');
+legend('Sterowanie', 'Location', 'NorthEast');
 grid on;
 box on;
 
-subplot(3,1, 3);
-hold on;
-stairs(x,z);
-xlim([min(x) max(x)]);
-%title('z');
-xlabel('k');
-ylabel('z');
-legend('z', 'Location', 'NorthEast');
-grid on;
-box on;
 
 % dwie linijki poniï¿½ej zapewniajï¿½ poprawne ustawienie wykresu w pdf-ie
 % oraz pozwalajï¿½ nazwaï¿½ wykres pod spodem
