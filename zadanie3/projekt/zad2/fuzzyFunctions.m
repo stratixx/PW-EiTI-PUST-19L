@@ -39,8 +39,8 @@ w1 = w1 ./ scale1;
 w2 = w2 ./ scale1;
 w3 = w3 ./ scale1;
 %przesuniêcie i obrócenie przebiegów
-%maxErr = max([max(w1), max(w2), max(w3)])
-maxErr = 0.9287;
+maxErr = max([max(w1), max(w2), max(w3)])
+% maxErr = 0.9287;
 w1 = maxErr - w1;
 w2 = maxErr - w2;
 w3 = maxErr - w3;
@@ -62,7 +62,7 @@ ylim([min(Y)-1,max(Y)+1])
 grid on;
 
 
-figure(2);
+figure(3);
 hold on;
 plot(U,w1);
 plot(U,w2);
