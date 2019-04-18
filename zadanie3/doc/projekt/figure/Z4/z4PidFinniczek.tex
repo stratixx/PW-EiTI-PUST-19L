@@ -12,11 +12,15 @@ at={(0.758in,2.554in)},
 scale only axis,
 xmin=1,
 xmax=1800,
+xlabel style={font=\color{white!15!black}},
+xlabel={k},
 ymin=-4.5047,
 ymax=0.13473,
 ylabel style={font=\color{white!15!black}},
 ylabel={y},
 axis background/.style={fill=white},
+title style={font=\bfseries},
+title={$\text{K}_\text{r}\text{=0.185; T}_\text{d}\text{=3.03; T}_\text{i}\text{=7.3; E=1588.8947}$},
 xmajorgrids,
 ymajorgrids,
 legend style={legend cell align=left, align=left, draw=white!15!black}
@@ -1824,7 +1828,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 1799	0.071703\\
 1800	0.071832\\
 };
-\addlegendentry{y}
+\addlegendentry{Wyjście y}
 
 \addplot [color=mycolor2, forget plot]
   table[row sep=crcr]{%
@@ -3645,8 +3649,6 @@ ymax=1,
 ylabel style={font=\color{white!15!black}},
 ylabel={u},
 axis background/.style={fill=white},
-title style={font=\bfseries},
-title={u},
 xmajorgrids,
 ymajorgrids,
 legend style={legend cell align=left, align=left, draw=white!15!black}
@@ -5454,7 +5456,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 1799	0.12493\\
 1800	0.12527\\
 };
-\addlegendentry{u}
+\addlegendentry{Sterowanie u}
 
 \end{axis}
 \end{tikzpicture}%

@@ -1,6 +1,7 @@
 addpath('../../../../../matlab2tikz-master/src/');
 outputFile = '../z4DMC.tex';
 
+load('dmc_nastawy_blad');
 y = dlmread('y.csv','\t');
 yzad = dlmread('y_zad.csv','\t');
 %y2 = dlmread('y3.csv','\t');
@@ -22,10 +23,10 @@ plot(x,yzad);
 %plot(x,y3);
 %plot(x,y4);
 xlim([min(x) max(x)]);
-%title('y');
-%xlabel('k');
+title(strcat('N= ',num2str(N),'; N_u= ',num2str(Nu),'; lambda= ',num2str(lambda), '; E= ', num2str(E)));
+xlabel('k');
 ylabel('y');
-legend('y', 'Location', 'NorthEast');
+legend('Wyjœcie y', 'Location', 'NorthEast');
 %ylim([floor(min(y)) ceil(0.5+max(y))]);
 grid on;
 box on;
@@ -39,10 +40,10 @@ box on;
 % plot(x,u3);
 % plot(x,u4);
  xlim([min(x) max(x)]);
- title('u');
+ %title('u');
 xlabel('k');
  ylabel('u');
- legend('u', 'Location', 'NorthEast');
+ legend('Sterowanie u', 'Location', 'NorthEast');
  grid on;
  box on;
 

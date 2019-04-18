@@ -1,8 +1,8 @@
 addpath('../../../matlab2tikz-master/src/');
-outputFile = '../../doc/lab/figure/zad3PID.tex';
+outputFile = '../../doc/lab/figure/zad3PID2.tex';
 
 
-load('dataPID.mat')
+load('dataPID2.mat')
 start_ = 400;
 end_ = 1700;
 
@@ -10,6 +10,7 @@ u = u(start_:end_);
 y = y(start_:end_);
 yzad = yzad(start_:end_);
 
+E = sum(abs(yzad-y))/length(y)*1000;
 x = 1:length(u);
 
 figure(1);
@@ -19,7 +20,7 @@ hold on;
 plot(x,y);
 stairs(x,yzad, '--','Linewidth', 1.2);
 xlim([min(x) max(x)]);
-%title('y');
+title(strcat('K_r= ',num2str(Kr),'; T_d= ',num2str(Td),'; T_i= ',num2str(Ti), '; E= ', num2str(E)));
 xlabel('k');
 ylabel('y, y^{zad}');
 legend('y', 'y^{zad}', 'Location', 'NorthEast');

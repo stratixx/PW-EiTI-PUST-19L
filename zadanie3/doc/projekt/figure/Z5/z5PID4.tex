@@ -12,11 +12,15 @@ at={(0.758in,2.554in)},
 scale only axis,
 xmin=1,
 xmax=1800,
+xlabel style={font=\color{white!15!black}},
+xlabel={k},
 ymin=-4.5419,
 ymax=0.1,
 ylabel style={font=\color{white!15!black}},
 ylabel={y},
 axis background/.style={fill=white},
+title style={font=\bfseries, align=center},
+title={E=244.4525\\[1ex]$\text{K}_\text{r}\text{= [0.1323     0.1485     0.1363     0.2062]}$\\[1ex]$\text{T}_\text{d}\text{= [0.1        0.1        0.1        0.1]}$\\[1ex]$\text{T}_\text{i}\text{= [3.626      1.462      1.015          1]}$},
 xmajorgrids,
 ymajorgrids,
 legend style={legend cell align=left, align=left, draw=white!15!black}
@@ -1824,7 +1828,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 1799	0.022884\\
 1800	0.026471\\
 };
-\addlegendentry{y}
+\addlegendentry{Wyjście y}
 
 \addplot [color=mycolor2, dashed]
   table[row sep=crcr]{%
@@ -3629,7 +3633,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 1799	0.1\\
 1800	0.1\\
 };
-\addlegendentry{$\text{y}^{\text{zad}}$}
+\addlegendentry{$\text{Wartość zadana y}_{\text{zad}}$}
 
 \end{axis}
 
@@ -3647,8 +3651,6 @@ ymax=0.10099,
 ylabel style={font=\color{white!15!black}},
 ylabel={u},
 axis background/.style={fill=white},
-title style={font=\bfseries},
-title={u},
 xmajorgrids,
 ymajorgrids,
 legend style={legend cell align=left, align=left, draw=white!15!black}
@@ -5456,7 +5458,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 1799	0.075053\\
 1800	0.079614\\
 };
-\addlegendentry{u}
+\addlegendentry{Sterowanie u}
 
 \end{axis}
 \end{tikzpicture}%
