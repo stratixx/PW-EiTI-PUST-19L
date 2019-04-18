@@ -40,21 +40,51 @@
 \subsection{Rozmyty regulator DMC - ustalona lambda}
 \label{projekt:zad6:DMC}
 
+\begin{figure}[H] 
+   \centering
+   \input{projekt/figure/z6DMC2.tex}
+   \caption{Dwa regulatory lokalne DMC}
+   \label{projekt:zad6:DMC:2:figure}
+\end{figure}
+
+\begin{figure}[H] 
+   \centering
+   \input{projekt/figure/z6DMC3.tex}
+   \caption{Trzy regulatory lokalne DMC}
+   \label{projekt:zad6:DMC:3:figure}
+\end{figure}
+
+\begin{figure}[H] 
+   \centering
+   \input{projekt/figure/z6DMC4.tex}
+   \caption{Cztery regulatory lokalne DMC}
+   \label{projekt:zad6:DMC:4:figure}
+\end{figure}
+
+\begin{figure}[H] 
+   \centering
+   \input{projekt/figure/z6DMC5.tex}
+   \caption{Pięć regulatorów lokalnych DMC}
+   \label{projekt:zad6:DMC:5:figure}
+\end{figure}
 
 \subsection{Wnioski}
 
-Wykorzystanie rozmytego algorytmu regulacji dla obu regulatorów daje
-lepsze wyniki jakości regulacji w stosunku do pojedynczego regulatora liniowego.
+Wykorzystanie	rozmytego	algorytmu	regulacji	dla	obu	regulatorów	daje	
+lepsze	wyniki	jakości	regulacji	w	stosunku	do	pojedynczego regulatora	liniowego.	
 
 
-W przypadku regulatorów PID najlepszy okazał się regulator rozmyty składający
-się z 3 regulatorów lokalnych. 
-Wynika z tego, że większa ilość regulatorów
-lokalnych nie gwarantuje lepszej jakości regulacji.
+W	przypadku	regulatorów	PID najlepszy	okazał	się	regulator	rozmyty składający	
+się z	3	regulatorów	lokalnych. 
+
+Wynika	z	tego,	że	większa	ilość	regulatorów	
+lokalnych	nie	gwarantuje	lepszej	jakości	regulacji.
 
 
-W przypadku regulatorów DMC najlepszy okazał się regulator rozmyty
-składający się z regulatorów lokalnych. 
-Wynika z tego, że większa ilość
-regulatorów lokalnych nie gwarantuje lepszej jakości regulacji.
+W	przypadku	regulatorów	DMC najlepszy	okazał	się	regulator	rozmyty
+składający	się z	 5	regulatorów	lokalnych. 
+
+W	porównaniu	do	regulatora	PID	
+wypadł	bardzo	słabo,	problemem	jest	parametr	współczynnika	kary	lambda,	
+który	został	ustawiony	na	1	dla	każdego	z	regulatorów	lokalnych.
 \newpage

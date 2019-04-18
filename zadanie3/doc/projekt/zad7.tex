@@ -2,7 +2,7 @@
 \label{projekt:zad7}
 
 \subsection{Rozmyty regulator DMC}
-\label{projekt:zad6:PID}
+\label{projekt:zad7:PID}
 
 \begin{figure}[H] 
    \centering
@@ -24,4 +24,22 @@
    \caption{Cztery regulatory lokalne DMC}
    \label{projekt:zad7:DMC:4:figure}
 \end{figure}
+
+\begin{figure}[H] 
+   \centering
+   \input{projekt/figure/z7DMC5.tex}
+   \caption{Pięć regulatorów lokalnych DMC}
+   \label{projekt:zad7:DMC:5:figure}
+\end{figure}
+
+\subsection{Wnioski}
+Ostatnim krokiem w dostrajaniu regulatora rozmytego było
+wyznaczenie współczynnika kary lambda dla wszystkich regulatorów
+lokalnych, za pomocą którego można zapewnić kompromis pomiędzy
+szybkością regulacji a postacią sygnału sterującego. Ponownie był on
+wyznaczany metodą testowania. Spośród wszystkich regulatorów
+najlepszym względem współczynnika jakości regulacji okazał się być
+rozmyty regulator DMC o 4 regulatorach lokalnych oraz nastawach:
+
+
 \newpage
