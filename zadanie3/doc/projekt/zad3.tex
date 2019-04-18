@@ -7,44 +7,88 @@
 
 W środowisku MATLAB napisano skrypt implementujący algorytm klasycznego regulatora PID
 
-\subsubsection{Inicjacja parametrów}
+\subsubsection{Inicjacja symulacji}
 
 \lstinputlisting[
     firstline=1, 
-    lastline=30, 
-    caption="Inicjacja parametrów"]
+    lastline=36, 
+    caption="Inicjacja parametrów symulacji"]
+    {../lab/main.m}
+%\newpage
+
+\lstinputlisting[
+    firstline=41, 
+    lastline=52, 
+    caption="Wyznaczanie nastaw klasycznego regulatora PID"]
     {../lab/main.m}
 \newpage
 
-\subsubsection{Obliczanie coś do pid}
-%\lstinputlisting[language=Matlab, firstline=30, lastline=75]{../projekt/zad5/zad5.m}
-\newpage
 
+\subsubsection{Pętla główna symulacji}
 
-\subsubsection{Pętla główna regulatora}
-%\lstinputlisting[language=Matlab, firstline=75, lastline=101]{../projekt/zad5/zad5.m}
+\lstinputlisting[
+    firstline=131, 
+    lastline=137, 
+    caption="Wyznaczenie bieżącej wartości wyjścia obiektu y"]
+    {../lab/main.m}
+%\newpage
 
+\lstinputlisting[
+    firstline=139, 
+    lastline=166, 
+    caption="Wyznaczenie wartości zadanej yzad"]
+    {../lab/main.m}
+%\newpage
+
+\lstinputlisting[
+    firstline=171, 
+    lastline=184, 
+    caption="Wyznaczenie wartości sterowania u"]
+    {../lab/main.m}
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Klasyczny algorytm DMC}
 \label{projekt:zad3:DMC:program}
 
-Algorytm DMC (Dynamic Matrix Control) algorytm regulacji predykcyjnej. 
-Do predykcji wykorzystuje się model procesu w postaci odpowiedzi skokowych. 
-W algorytmie DMC dynamika obiektu regulacji modelowana jest dyskretnymi odpowiedziami skokowymi, 
+W środowisku MATLAB napisano skrypt implementujący algorytm klasycznego regulatora DMC
 
-które opisują reakcję wyjścia na skok jednostkowy sygnału sterującego.
+\subsubsection{Inicjacja symulacji}
 
-\subsubsection{Inicjacja parametrów}
-%\lstinputlisting[language=Matlab, firstline=1, lastline=30]{../projekt/zad5/zad5.m}
+\lstinputlisting[
+    firstline=1, 
+    lastline=36, 
+    caption="Inicjacja parametrów symulacji"]
+    {../lab/main.m}
+%\newpage
+
+\lstinputlisting[
+    firstline=53, 
+    lastline=70, 
+    caption="Wyznaczanie nastaw klasycznego regulatora DMC"]
+    {../lab/main.m}
 \newpage
 
-\subsubsection{Obliczanie macierzy DMC}
-%\lstinputlisting[language=Matlab, firstline=30, lastline=75]{../projekt/zad5/zad5.m}
-\newpage
 
+\subsubsection{Pętla główna symulacji}
 
-\subsubsection{Pętla główna regulatora}
-%\lstinputlisting[language=Matlab, firstline=75, lastline=101]{../projekt/zad5/zad5.m}
+\lstinputlisting[
+    firstline=131, 
+    lastline=138, 
+    caption="Wyznaczenie bieżącej wartości wyjścia obiektu y"]
+    {../lab/main.m}
+%\newpage
+
+\lstinputlisting[
+    firstline=139, 
+    lastline=166, 
+    caption="Wyznaczenie wartości zadanej yzad"]
+    {../lab/main.m}
+%\newpage
+
+\lstinputlisting[
+    firstline=185, 
+    lastline=197, 
+    caption="Wyznaczenie wartości sterowania u"]
+    {../lab/main.m}
 \newpage

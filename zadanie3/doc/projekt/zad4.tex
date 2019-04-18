@@ -26,18 +26,20 @@ należy rozpatrzeć metodę oceny jakościowej.
 \subsection{Klasyczny algorytm PID}
 \label{projekt:zad4:PID}
 
-Do doboru nastaw algorytmu PID zastosowano metodę inżynierską, 
-która polega na przeprowadzeniu doświadczeń i analizy uzyskanych wyników. 
-Na podstawie wyciągniętych wniosków modyfikowane są nastawy regulatora. 
-Parametry  dobierane są metodą prób i błędów, aż do osiągnięcia oczekiwanych wyników. 
-Jako pierwszy dobierany był parametr wzmocnienia członu proporcjonalnego, 
-poprzez obserwację zachowania się uchybu regulacji w stanie ustalonym oraz przeregulowanie. 
-Zmniejszając stopniowo wzmocnienie zmniejszano przeregulowanie, a uchyb zwiększał się. 
-Parametr  zwiększając go co likwidowało uchyb regulacji,  
-zbyt duży czas zdwojenia zwiększał czas regulacji. 
-Ostatnim elementem strojenia jest wyznaczenie parametru czasu wyprzedzenia , 
-również metodą prób i błędów, tak by zminimalizować czas regulacji. 
-Po wykonaniu tej czynności kończy się proces strojenia regulatora.
+Regulator został nastrojony przy użyciu metody Zieglera-Nicholsa.
+
+\subsubsection{Metoda Zieglera-Nicholsa}
+
+Metoda Zieglera-Nicholsa polega na nastawieniu regulatora
+na działanie proporcjonalne i zwiększaniu wzmocnienia
+doprowadzając układ do granicy stabilności. W stanie na granicy
+stabilności (oscylacje niegasnące) należy odczytać współczynnik
+wzmocnienia krytycznego układu $K_{k}$ oraz okres oscylacji $T_{k}$.
+Na podstawie tych wartości obliczamy nastawy regulatora PID za pomocą poniższych równań:
+
+$$ K_{r}=0.6K_{k} \indent T_{i}=0.65T_{k} \indent T_{d}=0.12T_{k}  $$
+
+\subsubsection{Dobrane regulatory klasyczne PID}
 
 \begin{figure}[H] 
     \centering

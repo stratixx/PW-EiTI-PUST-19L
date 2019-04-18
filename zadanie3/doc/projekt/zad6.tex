@@ -1,13 +1,6 @@
 \section{Dobór parametrów lokalnych regulatorów PID i DMC}
 \label{projekt:zad6}
 
-Dobrac parametry kazdego z lokalnych regulatorów w taki sposób, aby osiagnac mozliwie
-wysoka jakosc regulacji w okolicach jego punktu pracy (przyjac dla DMC lambda = 1).
-Wykonac, dla załozonej trajektorii zmian sygnału wartosci zadanej, eksperymenty
-uwzgledniajac rózna liczbe regulatorów lokalnych (2, 3, 4, 5, . . . ). Zamiescic wyniki
-symulacji.
-
-
 
 \subsection{Rozmyty regulator PID}
 \label{projekt:zad6:PID}
@@ -48,5 +41,20 @@ symulacji.
 \label{projekt:zad6:DMC}
 
 
+\subsection{Wnioski}
 
+Wykorzystanie rozmytego algorytmu regulacji dla obu regulatorów daje
+lepsze wyniki jakości regulacji w stosunku do pojedynczego regulatora liniowego.
+
+
+W przypadku regulatorów PID najlepszy okazał się regulator rozmyty składający
+się z 3 regulatorów lokalnych. 
+Wynika z tego, że większa ilość regulatorów
+lokalnych nie gwarantuje lepszej jakości regulacji.
+
+
+W przypadku regulatorów DMC najlepszy okazał się regulator rozmyty
+składający się z regulatorów lokalnych. 
+Wynika z tego, że większa ilość
+regulatorów lokalnych nie gwarantuje lepszej jakości regulacji.
 \newpage

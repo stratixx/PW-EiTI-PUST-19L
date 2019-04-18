@@ -1,22 +1,32 @@
 \section{Implementacja rozmytych algorytmów PID i DMC}
 \label{projekt:zad5}
 
+Poprzez zastosowanie wielu lokalnych regulatorów dla poszczególnych punktów
+pracy oraz funkcji przynależności zaimplementowano rozmyte algorytmy PID oraz DMC.
 
-W tym samym programie zaimplementowac i omówic rozmyty algorytm PID i rozmyty
-algorytm DMC w najprostszej wersji analitycznej. Uzasadnic wybór zmiennej,
-na podstawie której dokonywane jest rozmywanie. Uzasadnic wybór i kształt funkcji
-przynaleznosci.
-
-%\begin{figure}[H] 
-%    \centering
-%    \input{projekt/figure/zad1charstat_u_y_z.tex}
-%    \caption{Punkt pracy obiektu symulacji}
-%    \label{projekt:zad1:figure:charstat_u_y_z}
-%\end{figure}
-
-
-\subsection{Funkcje przynależności}
 \label{projekt:zad5:fuzzyFunctions}
+\subsection{Funkcje przynależności}
+
+Wybór regulatora dokonywany jest dzięki funkcji przynależności. 
+Jako funkcja przynależności posłużyła nam funkcja trapezoidalna. 
+Funkcja ta zawiera współczynniki, które
+definiują jak duży wpływ na dane wyjście ma dany regulator w badanym
+obszarze. Dobór tych współczynników został przeprowadzony poprzez
+obserwacje zachowania obiektu. Dla każdego z lokalnych regulatorów PID oraz
+DMC należało dobrać parametry osobno w jego punkcie pracy, w tym celu zostały
+przeprowadzone eksperymenty, parametry dobrane zostały metodą inżynierską.
+Ostatecznie regulatory zostały połączone w funkcji. Dzięki wykorzystaniu
+rozmytego algorytmu PID oraz DMC możemy zniwelować problem nieliniowości
+obiektu. Rozmywanie dokonywane jest na podstawie charakterystyki statycznej,
+dobór parametrów na podstawie aktualnej wartości sygnału wyjściowego y.
+Kształt trapezoidalny funkcji przynależności został wybrany na podstawie
+eksperymentów, dla trapezoidalnej funkcji wagi zmieniają się proporcjonalnie.
+Kształt trapezu pozwala na utrzymanie wartości 1 co w przypadku trójkątnej nie
+jest możliwe, natomiast na ramionach trapezu można dobrze uzupełniać funkcje
+przynależności równie dobrze jak w trójkątnej.
+
+\newpage
+\subsection{Wykresy funkcji przynależności}
 
 \begin{figure}[H] 
     \centering
@@ -51,6 +61,19 @@ przynaleznosci.
 \subsection{Rozmyty algorytm PID}
 \label{projekt:zad5:PID}
 
+\lstinputlisting[
+    firstline=71, 
+    lastline=87, 
+    caption="Wyznaczanie nastaw rozmytych regulatorów PID"]
+    {../lab/main.m}
+%\newpage
+
+\lstinputlisting[
+    firstline=198, 
+    lastline=229, 
+    caption="Wyznaczenie wartości sterowania u"]
+    {../lab/main.m}
+%\newpage
 
 
 \newpage
@@ -59,5 +82,18 @@ przynaleznosci.
 \label{projekt:zad5:DMC}
 
 
+\lstinputlisting[
+    firstline=88, 
+    lastline=114, 
+    caption="Wyznaczanie nastaw rozmytych regulatorów DMC"]
+    {../lab/main.m}
+%\newpage
+
+\lstinputlisting[
+    firstline=230, 
+    lastline=260, 
+    caption="Wyznaczenie wartości sterowania u"]
+    {../lab/main.m}
+%\newpage
 
 \newpage

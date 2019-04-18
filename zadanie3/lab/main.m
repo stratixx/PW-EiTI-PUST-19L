@@ -1,4 +1,4 @@
-% wybór symulacja czy obiekt rzeczywisty
+% wybor symulacja czy obiekt rzeczywisty
 % 'simulation' lub 'real'
 mode = 'simulation';
 
@@ -7,32 +7,38 @@ if( isequal(regulator, 'real') )
     addpath ('F:\SerialCommunication') ; % add a path
     initSerialControl COM5 % initialise com port
 end
-% wybór trybu pracy
+% wybor trybu pracy
 % setpoint, stepsU, stepsYzad
 action = 'stepsYzad';
-% wybór regulatora
+% wybor regulatora
 % none, PID_linear, DMC_linear, PID_fuzzy, DMC_fuzzy
 regulator = 'PID_fuzzy';
 
 % parametry skryptu
 kk = 2500;
-Tp = 1; % czas z jakim probkuje regulator
+Tp = 1; % okres probkowania
 T1 = 39.4; % temperatura punktu pracy
 G1 = 32;   % sterowanie punktu pracy
 y = ones(1,kk)*T1; % wektor wyjsc obiektu
 yzad = ones(1,kk)*T1; % wektor wartosc zadanych
-e = zeros(1,kk); % wektor uchybów regulacji
+e = zeros(1,kk); % wektor uchybow regulacji
 u = ones(1,kk)*G1; % wektor wejsc (sterowan) obiektu
 offset = 400;
 
-umax = 100;
-umin = 0;
+%ograniczenia wartosci sterowania
+if( isequal(regulator, 'real') )  
+    umax = 100;
+    umin = 0;
+else
+    umax = 1;
+    umin = -1;
+end
 
-% inicjalizacja parametrów regulatorów
+% inicjalizacja parametrow regulatorow
 
-settings = []; % tablica struktur ustawie? regulatorów
+settings = []; % tablica struktur ustawien regulatorow
 
-% regulacja z u?yciem regulatora PID linear
+% regulacja z uzyciem regulatora PID linear
 if( isequal(regulator, 'PID_linear') )  
     %nastawy klasycznego regulatora PID
     Kr = 3.7;
@@ -44,7 +50,7 @@ if( isequal(regulator, 'PID_linear') )
     settings(1).r1 = Kr*(Tp/(2*Ti)-2*Td/Tp-1);
     settings(1).r2 = Kr*Td/Tp;
     settings(1).u1 = G1;
-% regulacja z u?yciem regulatora DMC linear
+% regulacja z uzyciem regulatora DMC linear
 elseif( isequal(regulator, 'DMC_linear') )
 	%nastawy klasyczengo regulatora DMC
 	load('s.mat')
@@ -62,9 +68,9 @@ elseif( isequal(regulator, 'DMC_linear') )
 	settings(1).K = K;
 	settings(1).deltaUp = deltaUp;
 	
-% regulacja z u¿yciem regulatora PID fuzzy
+% regulacja z uzyciem regulatora PID fuzzy
 elseif( isequal(regulator, 'PID_fuzzy') )   
-    %nastawy regulatorów PID
+    %nastawy regulatorow PID
     Kr = [ 4.2  6.5     8.35];  % P
     Ti = [ 67.8 83.7    90.4];  % I
     Td = [ 0.0  0.0     0.3 ];  % D
@@ -79,7 +85,7 @@ elseif( isequal(regulator, 'PID_fuzzy') )
         settings(n).u1 = G1;
     end
     
-% regulacja z u¿yciem regulatora DMC fuzzy
+% regulacja z uzyciem regulatora DMC fuzzy
 elseif( isequal(regulator, 'DMC_fuzzy') )
     fuzzyN = 3;
 	%nastawy regulatora DMC
@@ -106,13 +112,13 @@ elseif( isequal(regulator, 'DMC_fuzzy') )
         settings(n).u1 = G1;
 	end
 	
-% sterowanie bez u¿ycia regulatora
+% sterowanie bez uzycia regulatora
 elseif( isequal(regulator, 'none') )
 else
     error('NO VALID REGULATOR SELECTED');
 end
 
-% przesuniêcie startu symulacji
+% przesuniecie startu symulacji
 k = offset;
 
 if( isequal(regulator, 'real') )  
@@ -130,7 +136,7 @@ while k<=kk
         y(k)=symulacja_obiektu7y(u(k-5),u(k-6),y(k-1),y(k-2));
     end
     
-    % pod¹¿anie do setpoint
+    % podazanie do setpoint
     if( isequal(action, 'setpoint') )
         %disp('setpoint')
         yzad(k) = T1;
@@ -147,7 +153,7 @@ while k<=kk
         elseif( k<=2100 )   u(k) = 70; yzad(k) = u(k);
         else                u(k) = 80; yzad(k) = u(k);
         end
-    % skoki wartoœci zadanej z regulatorem
+    % skoki wartosci zadanej z regulatorem
     elseif( isequal(action, 'stepsYzad') )
         %disp('stepsYzad')
         if( k<=offset+350 )       yzad(k) = T1;
@@ -159,29 +165,29 @@ while k<=kk
         error('NO VALID ACTION SELECTED');
     end
     
-    % bie¿¹cy uchyb regulacji
+    % biezacy uchyb regulacji
     e(k) = yzad(k) - y(k);
     
-    % regulacja z u¿yciem regulatora PID linear
+    % regulacja z uzyciem regulatora PID linear
     if( isequal(regulator, 'PID_linear') )
         %disp('pid_linear')
-        %wyznaczenie nowej wartoœci sterowania
+        %wyznaczenie nowej wartosci sterowania
         u(k) = getPIDcontrol(settings(1), e(k), e(k-1), e(k-2), u(k-1));
-        %na?o?enie ogranicze? sterowania
+        %nalozenie ograniczen sterowania
         if( u(k)>umax ) 
             u(k) = umax;
         elseif( u(k)<umin )
             u(k) = umin;
         end
-        %regulator mo¿e u¿yæ poprzedniej wartoœci sterowania
+        %regulator moze uzyc poprzedniej wartosci sterowania
         settings(1).u1 = u(k);
         
-    % regulacja z u¿yciem regulatora DMC linear
+    % regulacja z uzyciem regulatora DMC linear
     elseif( isequal(regulator, 'DMC_linear') )
         %disp('DMC_linear')
 		settings(1).u1 = u(k-1);
 		u(k) = getDMCcontrol(settings(1), y, k, yzad);
-        %na³o¿enie ograniczeñ sterowania
+        %nalozenie ograniczen sterowania
         if( u(k)>umax ) 
             u(k) = umax;
         elseif( u(k)<umin )
@@ -189,19 +195,19 @@ while k<=kk
         end
 		settings(1).deltaUp(k) = u(k)-u(k-1);
         
-    % regulacja z u¿yciem regulatora PID fuzzy
+    % regulacja z uzyciem regulatora PID fuzzy
     elseif( isequal(regulator, 'PID_fuzzy') )
         u_ = zeros(1, fuzzyN);
         for n=1:fuzzyN
-            %wyznaczenie nowej wartoœci sterowania od regulatora
+            %wyznaczenie nowej wartosci sterowania od regulatora
             u_(n) = getPIDcontrol(settings(n), e(k), e(k-1), e(k-2), settings(n).u1);
-            %na³o¿enie ograniczeñ sterowania
+            %nalozenie ograniczen sterowania
             if( u_(n)>umax ) 
                 u_(n) = umax;
             elseif( u_(n)<umin )
                 u_(n) = umin;
             end
-            %regulator mo¿e u¿yæ poprzedniej wartoœci sterowania
+            %regulator moze uzyc poprzedniej wartosci sterowania
             settings(n).u1 = u_(n);
             
             %funkcja wagi regulatora  
@@ -211,6 +217,8 @@ while k<=kk
                 w = w(n);
             else
                 
+
+
             end
             w
             u_(n) = u_(n) * w;
@@ -219,19 +227,19 @@ while k<=kk
         u_
         % wyznaczenie sterowania rozmytego
         u(k) = sum(u_);
-    % regulacja z u¿yciem regulatora DMC fuzzy
+    % regulacja z uzyciem regulatora DMC fuzzy
     elseif( isequal(regulator, 'DMC_fuzzy') )
         u_ = zeros(1, fuzzyN);
         for n=1:fuzzyN
-            %wyznaczenie nowej wartoœci sterowania od regulatora
+            %wyznaczenie nowej wartosci sterowania od regulatora
 			u_(n) = getDMCcontrol(settings(1), y, k, yzad);
-            %na³o¿enie ograniczeñ sterowania
+            %nalozenie ograniczen sterowania
             if( u_(n)>umax ) 
                 u_(n) = umax;
             elseif( u_(n)<umin )
                 u_(n) = umin;
             end
-            %regulator mo¿e u¿yæ poprzedniej wartoœci sterowania
+            %regulator moze uzyc poprzedniej wartosci sterowania
 			
 			settings(n).deltaUp(k) = u_(n)-settings(n).u1;
             settings(n).u1 = u_(n);
@@ -243,12 +251,14 @@ while k<=kk
                 w = w(n);
             else
                 
+
+
             end
             u_(n) = u_(n) * w
         end
         % wyznaczenie sterowania rozmytego
         u(k) = sum(u_);
-    % sterowanie bez u¿ycia regulatora
+    % sterowanie bez uzycia regulatora
     elseif( isequal(regulator, 'none') )
         
     else
