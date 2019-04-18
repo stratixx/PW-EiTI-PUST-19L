@@ -1,12 +1,6 @@
 \section{Testy rozmytych regulatorów DMC}
 \label{lab:zad5}
 
-W tym samym programie zaimplementowac rozmyty algorytm DMC w najprostszej
-wersji analitycznej, o parametrach Nu = N = D i lambda = 1. Dla powyzszej trajektorii
-zmian sygnału wartosci zadanej wykonac eksperymenty dla róznej 3 regulatorów
-lokalnych. Zamiescic wyniki eksperymentów.
-
-
 
 \subsection{Funkcje przynależności}
 \label{lab:zad5:fuzzyFunction}
@@ -23,8 +17,22 @@ lokalnych. Zamiescic wyniki eksperymentów.
 \subsection{Implementacja rozmytego algorytmu DMC}
 \label{lab:zad5:implDMC}
 
+\lstinputlisting[
+    firstline=88, 
+    lastline=114, 
+    caption="Wyznaczanie nastaw rozmytych regulatorów DMC"]
+    {../lab/main.m}
+%\newpage
+
+\lstinputlisting[
+    firstline=230, 
+    lastline=260, 
+    caption="Wyznaczenie wartości sterowania u"]
+    {../lab/main.m}
+%\newpage
 
 \newpage
+
 
 \subsection{Wyniki eksperymentów}
 \label{lab:zad5:eksperymenty}

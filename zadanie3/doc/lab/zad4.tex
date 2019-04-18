@@ -1,14 +1,20 @@
 \section{Testy rozmytych regulatorów PID}
 \label{lab:zad4}
 
-W tym samym programie zaimplementowac rozmyty algorytm PI lub PID. Dla tej samej
-trajektorii zmian sygnału wartosci zadanej spróbowac dobrac parametry lokalnych
-algorytmów PI (PID) w taki sposób, aby osiagnac lepsza jakosc regulacji w porównaniu
-z regulatorem klasycznym (pojedynczym). Wykonac eksperymenty dla 3 regulatorów
-lokalnych. Omówic proces doboru parametrów i zamiescic uzyskane przebiegi regulacji.
-
 \subsection{Funkcje przynależności}
 \label{lab:zad4:fuzzyFunction}
+
+Poprzez zastosowanie wielu lokalnych regulatorów dla poszczególnych punktów pracy
+zaimplementowano rozmyty algorytm PID. Wybór regulatora dokonywany jest dzięki
+funkcji przynależności. Jako funkcja przynależności posłużyła nam funkcja
+trapezoidalna. Funkcja ta zawiera współczynniki, które definiują jak duży wpływ na
+dane wyjście ma dany regulator w badanym obszarze. Dobór tych współczynników
+został przeprowadzony poprzez obserwacje zachowania obiektu. Dla każdego z
+lokalnych regulatorów PID należało dobrać parametry osobno w jego punkcie pracy, w
+tym celu została opracowana funkcja optymalizująca je, wykorzystano do niej
+wbudowaną funkcję programu MATLAB fmincon. Ostatecznie regulatory zostały
+połączone w funkcji. Dzięki wykorzystaniu rozmytego algorytmu PID możemy
+zniwelować problem nieliniowości obiektu.
 
 \begin{figure}[H] 
     \centering
@@ -21,6 +27,20 @@ lokalnych. Omówic proces doboru parametrów i zamiescic uzyskane przebiegi regu
 
 \subsection{Implementacja rozmytego algorytmu PID}
 \label{lab:zad4:implPID}
+
+\lstinputlisting[
+    firstline=71, 
+    lastline=87, 
+    caption="Wyznaczanie nastaw rozmytych regulatorów PID"]
+    {../lab/main.m}
+%\newpage
+
+\lstinputlisting[
+    firstline=198, 
+    lastline=229, 
+    caption="Wyznaczenie wartości sterowania u"]
+    {../lab/main.m}
+%\newpage
 
 
 \newpage
@@ -36,5 +56,12 @@ lokalnych. Omówic proces doboru parametrów i zamiescic uzyskane przebiegi regu
  \end{figure}
 
  Znormalizowana wartość wskaźnika jakości regulacji E wyniosła \num{1.7845}
+
+%\newpage
+
+\subsection{Wyniki eksperymentów}
+
+Dobrze dobrana funkcja przynależności i dobrze nastrojone regulatory lokalne dadzą
+znacznie lepszą jakość regulacji niż jeden klasyczny regulator bez rozmycia.
 
 \newpage
