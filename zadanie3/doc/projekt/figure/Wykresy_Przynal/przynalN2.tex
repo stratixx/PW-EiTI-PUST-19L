@@ -6,16 +6,16 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=6.028in,
-height=4.754in,
-at={(1.011in,0.642in)},
+width=4.521in,
+height=3.566in,
+at={(0.758in,0.481in)},
 scale only axis,
 xmin=-4.77,
 xmax=0.15,
 ymin=-0.2,
 ymax=1,
 ylabel style={font=\color{white!15!black}},
-ylabel={y},
+ylabel={w},
 axis background/.style={fill=white},
 xmajorgrids,
 ymajorgrids,
@@ -517,9 +517,9 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 0.14	0\\
 0.15	0\\
 };
-\addlegendentry{y}
+\addlegendentry{w1}
 
-\addplot [color=mycolor2, forget plot]
+\addplot [color=mycolor2]
   table[row sep=crcr]{%
 -4.77	0\\
 -4.76	0\\
@@ -1015,5 +1015,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 0.14	1\\
 0.15	0\\
 };
+\addlegendentry{w2}
+
 \end{axis}
 \end{tikzpicture}%

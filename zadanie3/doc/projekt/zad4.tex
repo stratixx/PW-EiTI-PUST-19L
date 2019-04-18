@@ -39,27 +39,26 @@ Ostatnim elementem strojenia jest wyznaczenie parametru czasu wyprzedzenia ,
 również metodą prób i błędów, tak by zminimalizować czas regulacji. 
 Po wykonaniu tej czynności kończy się proces strojenia regulatora.
 
-%jakis wykres od Jana
 \begin{figure}[H] 
     \centering
-    \input{projekt/figure/zad3.tex}
-    \caption{wykres o nazwie zad3.tex}
-    \label{projekt:zad4:figure}
+    \input{projekt/figure/Z4/z4PidBest.tex}
+    \caption{Regulator klasyczny PID pierwszy}
+    \label{projekt:zad4::PID1:figure}
 \end{figure}
 
-% \begin{figure}[H]
-%     \centering
-%     \input{projekt/figure/zad1charstat_u_y_z.tex}
-%     \caption{Przebiegi symulacji z danym regulatorem PID}
-%     \label{projekt:zad4:PID:figure:}
-% \end{figure}
+\begin{figure}[H] 
+    \centering
+    \input{projekt/figure/Z4/z4PidFinniczek.tex}
+    \caption{Regulator klasyczny PID drugi}
+    \label{projekt:zad4::PID2:figure}
+\end{figure}
 
-% \begin{figure}[H]
-%     \centering
-%     \input{projekt/figure/zad1charstat_u_y_z.tex}
-%     \caption{Przebiegi symulacji z najlepszym uzyskanym regulatorem PID}
-%     \label{projekt:zad4:PID:figure:}
-% \end{figure}
+\begin{figure}[H] 
+    \centering
+    \input{projekt/figure/Z4/z4PidKondziu.tex}
+    \caption{Regulator klasyczny PID trzeci}
+    \label{projekt:zad4::PID3:figure}
+\end{figure}
 
 
 \subsection{Klasyczny algorytm DMC}
@@ -88,25 +87,28 @@ za pomocą którego można zapewnić kompromis pomiędzy szybkością regulacji,
 Ponownie był on wyznaczany metodą testowania. 
 Zwiększenie współczynnika kary pogorszyło wynik działania regulatora, został więc on zmniejszony.
 
-% \begin{figure}[H]
+
+
+\begin{figure}[H] 
+    \centering
+    \input{projekt/figure/Z4/z4DMC.tex}
+    \caption{Regulator klasyczny DMC}
+    \label{projekt:zad4::DMC1:figure}
+\end{figure}
+
+
+% \begin{figure}[H] 
 %     \centering
-%     \input{projekt/figure/zad1charstat_u_y_z.tex}
-%     \caption{Przebiegi symulacji z danym regulatorem DMC}
-%     \label{projekt:zad4:DMC:figure:}
+%     \input{projekt/figure/Z4/z4PidBest.tex}
+%     \caption{Regulator PID pierwszy}
+%     \label{projekt:zad4::PID1:figure}
 % \end{figure}
 
-% \begin{figure}[H]
+% \begin{figure}[H] 
 %     \centering
-%     \input{projekt/figure/zad1charstat_u_y_z.tex}
-%     \caption{Przebiegi symulacji z danym regulatorem DMC}
-%     \label{projekt:zad4:DMC:figure:}
-% \end{figure}
-
-% \begin{figure}[H]
-%     \centering
-%     \input{projekt/figure/zad1charstat_u_y_z.tex}
-%     \caption{Przebiegi symulacji z najlepszym uzyskanym regulatorem DMC}
-%     \label{projekt:zad4:DMC:figure:}
+%     \input{projekt/figure/Z4/z4PidBest.tex}
+%     \caption{Regulator PID pierwszy}
+%     \label{projekt:zad4::PID1:figure}
 % \end{figure}
 
 \newpage
