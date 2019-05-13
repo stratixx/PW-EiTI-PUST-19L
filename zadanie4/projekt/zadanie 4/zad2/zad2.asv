@@ -1,0 +1,66 @@
+%skrypt do realizacji zadania 1
+start = 5;
+kk = 255; %koniec symulacji
+%warunki poczatkowe
+u1 = zeros(1,kk);
+u2 = zeros(1,kk);
+u3 = zeros(1,kk);
+u4 = zeros(1,kk);
+y1 = zeros(1,kk);
+y2 = zeros(1,kk);
+y3 = zeros(1,kk);
+m = 3;
+n = 4;
+i = 1;
+
+for j = 1:n
+    u1 = zeros(1,kk);
+    u2 = zeros(1,kk);
+    u3 = zeros(1,kk);
+    u4 = zeros(1,kk);
+    y1 = zeros(1,kk);
+    y2 = zeros(1,kk);
+    y3 = zeros(1,kk);
+    if n == 1
+        u1 = ones(start,kk);
+    elseif n == 2
+        u2 = ones(start,kk);
+    elseif n == 3
+        u3 = ones(start,kk); 
+    elseif n == 4
+        u4 = ones(start,kk);
+    end
+    for k = start:kk %glowna petla symulacyjna
+        %symulacja obiektu   
+        [y1(k),y2(k),y3(k)] = symulacja_obiektu7(u1(k-1),u1(k-2),u1(k-3),u1(k-4),u2(k-1),u2(k-2),u2(k-3),u2(k-4),u3(k-1),u3(k-2),u3(k-3),u3(k-4),u4(k-1),u4(k-2),u4(k-3),u4(k-4),y1(k-1),y1(k-2),y1(k-3),y1(k-4),y2(k-1),y2(k-2),y2(k-3),y2(k-4),y3(k-1),y3(k-2),y3(k-3),y3(k-4));
+    end
+    y1 = y1(start:end);
+    y2 = y2(start:end);
+    y3 = y3(start:end);
+    subplot(4,3,i)
+    grid on; 
+    plot(y1);
+    hold on;
+    title(['y_1 od u_',num2str(j)])
+    xlabel('k');
+    ylabel('y_1(k)');
+    subplot(4,3,i+1)
+    grid on; 
+    plot(y2);
+    hold on;
+    title(['y_2 od u_',num2str(j)])
+    xlabel('k');
+    ylabel('y_2(k)');
+    subplot(4,3,i+2)
+    grid on; 
+    plot(y3);
+    hold on;
+    title(['y_3 od u_',num2str(j)])
+    xlabel('k');
+    ylabel('y_3(k)');
+    i = i+3;
+    if 
+    dlmwrite("../Dane/Zad2/zad2_y1.csv", y1, '\t');
+    dlmwrite("../Dane/Zad2/zad2_y2.csv", y2, '\t');
+    dlmwrite("../Dane/Zad2/zad2_y3.csv", y3, '\t');
+end
