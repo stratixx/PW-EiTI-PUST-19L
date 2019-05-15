@@ -1,11 +1,13 @@
 %zadanie 3 i 4 - Skrypt relizujacy algorytm DMC regulatora wielowymiarowego
+clear all
+
 %nastawy regulatora DMC
 D = 350;%horyzont dynamiki
 
 N = 200;%horyzont predykcji
 Nu = 10;%horyzont sterowania
 
-eks = 1;
+eks = 0;
 %dobrane eksperymentalnie
 if eks == 1
     lambda1 = 0.15;
@@ -16,6 +18,15 @@ if eks == 1
     psi2 = 1;
     psi3 = 1;
 else
+    lambda1 = 0.9;
+    lambda2 = 1.2;
+    lambda3 = 0.5;
+    lambda4 = 1;
+    psi1 = 0.89;
+    psi2 = 1;
+    psi3 = 1.5;
+    N = 30;%horyzont predykcji
+    Nu = 5;%horyzont sterowania
 end
 
 %warunki poczatkowe
@@ -274,13 +285,13 @@ ylabel('u4')
 title('Regulator DMC - sterowanie 4')
 legend('u4','Location', 'northeast');
 
-dlmwrite("../Dane/Zad3_4/DMC/DMC_best/y1.csv", y1, '\t');
-dlmwrite("../Dane/Zad3_4/DMC/DMC_best/y2.csv", y2, '\t');
-dlmwrite("../Dane/Zad3_4/DMC/DMC_best/y3.csv", y3, '\t');
-dlmwrite("../Dane/Zad3_4/DMC/DMC_best/u1.csv", u1, '\t');
-dlmwrite("../Dane/Zad3_4/DMC/DMC_best/u2.csv", u2, '\t');
-dlmwrite("../Dane/Zad3_4/DMC/DMC_best/u3.csv", u3, '\t');
-dlmwrite("../Dane/Zad3_4/DMC/DMC_best/u4.csv", u4, '\t');
-dlmwrite("../Dane/Zad3_4/DMC/DMC_best/y1_zad.csv", y1_zad, '\t');
-dlmwrite("../Dane/Zad3_4/DMC/DMC_best/y2_zad.csv", y2_zad, '\t');
-dlmwrite("../Dane/Zad3_4/DMC/DMC_best/y3_zad.csv", y3_zad, '\t');
+% dlmwrite("../Dane/Zad3_4/DMC/DMC_2/y1.csv", y1, '\t');
+% dlmwrite("../Dane/Zad3_4/DMC/DMC_2/y2.csv", y2, '\t');
+% dlmwrite("../Dane/Zad3_4/DMC/DMC_2/y3.csv", y3, '\t');
+% dlmwrite("../Dane/Zad3_4/DMC/DMC_2/u1.csv", u1, '\t');
+% dlmwrite("../Dane/Zad3_4/DMC/DMC_2/u2.csv", u2, '\t');
+% dlmwrite("../Dane/Zad3_4/DMC/DMC_2/u3.csv", u3, '\t');
+% dlmwrite("../Dane/Zad3_4/DMC/DMC_2/u4.csv", u4, '\t');
+% dlmwrite("../Dane/Zad3_4/DMC/DMC_2/y1_zad.csv", y1_zad, '\t');
+% dlmwrite("../Dane/Zad3_4/DMC/DMC_2/y2_zad.csv", y2_zad, '\t');
+% dlmwrite("../Dane/Zad3_4/DMC/DMC_2/y3_zad.csv", y3_zad, '\t');
