@@ -1,6 +1,6 @@
-%skrypt do realizacji zadania 1
+%skrypt do realizacji zadania 2
 start = 5;
-kk = 255; %koniec symulacji
+kk = 904; %koniec symulacji
 %warunki poczatkowe
 u1 = zeros(1,kk);
 u2 = zeros(1,kk);
@@ -37,6 +37,23 @@ for j = 1:n
     y1 = y1(start:end);
     y2 = y2(start:end);
     y3 = y3(start:end);
+    if j == 1
+        s11 = y1;
+        s21 = y2;
+        s31 = y3;
+    elseif j == 2
+        s12 = y1;
+        s22 = y2;
+        s32 = y3;
+    elseif j == 3
+        s13 = y1;
+        s23 = y2;
+        s33 = y3;
+    elseif j == 4
+        s14 = y1;
+        s24 = y2;
+        s34 = y3;
+     end
     subplot(4,3,i)
     grid on; 
     plot(y1);
