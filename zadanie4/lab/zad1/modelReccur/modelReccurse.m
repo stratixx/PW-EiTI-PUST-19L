@@ -1,14 +1,19 @@
-clear
-daneDynUcz = dlmread('../danedynucz43.txt');
-daneDynWer = dlmread('../danedynwer43.txt');
-daneDynUczU = daneDynUcz(:,1);
-daneDynUczY = daneDynUcz(:,2);
-daneDynWerU = daneDynWer(:,1);
-daneDynWerY = daneDynWer(:,2);
-dataLength = length(daneDynUczU);
-clear daneDynUcz daneDynWer
+%clear
 
-Nmax = 5;
+daneDynUczU = u2;
+daneDynUczY = y2;
+daneDynWerU = u2;
+daneDynWerY = y2;
+dataLength = length(daneDynUczU);
+%clear daneDynUcz daneDynWer
+
+daneDynUczU = daneDynUczU - daneDynUczU(1);
+daneDynUczY = daneDynUczY - daneDynUczY(1);
+daneDynWerU = daneDynWerU - daneDynWerU(1);
+daneDynWerY = daneDynWerY - daneDynWerY(1);
+
+configuration = 'u2y2';
+Nmax = 2;
 Na=7;
 Nb=Na;
 N=0;
@@ -17,7 +22,8 @@ minErrVerifyN = 1000;
 minErrDelta = 1000;
 errArray = zeros(Nmax,3);
 
-for Na=1:1:Nmax
+for Na=2:1:Nmax
+    Na
     Nb=Na
     errArray(Na, 1) = Na;
     
@@ -40,6 +46,7 @@ for Na=1:1:Nmax
     end
     
     errLearn = (sum(power( daneDynUczY(max([Na,Nb]+1):end)-YlearnCalc(1+Na:end)', 2 )));
+    errLearn = errLearn / dataLength * 100;
     errArray(Na, 2) = errLearn;
     
     Mverif = ones(dataLength-max([Na,Nb]), Na+Nb);
@@ -59,6 +66,7 @@ for Na=1:1:Nmax
     end
     
     errVerif = (sum(power( daneDynWerY(max([Na,Nb]+1):end)-YverifCalc(1+Na:end)', 2 )));
+    errVerif = errVerif / dataLength * 100;
     errArray(Na, 3) = errVerif;
     
     if errVerif<(minErrVerify-minErrDelta)
@@ -88,7 +96,7 @@ for Na=1:1:Nmax
     xlabel('Próbki');
     ylabel('Sygna³ wyjœciowy y');
     legend('Dane weryfikuj¹ce','Wyjœcie modelu','location','southeast')
-    print(strcat('img/bc/recur/Nb_',num2str(Nb),'_Na_',num2str(Na)), '-dpng');
+    print(strcat('img/modelReccur/',configuration,'/Nb_',num2str(Nb),'_Na_',num2str(Na)), '-dpng');
     close 1;
 end
 
