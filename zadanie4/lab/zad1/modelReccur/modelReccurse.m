@@ -7,10 +7,10 @@ daneDynWerY = y2;
 dataLength = length(daneDynUczU);
 %clear daneDynUcz daneDynWer
 
-daneDynUczU = daneDynUczU - daneDynUczU(1);
-daneDynUczY = daneDynUczY - daneDynUczY(1);
-daneDynWerU = daneDynWerU - daneDynWerU(1);
-daneDynWerY = daneDynWerY - daneDynWerY(1);
+daneDynUczU = (daneDynUczU - mean(daneDynUczU(1:50)))/15;
+daneDynUczY = (daneDynUczY - mean(daneDynUczY(1:50)))/15;
+daneDynWerU = (daneDynWerU - mean(daneDynWerU(1:50)))/15;
+daneDynWerY = (daneDynWerY - mean(daneDynWerY(1:50)))/15;
 
 configuration = 'u2y2';
 Nmax = 2;
