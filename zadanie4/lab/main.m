@@ -100,6 +100,7 @@ while k<=kk
         %measurements = readMeasurements (1:7) ; % read measurements    
         %y(k)=measurements(1); % powiekszamy wektor y o element Y
     else
+        %dopasowanie punktu pracy
         u1 = u1 - G1;
         u2 = u2 - G2;
         y1 = y1 - T1;
@@ -115,6 +116,7 @@ while k<=kk
                 u12_1 * u1(k-1) + u12_2 * u1(k-2) ;%+ ...
                 %y12_1 * y2(k-1) + y12_2 * y2(k-2) ;
        
+        %dopasowanie punktu pracy
         u1 = u1 + G1;
         u2 = u2 + G2;
         y1 = y1 + T1;
@@ -156,7 +158,7 @@ while k<=kk
         else                      yzad1(k) = T1;
         end                
     else
-        %error('NO VALID ACTION SELECTED');
+        error('NO VALID ACTION SELECTED');
     end
     
     % biezacy uchyb regulacji
