@@ -1,4 +1,4 @@
-figure(1)
+figure(6)
 
 % y1 = t1/100;
 % y2 = t3/100;
@@ -8,18 +8,18 @@ figure(1)
 
 
 subplot(2,1,1); 
-stairs(y1); 
+stairs(y1_real); 
 hold on; 
-stairs(y2); 
+stairs(y2_real); 
 hold off; 
 title('Wyjœcie'); 
 xlabel('iteracja');
 legend('T1', 'T3');
 
 subplot(2,1,2); 
-stairs(u1); 
+stairs(u1_real); 
 hold on; 
-stairs(u2); 
+stairs(u2_real); 
 hold off; 
 title('Sterowanie'); 
 xlabel('iteracja');

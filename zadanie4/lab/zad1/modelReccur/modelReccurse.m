@@ -1,18 +1,18 @@
 %clear
 
-daneDynUczU = u2;
+daneDynUczU = u1;
 daneDynUczY = y2;
-daneDynWerU = u2;
+daneDynWerU = u1;
 daneDynWerY = y2;
 dataLength = length(daneDynUczU);
 %clear daneDynUcz daneDynWer
 
-daneDynUczU = (daneDynUczU - mean(daneDynUczU(1:50)))/15;
-daneDynUczY = (daneDynUczY - mean(daneDynUczY(1:50)))/15;
-daneDynWerU = (daneDynWerU - mean(daneDynWerU(1:50)))/15;
-daneDynWerY = (daneDynWerY - mean(daneDynWerY(1:50)))/15;
+ daneDynUczU = (daneDynUczU - mean(daneDynUczU(1:22)))/15;
+ daneDynUczY = (daneDynUczY - mean(daneDynUczY(1:22)))/15;
+ daneDynWerU = (daneDynWerU - mean(daneDynWerU(1:22)))/15;
+ daneDynWerY = (daneDynWerY - mean(daneDynWerY(1:22)))/15;
 
-configuration = 'u2y2';
+configuration = 'u1y2';
 Nmax = 2;
 Na=7;
 Nb=Na;
