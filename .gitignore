@@ -9,3 +9,4 @@
 *.synctex(busy)
 *.lof
 *.lol
+.vscode/

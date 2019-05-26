@@ -54,3 +54,8 @@ PID_G2.sampling_time := 4.0;
 PID_G2.SV := 38.68;
 PID_G1.MV := 37.0;
 
+
+DMC_G1.SV := 36.68;
+DMC_G2.SV := 38.68;
+DMC_G1.MV := 32.0;
+DMC_G2.MV := 37.0;

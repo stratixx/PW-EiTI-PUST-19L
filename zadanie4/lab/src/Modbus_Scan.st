@@ -23,6 +23,10 @@ IF(T_3 >= K15000) THEN
 	SET(TRUE, T_3_alarm);
 END_IF;
 
+
+
+
+
 IF(T_1_alarm) THEN
 	MOV(TRUE, K0, G_1);
 END_IF;
