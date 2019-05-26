@@ -21,7 +21,7 @@ end
 action = 'stepsYzad';
 % wybor regulatora
 % none, PID_linear, DMC_linear
-regulator = 'DMC_linear';
+regulator = 'PID_linear';
 
 % parametry skryptu
 kk = 2000;
@@ -86,7 +86,7 @@ elseif( isequal(regulator, 'DMC_linear') )
 	D1 = length(s); % horyzont dynamiki
 	N1=D1;
 	Nu1=D1;
-	lambda1 = 1;
+	lambda1 = 0.1;
 	D = D1; % horyzont dynamiki
 	N=N1;
 	Nu=Nu1;
@@ -106,7 +106,7 @@ elseif( isequal(regulator, 'DMC_linear') )
 	D2 = length(s); % horyzont dynamiki
 	N2=D2;
 	Nu2=D2;
-	lambda2 = 1;
+	lambda2 = 0.1;
 	D = D2; % horyzont dynamiki
 	N=N2;
 	Nu=Nu2;
