@@ -76,13 +76,12 @@ if( isequal(regulator, 'PID_linear') )
 % regulacja z uzyciem regulatora DMC linear
 elseif( isequal(regulator, 'DMC_linear') )
 	%nastawy klasyczengo regulatora DMC
-    
-	load('zad1/esy/s1.mat')
+    load('zad1/esy/s1.mat')
     s = s1aprox;
 	D1 = length(s); % horyzont dynamiki
 	N1=D1;
 	Nu1=N1;
-	lambda1 = 1;
+	lambda1 = 0.2;
 	D = D1; % horyzont dynamiki
 	N=N1;
 	Nu=Nu1;
@@ -102,7 +101,7 @@ elseif( isequal(regulator, 'DMC_linear') )
 	D2 = length(s); % horyzont dynamiki
 	N2=D2;
 	Nu2=N2;
-	lambda2 = 1;
+	lambda2 = 0.2;
 	D = D2; % horyzont dynamiki
 	N=N2;
 	Nu=Nu2;
@@ -159,8 +158,8 @@ while k<=kk
                 %y12_1 * y2(k-1) + y12_2 * y2(k-2) ;
        
         %dopasowanie punktu pracy
-        u1(k) = u1(k) + G1;
-        u2(k) = u2(k) + G2;
+%         u1(k) = u1(k) + G1;
+%         u2(k) = u2(k) + G2;
         y1(k) = y1(k) + T1;
         y2(k) = y2(k) + T2;
         u1(k-1) = u1(k-1) + G1;
