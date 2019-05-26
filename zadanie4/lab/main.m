@@ -7,21 +7,17 @@ if( isequal(mode, 'real') )
     %addpath ('F:\SerialCommunication') ; % add a path
     %initSerialControl COM5 % initialise com port
 else
-    load('zad1/modelReccur/u12y1/model.mat');
-    load('zad1/modelReccur/u12y2/model.mat');
-    y11 = fliplr(y11');
-    y22 = fliplr(y22');
-    u11 = fliplr(u11');
-    u21 = fliplr(u21');
-    u12 = fliplr(u12');
-    u22 = fliplr(u22');
+    load('zad1/modelReccur/u1y1/model.mat');
+    load('zad1/modelReccur/u1y2/model.mat');
+    load('zad1/modelReccur/u2y1/model.mat');
+    load('zad1/modelReccur/u2y2/model.mat');
 end
 % wybor trybu pracy
 % setpoint, stepsU, stepsYzad
 action = 'stepsYzad';
 % wybor regulatora
 % none, PID_linear, DMC_linear
-regulator = 'PID_linear';
+regulator = 'DMC_linear';
 
 % parametry skryptu
 kk = 2000;
@@ -40,7 +36,7 @@ u1 = ones(1,kk)*G1; % wektor wejsc (sterowan) obiektu
 u2 = ones(1,kk)*G2; % wektor wejsc (sterowan) obiektu
 
 %opoznienie startu symulacji
-offset = 300;
+offset = 400;
 
 %ograniczenia wartosci sterowania
 if( isequal(regulator, 'real') )  
@@ -58,9 +54,9 @@ settings = []; % tablica struktur ustawien regulatorow
 % regulacja z uzyciem regulatora PID linear
 if( isequal(regulator, 'PID_linear') )  
     %nastawy klasycznego regulatora PID
-    Kr1 = 15;
+    Kr1 = 30.7;
     Ti1 = 50.5;
-    Td1 = 10.1;
+    Td1 = 0.0;
     settings(1).N = 1;
     settings(1).Tp = Tp;
     settings(1).r0 = Kr1*(1+Tp/(2*Ti1)+Td1/Tp);
@@ -68,9 +64,9 @@ if( isequal(regulator, 'PID_linear') )
     settings(1).r2 = Kr1*Td1/Tp;
     settings(1).u1 = G1;
     
-    Kr2 = 15;
+    Kr2 = 30.7;
     Ti2 = 50.5;
-    Td2 = 10.1;
+    Td2 = 0.0;
     settings(2).N = 2;
     settings(2).Tp = Tp;
     settings(2).r0 = Kr2*(1+Tp/(2*Ti2)+Td2/Tp);
@@ -85,8 +81,8 @@ elseif( isequal(regulator, 'DMC_linear') )
     s = s1aprox;
 	D1 = length(s); % horyzont dynamiki
 	N1=D1;
-	Nu1=D1;
-	lambda1 = 0.1;
+	Nu1=N1;
+	lambda1 = 1;
 	D = D1; % horyzont dynamiki
 	N=N1;
 	Nu=Nu1;
@@ -102,11 +98,11 @@ elseif( isequal(regulator, 'DMC_linear') )
 	settings(n).deltaUp = deltaUp;
 	
 	load('zad1/esy/s2.mat')
-    s = s2aprox;
+    s = s1aprox;
 	D2 = length(s); % horyzont dynamiki
 	N2=D2;
-	Nu2=D2;
-	lambda2 = 0.1;
+	Nu2=N2;
+	lambda2 = 1;
 	D = D2; % horyzont dynamiki
 	N=N2;
 	Nu=Nu2;
@@ -143,57 +139,38 @@ while k<=kk
         %y(k)=measurements(1); % powiekszamy wektor y o element Y
     else
         %dopasowanie punktu pracy
-%         u1(k-1) = u1(k-1) - G1;
-%         u2(k-1) = u2(k-1) - G2;
-%         y1(k-1) = y1(k-1) - T1;
-%         y2(k-1) = y2(k-1) - T2;
-%         u1(k-2) = u1(k-2) - G1;
-%         u2(k-2) = u2(k-2) - G2;
-%         y1(k-2) = y1(k-2) - T1;
-%         y2(k-2) = y2(k-2) - T2;
-
-        u1 = u1 - G1;
-        u2 = u2 - G2;
-        y1 = y1 - T1;
-        y2 = y2 - T2;
+        u1(k-1) = u1(k-1) - G1;
+        u2(k-1) = u2(k-1) - G2;
+        y1(k-1) = y1(k-1) - T1;
+        y2(k-1) = y2(k-1) - T2;
+        u1(k-2) = u1(k-2) - G1;
+        u2(k-2) = u2(k-2) - G2;
+        y1(k-2) = y1(k-2) - T1;
+        y2(k-2) = y2(k-2) - T2;
         
-%         y1(k) = u11_1 * u1(k-1) + u11_2 * u1(k-2) + ...
-%                 y11_1 * y1(k-1) + y11_2 * y1(k-2) + ...
-%                 u21_1 * u2(k-1) + u21_2 * u2(k-2) ;%+ ...
-%                 %y21_1 * y1(k-1) + y21_2 * y1(k-2) ;
-%             
-%         y2(k) = u22_1 * u2(k-1) + u22_2 * u2(k-2) + ...
-%                 y22_1 * y2(k-1) + y22_2 * y2(k-2) + ...
-%                 u12_1 * u1(k-1) + u12_2 * u1(k-2) ;%+ ...
-%                 %y12_1 * y2(k-1) + y12_2 * y2(k-2) ;
-
-        y1(k) = y11 * y1(k-size(y11,2):k-1)' + ...
-                u11 * u1(k-size(u11,2):k-1)' + ...
-                u21 * u2(k-size(u21,2):k-1)'  ;
-        
-
-        y2(k) = y22 * y2(k-size(y22,2):k-1)' + ...
-                u12 * u1(k-size(u12,2):k-1)' + ...
-                u22 * u2(k-size(u22,2):k-1)'  ;
+        y1(k) = u11_1 * u1(k-1) + u11_2 * u1(k-2) + ...
+                y11_1 * y1(k-1) + y11_2 * y1(k-2) + ...
+                u21_1 * u2(k-1) + u21_2 * u2(k-2) ;%+ ...
+                %y21_1 * y1(k-1) + y21_2 * y1(k-2) ;
+            
+        y2(k) = u22_1 * u2(k-1) + u22_2 * u2(k-2) + ...
+                y22_1 * y2(k-1) + y22_2 * y2(k-2) + ...
+                u12_1 * u1(k-1) + u12_2 * u1(k-2) ;%+ ...
+                %y12_1 * y2(k-1) + y12_2 * y2(k-2) ;
        
         %dopasowanie punktu pracy
-%         u1(k) = u1(k) + G1;
-%         u2(k) = u2(k) + G2;
-%         y1(k) = y1(k) + T1;
-%         y2(k) = y2(k) + T2;
-%         u1(k-1) = u1(k-1) + G1;
-%         u2(k-1) = u2(k-1) + G2;
-%         y1(k-1) = y1(k-1) + T1;
-%         y2(k-1) = y2(k-1) + T2;
-%         u1(k-2) = u1(k-2) + G1;
-%         u2(k-2) = u2(k-2) + G2;
-%         y1(k-2) = y1(k-2) + T1;
-%         y2(k-2) = y2(k-2) + T2;  
-
-        u1 = u1 + G1;
-        u2 = u2 + G2;
-        y1 = y1 + T1;
-        y2 = y2 + T2;
+        u1(k) = u1(k) + G1;
+        u2(k) = u2(k) + G2;
+        y1(k) = y1(k) + T1;
+        y2(k) = y2(k) + T2;
+        u1(k-1) = u1(k-1) + G1;
+        u2(k-1) = u2(k-1) + G2;
+        y1(k-1) = y1(k-1) + T1;
+        y2(k-1) = y2(k-1) + T2;
+        u1(k-2) = u1(k-2) + G1;
+        u2(k-2) = u2(k-2) + G2;
+        y1(k-2) = y1(k-2) + T1;
+        y2(k-2) = y2(k-2) + T2;     
     end
     
     % podazanie do setpoint
@@ -391,22 +368,22 @@ legend('u2')
 % figure(1);
 % subplot(2,1,1)
 % hold on;
-% plot(y1_real(offset:end)); % wyswietlamy y w czasie
+% plot(y1_real); % wyswietlamy y w czasie
 % legend('y1_m_o_d_e_l', 'y1_r_e_a_l')
 % 
 % subplot(2,1,2)
 % hold on;
-% plot(y2_real(offset:end)); % wyswietlamy y w czasie
+% plot(y2_real); % wyswietlamy y w czasie
 % legend('y2_m_o_d_e_l', 'y2_r_e_a_l')
 % 
 % figure(2); 
 % subplot(2,1,1)
 % hold on;
-% plot(u1_real(offset:end)); % wyswietlamy u w czasie
+% plot(u1_real); % wyswietlamy u w czasie
 % legend('u1_m_o_d_e_l', 'u1_r_e_a_l')
 % 
 % subplot(2,1,2)
 % hold on;
-% plot(u2_real(offset:end)); % wyswietlamy u w czasie
+% plot(u2_real); % wyswietlamy u w czasie
 % legend('u2_m_o_d_e_l', 'u2_r_e_a_l')
 
