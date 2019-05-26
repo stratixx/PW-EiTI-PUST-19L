@@ -18,10 +18,10 @@ else
 end
 % wybor trybu pracy
 % setpoint, stepsU, stepsYzad
-action = 'stepsU';
+action = 'stepsYzad';
 % wybor regulatora
 % none, PID_linear, DMC_linear
-regulator = 'none';
+regulator = 'PID_linear';
 
 % parametry skryptu
 kk = 2000;
@@ -40,7 +40,7 @@ u1 = ones(1,kk)*G1; % wektor wejsc (sterowan) obiektu
 u2 = ones(1,kk)*G2; % wektor wejsc (sterowan) obiektu
 
 %opoznienie startu symulacji
-offset = 10;
+offset = 300;
 
 %ograniczenia wartosci sterowania
 if( isequal(regulator, 'real') )  
@@ -58,9 +58,9 @@ settings = []; % tablica struktur ustawien regulatorow
 % regulacja z uzyciem regulatora PID linear
 if( isequal(regulator, 'PID_linear') )  
     %nastawy klasycznego regulatora PID
-    Kr1 = 30.7;
+    Kr1 = 15;
     Ti1 = 50.5;
-    Td1 = 0.0;
+    Td1 = 10.1;
     settings(1).N = 1;
     settings(1).Tp = Tp;
     settings(1).r0 = Kr1*(1+Tp/(2*Ti1)+Td1/Tp);
@@ -68,9 +68,9 @@ if( isequal(regulator, 'PID_linear') )
     settings(1).r2 = Kr1*Td1/Tp;
     settings(1).u1 = G1;
     
-    Kr2 = 30.7;
+    Kr2 = 15;
     Ti2 = 50.5;
-    Td2 = 0.0;
+    Td2 = 10.1;
     settings(2).N = 2;
     settings(2).Tp = Tp;
     settings(2).r0 = Kr2*(1+Tp/(2*Ti2)+Td2/Tp);
@@ -343,27 +343,27 @@ clf(1);
 subplot(2,1,1)
 hold on;
 plot(y1(offset:end)); % wyswietlamy y w czasie
-%plot(yzad1(offset:end)); % wyswietlamy yzad w czasie
+plot(yzad1(offset:end)); % wyswietlamy yzad w czasie
 %title('y1');
 grid on;
 xlabel('time');
 ylabel('value');
 %xlim([1 (ceil((k-1+1)/100)*100)]);
 %ylim([36 41])
-%legend('y1', 'yzad1')
+legend('y1', 'yzad1')
 %legend('y1_m_o_d_e_l', 'y1_r_e_a_l')
 
 
 subplot(2,1,2)
 hold on;
 plot(y2(offset:end)); % wyswietlamy y w czasie
-%plot(yzad2(offset:end)); % wyswietlamy yzad w czasie
+plot(yzad2(offset:end)); % wyswietlamy yzad w czasie
 title('y y_z_a_d');
 grid on;
 xlabel('time');
 ylabel('value');
 %xlim([1 (ceil((k-1+1)/100)*100)]);
-%legend('y2', 'yzad2')
+legend('y2', 'yzad2')
 
 figure(2); 
 clf(2);
@@ -386,27 +386,27 @@ ylabel('value');
 xlim([1 (ceil((k-1+1)/100)*100)]);
 legend('u2')
 
- load('zad1/processed/zlozone.mat')  
- %rysowanie danych z modelu
-figure(1);
-subplot(2,1,1)
-hold on;
-plot(y1_real(offset:end)); % wyswietlamy y w czasie
-legend('y1_m_o_d_e_l', 'y1_r_e_a_l')
-
-subplot(2,1,2)
-hold on;
-plot(y2_real(offset:end)); % wyswietlamy y w czasie
-legend('y2_m_o_d_e_l', 'y2_r_e_a_l')
-
-figure(2); 
-subplot(2,1,1)
-hold on;
-plot(u1_real(offset:end)); % wyswietlamy u w czasie
-legend('u1_m_o_d_e_l', 'u1_r_e_a_l')
-
-subplot(2,1,2)
-hold on;
-plot(u2_real(offset:end)); % wyswietlamy u w czasie
-legend('u2_m_o_d_e_l', 'u2_r_e_a_l')
+%  load('zad1/processed/zlozone.mat')  
+%  %rysowanie danych z modelu
+% figure(1);
+% subplot(2,1,1)
+% hold on;
+% plot(y1_real(offset:end)); % wyswietlamy y w czasie
+% legend('y1_m_o_d_e_l', 'y1_r_e_a_l')
+% 
+% subplot(2,1,2)
+% hold on;
+% plot(y2_real(offset:end)); % wyswietlamy y w czasie
+% legend('y2_m_o_d_e_l', 'y2_r_e_a_l')
+% 
+% figure(2); 
+% subplot(2,1,1)
+% hold on;
+% plot(u1_real(offset:end)); % wyswietlamy u w czasie
+% legend('u1_m_o_d_e_l', 'u1_r_e_a_l')
+% 
+% subplot(2,1,2)
+% hold on;
+% plot(u2_real(offset:end)); % wyswietlamy u w czasie
+% legend('u2_m_o_d_e_l', 'u2_r_e_a_l')
 
