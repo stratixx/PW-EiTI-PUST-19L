@@ -21,7 +21,7 @@ end
 action = 'stepsYzad';
 % wybor regulatora
 % none, PID_linear, DMC_linear
-regulator = 'PID_linear';
+regulator = 'DMC_linear';
 
 % parametry skryptu
 kk = 2000;
@@ -81,11 +81,11 @@ if( isequal(regulator, 'PID_linear') )
 elseif( isequal(regulator, 'DMC_linear') )
 	%nastawy klasyczengo regulatora DMC
     
-	load('s1.mat')
+	load('zad1/esy/s1.mat')
     s = s1aprox;
 	D1 = length(s); % horyzont dynamiki
-	N1=200;
-	Nu1=10;
+	N1=D1;
+	Nu1=D1;
 	lambda1 = 1;
 	D = D1; % horyzont dynamiki
 	N=N1;
@@ -101,11 +101,11 @@ elseif( isequal(regulator, 'DMC_linear') )
 	settings(n).K = K;
 	settings(n).deltaUp = deltaUp;
 	
-	load('s2.mat')
-    s = s1aprox;
+	load('zad1/esy/s2.mat')
+    s = s2aprox;
 	D2 = length(s); % horyzont dynamiki
-	N2=200;
-	Nu2=10;
+	N2=D2;
+	Nu2=D2;
 	lambda2 = 1;
 	D = D2; % horyzont dynamiki
 	N=N2;
