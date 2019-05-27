@@ -1,4 +1,4 @@
-SET(Pozwolenie_pomiar_MODBUS AND LDP(TRUE,SM414),Pomiar_MODBUS);
+SET(Pozwolenie_pomiar_MODBUS AND LDP(TRUE,SM412),Pomiar_MODBUS);
 IF(Pomiar_MODBUS) THEN
 	Function_code := 4;
 	Device_count := 7;
@@ -23,10 +23,6 @@ IF(T_3 >= K15000) THEN
 	SET(TRUE, T_3_alarm);
 END_IF;
 
-
-
-
-
 IF(T_1_alarm) THEN
 	MOV(TRUE, K0, G_1);
 END_IF;
@@ -37,7 +33,7 @@ END_IF;
 
 	
 
-SET(Pozwolenie_zapis_MODBUS AND LDF(TRUE,SM414),Zapis_MODBUS);
+SET(Pozwolenie_zapis_MODBUS AND LDF(TRUE,SM412),Zapis_MODBUS);
 IF(Zapis_MODBUS) THEN
 	
 	MOV(TRUE, W_1, D110);

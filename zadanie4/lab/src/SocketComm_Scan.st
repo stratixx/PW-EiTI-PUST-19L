@@ -46,6 +46,10 @@ IF AUTO_SEND AND LDP(TRUE, SM414) THEN
 	text_temp := CONCAT(text_temp, INT_TO_STRING(T_3));	
 	text_temp := CONCAT(text_temp,';K=');	
 	text_temp := CONCAT(text_temp, INT_TO_STRING(simTime));	
+	text_temp := CONCAT(text_temp,';T1_ZAD=');	
+	text_temp := CONCAT(text_temp, INT_TO_STRING(T_1_zad));	
+	text_temp := CONCAT(text_temp,';T3_ZAD=');	
+	text_temp := CONCAT(text_temp, INT_TO_STRING(T_3_zad));	
 	
 	
 	text_temp := CONCAT(text_temp,';$L');	

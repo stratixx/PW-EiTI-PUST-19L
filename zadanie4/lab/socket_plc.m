@@ -28,6 +28,9 @@ g2=[];
 t1=[];
 t2=[];
 t3=[];
+t1zad=[];
+t2zad=[];
+t3zad=[];
 k=[];
 
 figure(1);
@@ -46,11 +49,15 @@ while (length(g1) < 10000)
         g2 = [g2; G2];
         t1 = [t1; T1];
         t2 = [t2; T2];
-         t3 = [t3; T3];
+        t3 = [t3; T3];
+        t1zad = [t1zad; T1_ZAD]; 
+        t3zad = [t3zad; T3_ZAD]; 
          k=[k;K];
         
         y1 = t1/100;
         y2 = t3/100;
+        yz1 = t1zad/100;
+        yz2 = t3zad/100;
         
         u1 = g1/10;
         u2 = g2/10;
@@ -60,10 +67,12 @@ while (length(g1) < 10000)
         stairs(y1); 
         hold on; 
         stairs(y2); 
+        stairs(yz1); 
+        stairs(yz2); 
         hold off; 
         title('Wyjœcie'); 
         xlabel('iteracja');
-        legend('T1', 'T3');
+        legend('T1', 'T3', 'T1_z_a_d', 'T3_z_a_d');
         
         subplot(2,1,2); 
         stairs(u1); 

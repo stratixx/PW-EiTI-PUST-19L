@@ -26,10 +26,14 @@ ZRST(TRUE, D110, D120);
 
 SD414 := 2; //timer 2n, ktorego odliczenie odczytujemy z SM414 // ustawiony okres 4 sekundy
 
+
+T_1_zad := 390;
+T_3_zad := 410;
+
 //init regulatora PID_G1
-PID_G1.K_gain := 40.0;
-PID_G1.TI := 999.0;
-PID_G1.TD := 0.00001;
+PID_G1.K_gain := 30.1;
+PID_G1.TI := 25.0;
+PID_G1.TD := 1.0;
 PID_G1.Ep0 := 0.0;
 PID_G1.Ep1 := 0.0;
 PID_G1.Ep2 := 0.0;
@@ -41,9 +45,9 @@ PID_G1.SV := 36.68;
 PID_G1.MV := 32.0;
 
 //init regulatora PID_G2
-PID_G2.K_gain := 20.0;
-PID_G2.TI := 999.0;
-PID_G2.TD := 0.00001;
+PID_G2.K_gain := 30.7;
+PID_G2.TI := 25.5;
+PID_G2.TD := 1.0;
 PID_G2.Ep0 := 0.0;
 PID_G2.Ep1 := 0.0;
 PID_G2.Ep2 := 0.0;
@@ -55,7 +59,8 @@ PID_G2.SV := 38.68;
 PID_G1.MV := 37.0;
 
 
-DMC_G1.SV := 36.68;
-DMC_G2.SV := 38.68;
-DMC_G1.MV := 32.0;
-DMC_G2.MV := 37.0;
+
+//DMC_G1.SV := 36.68;
+//DMC_G2.SV := 38.68;
+//DMC_G1.MV := 32.0;
+//DMC_G2.MV := 37.0;

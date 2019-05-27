@@ -1,5 +1,6 @@
 simTime := simTime + 1;
 
+
 IF PID_G1.Control_ON THEN
 //	//Ustawienie wartości PV
 	PID_G1.PV := INT_TO_REAL(T_1)/100.0;
