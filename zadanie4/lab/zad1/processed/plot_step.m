@@ -1,4 +1,4 @@
-load('zlozone.mat')
+%load('zlozone.mat')
 
 % pre = 0;
 % post = 0;

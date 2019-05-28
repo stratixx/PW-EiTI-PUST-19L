@@ -1,12 +1,14 @@
 %clear
-
+load('../processed/zlozone.mat');
 daneDynUczU1 = u1_real;
 daneDynUczU2 = u2_real;
 daneDynUczY = y1_real;
+load('../processed/noweSkokiCo120s.mat');
 daneDynWerU1 = u1_real;
 daneDynWerU2 = u2_real;
 daneDynWerY = y1_real;
 dataLength = length(daneDynUczU1);
+dataVerifLength = length(daneDynWerU1);
 %clear daneDynUcz daneDynWer
 
  daneDynUczU1 = (daneDynUczU1 - mean(daneDynUczU1(1:22)))/15;
@@ -59,7 +61,7 @@ for Na=5:1:Nmax
     errLearn = errLearn / dataLength * 1e5;
     errArray(Na, 2) = errLearn;
     
-    Mverif = ones(dataLength-max([Na,Nb]), 2*Na+Nb);
+    Mverif = ones(dataVerifLength-max([Na,Nb]), 2*Na+Nb);
     %u1
     for n=0:1:(Na-1)
         Mverif(:,n+1) = daneDynWerU1( (max([Na,Nb])-n):(end-n-1) );
@@ -83,7 +85,7 @@ for Na=5:1:Nmax
     end
     
     errVerif = (sum(power( daneDynWerY(max([Na,Nb]+1):end)-YverifCalc(1+Na:end)', 2 )));
-    errVerif = errVerif / dataLength * 1e5;
+    errVerif = errVerif / dataVerifLength * 1e5;
     errArray(Na, 3) = errVerif;
     
     if errVerif<(minErrVerify-minErrDelta)
