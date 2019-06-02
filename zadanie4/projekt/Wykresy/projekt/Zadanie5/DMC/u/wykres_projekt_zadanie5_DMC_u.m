@@ -1,5 +1,5 @@
-addpath('../matlab2tikz-master/src/');
-outputFile = '../Wykresy_tex/proj_zadanie5DMC_u.tex';
+addpath('../../../../../../../matlab2tikz-master/src/');
+outputFile = 'proj_zadanie5DMC_u.tex';
 
 y1 = dlmread('y1.csv','\t');
 y2 = dlmread('y2.csv','\t');

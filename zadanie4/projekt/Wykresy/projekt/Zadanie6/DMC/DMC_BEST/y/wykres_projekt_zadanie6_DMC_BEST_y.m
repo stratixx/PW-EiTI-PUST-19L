@@ -1,5 +1,5 @@
-addpath('../matlab2tikz-master/src/');
-outputFile = '../Wykresy_tex/proj_zadanie6DMC_BEST_y.tex';
+addpath('../../../../../../../../matlab2tikz-master/src/');
+outputFile = 'proj_zadanie6DMC_BEST_y.tex';
 
 y1 = dlmread('y1.csv','\t');
 y2 = dlmread('y2.csv','\t');
@@ -50,7 +50,7 @@ hold on;
 plot(y1zad);
 ylabel('y');
 xlabel('k');
-legend('y_1','y_1_z_a_d','Location', 'NorthEast');
+legend('y_1','y_{1zad}','Location', 'NorthEast');
 grid on;
 %ylim([0 4]);
 
@@ -61,7 +61,7 @@ hold on;
 plot(y2zad);
 ylabel('y');
 xlabel('k');
-legend('y_2','y_2_z_a_d','Location', 'NorthEast');
+legend('y_2','y_{2zad}','Location', 'NorthEast');
 grid on;
 %ylim([0 4]);
 
@@ -72,7 +72,7 @@ hold on;
 plot(y3zad);
 ylabel('y');
 xlabel('k');
-legend('y_3','y_3_z_a_d','Location', 'NorthEast');
+legend('y_3','y_{3zad}','Location', 'NorthEast');
 grid on;
 %ylim([0 4]);
 
