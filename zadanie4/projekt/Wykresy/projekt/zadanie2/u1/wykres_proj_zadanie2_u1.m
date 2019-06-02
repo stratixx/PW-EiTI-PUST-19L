@@ -1,5 +1,5 @@
-addpath('../matlab2tikz-master/src/');
-outputFile = '../Wykresy_tex/proj_zadanie2u1.tex';
+addpath('../../../../../../matlab2tikz-master/src/');
+outputFile = 'proj_zadanie2u1.tex';
 
 y1 = dlmread('zad2_y1_u1.csv','\t');
 y2 = dlmread('zad2_y2_u1.csv','\t');
@@ -45,18 +45,18 @@ title('y');
 
 subplot(3,1, 1);
 plot(y1);
-ylabel('S^1^,^1');
+ylabel('S^{1,1}');
 xlabel('k');
-legend('S^1^,^1', 'Location', 'NorthEast');
+legend('S^{1,1}', 'Location', 'NorthEast');
 grid on;
 ylim([0 4]);
 
 
 subplot(3,1, 2);
 plot(y2);
-ylabel('S^2^,^1');
+ylabel('S^{2,1}');
 xlabel('k');
-legend('S^2^,^1', 'Location', 'NorthEast');
+legend('S^{2,1}', 'Location', 'NorthEast');
 grid on;
 ylim([0 4]);
 
@@ -64,9 +64,9 @@ subplot(3,1, 3);
 
 plot(y3);
 legend('y3', 'Location', 'NorthEast');
-ylabel('S^3^,^1');
+ylabel('S^{3,1}');
 xlabel('k');
-legend('S^3^,^1', 'Location', 'NorthEast');
+legend('S^{3,1}', 'Location', 'NorthEast');
 grid on;
 ylim([0 4]);
 %box on;
