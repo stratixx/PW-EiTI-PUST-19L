@@ -7,17 +7,25 @@ if( isequal(mode, 'real') )
     %addpath ('F:\SerialCommunication') ; % add a path
     %initSerialControl COM5 % initialise com port
 else
-    load('zad1/modelReccur/u1y1/model.mat');
-    load('zad1/modelReccur/u1y2/model.mat');
-    load('zad1/modelReccur/u2y1/model.mat');
-    load('zad1/modelReccur/u2y2/model.mat');
+    load('zad1/modelReccur/u12y1/newModel.mat');
+    load('zad1/modelReccur/u12y2/newModel.mat');
+    y11 = fliplr(y11');
+    y22 = fliplr(y22');
+    u1_1 = fliplr(u1_1');
+    u2_1 = fliplr(u2_1');
+    u1_2 = fliplr(u1_2');
+    u2_2 = fliplr(u2_2');
 end
 % wybor trybu pracy
 % setpoint, stepsU, stepsYzad
+<<<<<<< HEAD
 action = 'setpoint';
+=======
+action = 'stepsU';
+>>>>>>> d0c7650302b7fbfb6bec45be8a0481e1069e8e26
 % wybor regulatora
 % none, PID_linear, DMC_linear
-regulator = 'DMC_linear';
+regulator = 'none';
 
 % parametry skryptu
 kk = 2000;
@@ -138,38 +146,45 @@ while k<=kk
         %y(k)=measurements(1); % powiekszamy wektor y o element Y
     else
         %dopasowanie punktu pracy
-        u1(k-1) = u1(k-1) - G1;
-        u2(k-1) = u2(k-1) - G2;
-        y1(k-1) = y1(k-1) - T1;
-        y2(k-1) = y2(k-1) - T2;
-        u1(k-2) = u1(k-2) - G1;
-        u2(k-2) = u2(k-2) - G2;
-        y1(k-2) = y1(k-2) - T1;
-        y2(k-2) = y2(k-2) - T2;
+%         u1(k-1) = u1(k-1) - G1;
+%         u2(k-1) = u2(k-1) - G2;
+%         y1(k-1) = y1(k-1) - T1;
+%         y2(k-1) = y2(k-1) - T2;
+%         u1(k-2) = u1(k-2) - G1;
+%         u2(k-2) = u2(k-2) - G2;
+%         y1(k-2) = y1(k-2) - T1;
+%         y2(k-2) = y2(k-2) - T2;
         
-        y1(k) = u11_1 * u1(k-1) + u11_2 * u1(k-2) + ...
-                y11_1 * y1(k-1) + y11_2 * y1(k-2) + ...
-                u21_1 * u2(k-1) + u21_2 * u2(k-2) ;%+ ...
-                %y21_1 * y1(k-1) + y21_2 * y1(k-2) ;
-            
-        y2(k) = u22_1 * u2(k-1) + u22_2 * u2(k-2) + ...
-                y22_1 * y2(k-1) + y22_2 * y2(k-2) + ...
-                u12_1 * u1(k-1) + u12_2 * u1(k-2) ;%+ ...
-                %y12_1 * y2(k-1) + y12_2 * y2(k-2) ;
+        y1(k) = y11 * y1(k-size(y11,2):k-1)' + ...
+                u1_1 * u1(k-size(u1_1,2):k-1)' + ...
+                u2_1 * u2(k-size(u2_1,2):k-1)'; 
+        
+        y2(k) = y22 * y2(k-size(y22,2):k-1)' + ...
+                u1_2 * u1(k-size(u1_2,2):k-1)' + ...
+                u2_2 * u2(k-size(u2_2,2):k-1)'; 
+%         y1(k) = u11_1 * u1(k-1) + u11_2 * u1(k-2) + ...
+%                 y11_1 * y1(k-1) + y11_2 * y1(k-2) + ...
+%                 u21_1 * u2(k-1) + u21_2 * u2(k-2) ;%+ ...
+%                 %y21_1 * y1(k-1) + y21_2 * y1(k-2) ;
+%             
+%         y2(k) = u22_1 * u2(k-1) + u22_2 * u2(k-2) + ...
+%                 y22_1 * y2(k-1) + y22_2 * y2(k-2) + ...
+%                 u12_1 * u1(k-1) + u12_2 * u1(k-2) ;%+ ...
+%                 %y12_1 * y2(k-1) + y12_2 * y2(k-2) ;
        
         %dopasowanie punktu pracy
 %         u1(k) = u1(k) + G1;
 %         u2(k) = u2(k) + G2;
-        y1(k) = y1(k) + T1;
-        y2(k) = y2(k) + T2;
-        u1(k-1) = u1(k-1) + G1;
-        u2(k-1) = u2(k-1) + G2;
-        y1(k-1) = y1(k-1) + T1;
-        y2(k-1) = y2(k-1) + T2;
-        u1(k-2) = u1(k-2) + G1;
-        u2(k-2) = u2(k-2) + G2;
-        y1(k-2) = y1(k-2) + T1;
-        y2(k-2) = y2(k-2) + T2;     
+%         y1(k) = y1(k) + T1;
+%         y2(k) = y2(k) + T2;
+%         u1(k-1) = u1(k-1) + G1;
+%         u2(k-1) = u2(k-1) + G2;
+%         y1(k-1) = y1(k-1) + T1;
+%         y2(k-1) = y2(k-1) + T2;
+%         u1(k-2) = u1(k-2) + G1;
+%         u2(k-2) = u2(k-2) + G2;
+%         y1(k-2) = y1(k-2) + T1;
+%         y2(k-2) = y2(k-2) + T2;     
     end
     
     % podazanie do setpoint
@@ -319,7 +334,7 @@ clf(1);
 subplot(2,1,1)
 hold on;
 plot(y1(offset:end)); % wyswietlamy y w czasie
-plot(yzad1(offset:end)); % wyswietlamy yzad w czasie
+%plot(yzad1(offset:end)); % wyswietlamy yzad w czasie
 %title('y1');
 grid on;
 xlabel('time');
@@ -333,7 +348,7 @@ legend('y1', 'yzad1')
 subplot(2,1,2)
 hold on;
 plot(y2(offset:end)); % wyswietlamy y w czasie
-plot(yzad2(offset:end)); % wyswietlamy yzad w czasie
+%plot(yzad2(offset:end)); % wyswietlamy yzad w czasie
 title('y y_z_a_d');
 grid on;
 xlabel('time');
@@ -362,27 +377,27 @@ ylabel('value');
 xlim([1 (ceil((k-1+1)/100)*100)]);
 legend('u2')
 
-%  load('zad1/processed/zlozone.mat')  
-%  %rysowanie danych z modelu
-% figure(1);
-% subplot(2,1,1)
-% hold on;
-% plot(y1_real); % wyswietlamy y w czasie
-% legend('y1_m_o_d_e_l', 'y1_r_e_a_l')
-% 
-% subplot(2,1,2)
-% hold on;
-% plot(y2_real); % wyswietlamy y w czasie
-% legend('y2_m_o_d_e_l', 'y2_r_e_a_l')
-% 
-% figure(2); 
-% subplot(2,1,1)
-% hold on;
-% plot(u1_real); % wyswietlamy u w czasie
-% legend('u1_m_o_d_e_l', 'u1_r_e_a_l')
-% 
-% subplot(2,1,2)
-% hold on;
-% plot(u2_real); % wyswietlamy u w czasie
-% legend('u2_m_o_d_e_l', 'u2_r_e_a_l')
+ load('zad1/processed/zlozone.mat')  
+ %rysowanie danych z modelu
+figure(1);
+subplot(2,1,1)
+hold on;
+plot(y1_real); % wyswietlamy y w czasie
+legend('y1_m_o_d_e_l', 'y1_r_e_a_l')
+
+subplot(2,1,2)
+hold on;
+plot(y2_real); % wyswietlamy y w czasie
+legend('y2_m_o_d_e_l', 'y2_r_e_a_l')
+
+figure(2); 
+subplot(2,1,1)
+hold on;
+plot(u1_real); % wyswietlamy u w czasie
+legend('u1_m_o_d_e_l', 'u1_r_e_a_l')
+
+subplot(2,1,2)
+hold on;
+plot(u2_real); % wyswietlamy u w czasie
+legend('u2_m_o_d_e_l', 'u2_r_e_a_l')
 

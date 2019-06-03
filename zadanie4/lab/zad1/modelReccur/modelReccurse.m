@@ -1,23 +1,26 @@
 %clear
-
+load('../processed/zlozone.mat');
 daneDynUczU1 = u1_real;
 daneDynUczU2 = u2_real;
 daneDynUczY = y1_real;
+load('../processed/noweSkokiCo60s.mat');
 daneDynWerU1 = u1_real;
 daneDynWerU2 = u2_real;
 daneDynWerY = y1_real;
-dataLength = length(daneDynUczU1);
-%clear daneDynUcz daneDynWer
 
- daneDynUczU1 = (daneDynUczU1 - mean(daneDynUczU1(1:22)))/15;
- daneDynUczU2 = (daneDynUczU2 - mean(daneDynUczU2(1:22)))/15;
- daneDynUczY = (daneDynUczY - mean(daneDynUczY(1:22)))/15;
- daneDynWerU1 = (daneDynWerU1 - mean(daneDynWerU1(1:22)))/15;
- daneDynWerU2 = (daneDynWerU2 - mean(daneDynWerU2(1:22)))/15;
- daneDynWerY = (daneDynWerY - mean(daneDynWerY(1:22)))/15;
+dataLength = length(daneDynUczU1);
+dataVerifLength = length(daneDynWerU1);
+%clear d aneDynUcz daneDynWer
+
+%  daneDynUczU1 = (daneDynUczU1 - mean(daneDynUczU1(1:1)))/15;
+%  daneDynUczU2 = (daneDynUczU2 - mean(daneDynUczU2(1:1)))/15;
+%  daneDynUczY = (daneDynUczY - mean(daneDynUczY(1:1)))/15;
+%  daneDynWerU1 = (daneDynWerU1 - mean(daneDynWerU1(1:1)))/15;
+%  daneDynWerU2 = (daneDynWerU2 - mean(daneDynWerU2(1:1)))/15;
+%  daneDynWerY = (daneDynWerY - mean(daneDynWerY(54)))/15;
 
 configuration = 'u12y1';
-Nmax = 29;
+Nmax = 3;
 Na=7;
 Nb=Na;
 N=0;
@@ -26,7 +29,7 @@ minErrVerifyN = 1000;
 minErrDelta = 1000;
 errArray = zeros(Nmax,3);
 
-for Na=5:1:Nmax
+for Na=1:1:Nmax
     Na
     Nb=Na
     errArray(Na, 1) = Na;
@@ -49,17 +52,18 @@ for Na=5:1:Nmax
     
     Wlearn = Mlearn\daneDynUczY(max([Na,Nb]+1):end);
     
-    YlearnCalc = daneDynUczY';
+    YlearnCalc = daneDynUczY;
+    %YlearnCalc = zeros(size(daneDynUczY));
     
     for k=Na+1:1:length(YlearnCalc)
-       YlearnCalc(k)= [ flip(daneDynUczU1(k-Na:k-1)'), flip(daneDynUczU2(k-Na:k-1)'), flip(YlearnCalc(k-Na:k-1)) ] * Wlearn; 
+       YlearnCalc(k)= [ flip(daneDynUczU1(k-Na:k-1)'), flip(daneDynUczU2(k-Na:k-1)'), flip(daneDynUczY(k-Na:k-1))' ] * Wlearn; 
     end
     
-    errLearn = (sum(power( daneDynUczY(max([Na,Nb]+1):end)-YlearnCalc(1+Na:end)', 2 )));
+    errLearn = (sum(power( daneDynUczY(max([Na,Nb]+1):end)-YlearnCalc(1+Na:end), 2 )));
     errLearn = errLearn / dataLength * 1e5;
     errArray(Na, 2) = errLearn;
     
-    Mverif = ones(dataLength-max([Na,Nb]), 2*Na+Nb);
+    Mverif = ones(dataVerifLength-max([Na,Nb]), 2*Na+Nb);
     %u1
     for n=0:1:(Na-1)
         Mverif(:,n+1) = daneDynWerU1( (max([Na,Nb])-n):(end-n-1) );
@@ -75,21 +79,24 @@ for Na=5:1:Nmax
         Mverif(:,2*Na+n+1) = daneDynWerY( (max([Na,Nb])-n):(end-n-1) );
     end
     
-    %Wverif = Mverif\daneDynWerY(max([Na,Nb]+1):end);
-    YverifCalc = daneDynWerY';
+    YverifCalc = daneDynWerY;
     
     for k=Na+1:1:length(YverifCalc)
-       YverifCalc(k)= [ flip(daneDynUczU1(k-Na:k-1)'), flip(daneDynUczU2(k-Na:k-1)'), flip(YverifCalc(k-Na:k-1)) ] * Wlearn; 
+       YverifCalc(k)= [ flip(daneDynWerU1(k-Na:k-1)'), flip(daneDynWerU2(k-Na:k-1)'), flip(daneDynWerY(k-Na:k-1))' ] * Wlearn; 
     end
     
-    errVerif = (sum(power( daneDynWerY(max([Na,Nb]+1):end)-YverifCalc(1+Na:end)', 2 )));
-    errVerif = errVerif / dataLength * 1e5;
+    errVerif = (sum(power( daneDynWerY(max([Na,Nb]+1):end)-YverifCalc(1+Na:end), 2 )));
+    errVerif = errVerif / dataVerifLength * 1e5;
     errArray(Na, 3) = errVerif;
     
     if errVerif<(minErrVerify-minErrDelta)
         minErrVerify = errVerif;
         minErrVerifyN = Na;
     end
+    
+    %u1_2 = Wlearn(1:Na); u2_2 = Wlearn(Na+1:2*Na); y22 = Wlearn(2*Na+1:2*Na+Nb);
+    u1_1 = Wlearn(1:Na); u2_1 = Wlearn(Na+1:2*Na); y11 = Wlearn(2*Na+1:2*Na+Nb);
+    
     %continue
     figure(1)
     
