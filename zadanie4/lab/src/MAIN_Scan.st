@@ -8,7 +8,7 @@ SET(LDP(TRUE,TS0),Pozwolenie_zapis_MODBUS);
 
 EI(TRUE); //przerwania zalaczone
 
-TIM_MAIN(PT:= T#120s);
+TIM_MAIN(PT:= T#200s);
 
 CASE  Stan_MAIN  OF
 		
@@ -20,8 +20,8 @@ CASE  Stan_MAIN  OF
 
 	1:
 		IF TIM_MAIN.Q THEN
-			T_1_zad := 390;
-			T_3_zad := 410;
+			T_1_zad := 4000;
+			T_3_zad := 4200;
 			TIM_MAIN.IN := 0;
 			Stan_MAIN := 2;		
 		END_IF;	
@@ -34,8 +34,8 @@ CASE  Stan_MAIN  OF
 
 	3:
 		IF TIM_MAIN.Q THEN
-			T_1_zad := 540;
-			T_3_zad := 410;
+			T_1_zad := 5500;
+			T_3_zad := 4200;
 			TIM_MAIN.IN := 0;
 			Stan_MAIN := 4;		
 		END_IF;		
@@ -49,8 +49,8 @@ CASE  Stan_MAIN  OF
 
 	5:
 		IF TIM_MAIN.Q THEN
-			T_1_zad := 390;
-			T_3_zad := 410;
+			T_1_zad := 4000;
+			T_3_zad := 4200;
 			TIM_MAIN.IN := 0;
 			Stan_MAIN := 6;		
 		END_IF;		
@@ -63,8 +63,8 @@ CASE  Stan_MAIN  OF
 
 	7:
 		IF TIM_MAIN.Q THEN
-			T_1_zad := 390;
-			T_3_zad := 560;
+			T_1_zad := 4000;
+			T_3_zad := 5700;
 			TIM_MAIN.IN := 0;
 			Stan_MAIN := 0;		
 		END_IF;		
@@ -72,11 +72,11 @@ CASE  Stan_MAIN  OF
 		
 END_CASE;
 
-//DMC_G1.PV := INT_TO_REAL(T_1_zad)/100.0;
-//DMC_G2.PV := INT_TO_REAL(T_3_zad)/100.0;
-//PID_G1.PV := INT_TO_REAL(T_1_zad)/100.0;
-//PID_G2.PV := INT_TO_REAL(T_3_zad)/100.0;
+DMC_G1.SV := INT_TO_REAL(T_1_zad)/100.0;
+DMC_G2.SV := INT_TO_REAL(T_3_zad)/100.0;
+PID_G1.SV := INT_TO_REAL(T_1_zad)/100.0;
+PID_G2.SV := INT_TO_REAL(T_3_zad)/100.0;
 
 
-G_1 := T_1_zad;
-G_2 := T_3_zad;
+//G_1 := T_1_zad;
+//G_2 := T_3_zad;

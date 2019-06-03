@@ -7,7 +7,7 @@
 %				przeznaczonego do uruchomienia w systemie wbudowanym
 
 % Założone parametry regulatora
-lam = 0.2
+lam = 1
 load('../zad1/esy/s1.mat')
 s = s1aprox;
 D1 = length(s); % horyzont dynamiki

@@ -14,7 +14,7 @@ else
 end
 % wybor trybu pracy
 % setpoint, stepsU, stepsYzad
-action = 'stepsYzad';
+action = 'setpoint';
 % wybor regulatora
 % none, PID_linear, DMC_linear
 regulator = 'DMC_linear';

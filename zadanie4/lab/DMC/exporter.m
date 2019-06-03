@@ -10,14 +10,14 @@
 fileID = fopen('DMC_data.st','w');
 
 fprintf(fileID,'//Parametry regulatora DMC1\n');
-fprintf(fileID,'DMC_G1.D := %d;\n', D1);
-fprintf(fileID,'DMC_G1.N := %d;\n', N1);
+fprintf(fileID,'DMC_G1.D_ := %d;\n', D1);
+fprintf(fileID,'DMC_G1.N_ := %d;\n', N1);
 fprintf(fileID,'DMC_G1.Nu := %d;\n', Nu1);
 fprintf(fileID,'DMC_G1.lambda := %f;\n\n', lambda1);
 
 fprintf(fileID,'//Parametry regulatora DMC2\n');
-fprintf(fileID,'DMC_G2.D := %d;\n', D2);
-fprintf(fileID,'DMC_G2.N := %d;\n', N2);
+fprintf(fileID,'DMC_G2.D_ := %d;\n', D2);
+fprintf(fileID,'DMC_G2.N_ := %d;\n', N2);
 fprintf(fileID,'DMC_G2.Nu := %d;\n', Nu2);
 fprintf(fileID,'DMC_G2.lambda := %f;\n\n', lambda2);
 
