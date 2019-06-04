@@ -1,4 +1,5 @@
-%zadanie 3 i 4 - Skrypt realizujacy algorytm cyfrowego wielowymiarowego regulatora PID
+%zadanie 3 i 4 - Skrypt realizujacy algorytm cyfrowego 
+%                   wielowymiarowego regulatora PID
 %inicjalizacja
 clear all
 
@@ -51,11 +52,17 @@ elseif ster == 4
 end
 
 %nastawy regulatorow dyskretnego
-r21 = Kr1*Td1/Tp; r11 = Kr1*(Tp/(2*Ti1)-2*Td1/Tp-1); r01 = Kr1*(1+Tp/(2*Ti1)+Td1/Tp);
+r21 = Kr1*Td1/Tp; 
+r11 = Kr1*(Tp/(2*Ti1)-2*Td1/Tp-1); 
+r01 = Kr1*(1+Tp/(2*Ti1)+Td1/Tp);
 
-r22 = Kr2*Td2/Tp; r12 = Kr2*(Tp/(2*Ti2)-2*Td2/Tp-1); r02 = Kr2*(1+Tp/(2*Ti2)+Td2/Tp);
+r22 = Kr2*Td2/Tp; 
+r12 = Kr2*(Tp/(2*Ti2)-2*Td2/Tp-1); 
+r02 = Kr2*(1+Tp/(2*Ti2)+Td2/Tp);
 
-r23 = Kr3*Td3/Tp; r13 = Kr3*(Tp/(2*Ti3)-2*Td3/Tp-1); r03 = Kr3*(1+Tp/(2*Ti3)+Td3/Tp);
+r23 = Kr3*Td3/Tp; 
+r13 = Kr3*(Tp/(2*Ti3)-2*Td3/Tp-1); 
+r03 = Kr3*(1+Tp/(2*Ti3)+Td3/Tp);
 
 %parametry symulacji
 kk = 1600;
@@ -89,12 +96,17 @@ y3_zad(400:800) = 0.8;
 y3_zad(800:1200) = 2;
 y3_zad(1200:kk) = 0.2;
 
-for k = start:kk %glowna petla symulacyjna 
+%glowna petla symulacyjna 
+for k = start:kk 
     %symulacja obiektu 
-       [y1(k),y2(k),y3(k)] = symulacja_obiektu7(u1(k-1),u1(k-2),u1(k-3),u1(k-4),...
-       u2(k-1),u2(k-2),u2(k-3),u2(k-4),u3(k-1),u3(k-2),u3(k-3),u3(k-4),...
-       u4(k-1),u4(k-2),u4(k-3),u4(k-4),y1(k-1),y1(k-2),y1(k-3),y1(k-4),...
-       y2(k-1),y2(k-2),y2(k-3),y2(k-4),y3(k-1),y3(k-2),y3(k-3),y3(k-4)); 
+   [y1(k),y2(k),y3(k)] = symulacja_obiektu7(...
+       u1(k-1),u1(k-2),u1(k-3),u1(k-4),...
+       u2(k-1),u2(k-2),u2(k-3),u2(k-4),...
+       u3(k-1),u3(k-2),u3(k-3),u3(k-4),...
+       u4(k-1),u4(k-2),u4(k-3),u4(k-4),...
+       y1(k-1),y1(k-2),y1(k-3),y1(k-4),...
+       y2(k-1),y2(k-2),y2(k-3),y2(k-4),...
+       y3(k-1),y3(k-2),y3(k-3),y3(k-4)); 
    
    %uchyb regulacji
     e(1,k) = y1_zad(k) - y1(k);
@@ -102,21 +114,33 @@ for k = start:kk %glowna petla symulacyjna
     e(3,k) = y3_zad(k) - y3(k); 
 
     if ster == 1
-        u2(k) = r21*e(3,k-2)+r11*e(3,k-1)+r01*e(3,k)+u2(k-1);%y3 od u2
-        u3(k) = r22*e(2,k-2)+r12*e(2,k-1)+r02*e(2,k)+u3(k-1);%y2 od u3
-        u4(k) = r23*e(1,k-2)+r13*e(1,k-1)+r03*e(1,k)+u4(k-1);%y1 od u4
+        u2(k) = r21*e(3,k-2)+r11*e(3,k-1)+...
+                r01*e(3,k)+u2(k-1);%y3 od u2
+        u3(k) = r22*e(2,k-2)+r12*e(2,k-1)+...
+                r02*e(2,k)+u3(k-1);%y2 od u3
+        u4(k) = r23*e(1,k-2)+r13*e(1,k-1)+...
+                r03*e(1,k)+u4(k-1);%y1 od u4
     elseif ster == 2
-        u1(k) = r21*e(3,k-2)+r11*e(3,k-1)+r01*e(3,k)+u1(k-1);%y3 od u1
-        u3(k) = r22*e(2,k-2)+r12*e(2,k-1)+r02*e(2,k)+u2(k-1);%y2 od u3
-        u4(k) = r23*e(1,k-2)+r13*e(1,k-1)+r03*e(1,k)+u4(k-1);%y1 od u4
+        u1(k) = r21*e(3,k-2)+r11*e(3,k-1)+...
+                r01*e(3,k)+u1(k-1);%y3 od u1
+        u3(k) = r22*e(2,k-2)+r12*e(2,k-1)+...
+                r02*e(2,k)+u2(k-1);%y2 od u3
+        u4(k) = r23*e(1,k-2)+r13*e(1,k-1)+...
+                r03*e(1,k)+u4(k-1);%y1 od u4
     elseif ster == 3
-        u1(k) = r21*e(3,k-2)+r11*e(3,k-1)+r01*e(3,k)+u1(k-1);%y3 od u1
-        u2(k) = r22*e(2,k-2)+r12*e(2,k-1)+r02*e(2,k)+u2(k-1);%y2 od u2
-        u4(k) = r23*e(1,k-2)+r13*e(1,k-1)+r03*e(1,k)+u4(k-1);%y1 od u4 
+        u1(k) = r21*e(3,k-2)+r11*e(3,k-1)+...
+                r01*e(3,k)+u1(k-1);%y3 od u1
+        u2(k) = r22*e(2,k-2)+r12*e(2,k-1)+...
+                r02*e(2,k)+u2(k-1);%y2 od u2
+        u4(k) = r23*e(1,k-2)+r13*e(1,k-1)+...
+                r03*e(1,k)+u4(k-1);%y1 od u4 
     elseif ster == 4
-        u1(k) = r21*e(3,k-2)+r11*e(3,k-1)+r01*e(3,k)+u1(k-1);%y3 dla u1
-        u2(k) = r22*e(2,k-2)+r12*e(2,k-1)+r02*e(2,k)+u2(k-1);%y2 dla u2
-        u3(k) = r23*e(1,k-2)+r13*e(1,k-1)+r03*e(1,k)+u3(k-1);%y1 dla u3
+        u1(k) = r21*e(3,k-2)+r11*e(3,k-1)+...
+                r01*e(3,k)+u1(k-1);%y3 dla u1
+        u2(k) = r22*e(2,k-2)+r12*e(2,k-1)+...
+                r02*e(2,k)+u2(k-1);%y2 dla u2
+        u3(k) = r23*e(1,k-2)+r13*e(1,k-1)+...
+                r03*e(1,k)+u3(k-1);%y1 dla u3
     end
      
      %bledy

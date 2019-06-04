@@ -1,4 +1,5 @@
-%zadanie 6 - Skrypt relizujacy algorytm DMC regulatora klasycznego wielowymiarowego
+%zadanie 6 - Skrypt relizujacy algorytm DMC 
+%            regulatora klasycznego wielowymiarowego
 clear all
 
 %nastawy regulatora DMC

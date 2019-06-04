@@ -1,4 +1,5 @@
-%zadanie 3 i 4 - Skrypt relizujacy algorytm DMC regulatora uproszczonego wielowymiarowego
+%zadanie 3 i 4 - Skrypt relizujacy algorytm DMC regulatora 
+%                uproszczonego wielowymiarowego
 clear all
 
 %nastawy regulatora DMC
@@ -55,8 +56,6 @@ for i=1:Nu
     M(i:N,i)=S(1:N-i+1);
     M(1:i-1,i)={[0 0 0 0; 0 0 0 0; 0 0 0 0]};
 end
-
-% Obliczanie parametrów regulatora
 
 %Macierz lambda
 for i=1:Nu
@@ -174,13 +173,17 @@ y3_zad(1200:kk) = 0.2;
 
 % Symulacja
 for k = start:kk
-   % Równanie róznicowe
-   [y1(k),y2(k),y3(k)] = symulacja_obiektu7(u1(k-1),u1(k-2),u1(k-3),u1(k-4),...
-       u2(k-1),u2(k-2),u2(k-3),u2(k-4),u3(k-1),u3(k-2),u3(k-3),u3(k-4),...
-       u4(k-1),u4(k-2),u4(k-3),u4(k-4),y1(k-1),y1(k-2),y1(k-3),y1(k-4),...
-       y2(k-1),y2(k-2),y2(k-3),y2(k-4),y3(k-1),y3(k-2),y3(k-3),y3(k-4)); 
+    %symulacja obiektu 
+    [y1(k),y2(k),y3(k)] = symulacja_obiektu7(...
+       u1(k-1),u1(k-2),u1(k-3),u1(k-4),...
+       u2(k-1),u2(k-2),u2(k-3),u2(k-4),...
+       u3(k-1),u3(k-2),u3(k-3),u3(k-4),...
+       u4(k-1),u4(k-2),u4(k-3),u4(k-4),...
+       y1(k-1),y1(k-2),y1(k-3),y1(k-4),...
+       y2(k-1),y2(k-2),y2(k-3),y2(k-4),...
+       y3(k-1),y3(k-2),y3(k-3),y3(k-4));  
    
-   % Regulator 
+    %Regulator 
     delta_y(1) = y1_zad(k) - y1(k);
     delta_y(2) = y2_zad(k) - y2(k);
     delta_y(3) = y3_zad(k) - y3(k);

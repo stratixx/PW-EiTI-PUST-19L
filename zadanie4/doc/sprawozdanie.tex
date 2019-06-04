@@ -103,6 +103,10 @@
 
 %czy kompilowac sprawozdanie z wykresami
 %\newcommand*{\CompileFigures}{}
+%czy kompilowac sprawozdanie z listingami kodu
+\newcommand*{\CompileListings}{}
+%czy kompilowac sprawozdanie z obrazkami
+%\newcommand*{\CompileImages}{}
 
 \begin{document}
 \frenchspacing
@@ -146,6 +150,8 @@
 
 \tableofcontents
 \chapter{Projekt}
+%ustawienie stylu formatowania listingów kodu Matlaba
+\lstset{style=custommatlab}
 \input{projekt/zad1}
 \input{projekt/zad2}
 \input{projekt/zad3}
