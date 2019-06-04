@@ -14,8 +14,25 @@
 Na	sterowniku	zaimplementowano	uwzględniając	ograniczenia	dwupętlowy	
 regulator	PID. Metodą	eksperymentalną	 dobrano	nastawy	regulatora.
 
-\subsubsection{Implementacja regulatora}
+\subsubsection{Implementacja regulatora PID toru T1-G1}
 
+\ifdefined\CompileListings
+    \lstinputlisting[
+        firstline=33, 
+        lastline=46, 
+        caption="Inicjacja parametrów regulatora PID toru T1-G1"]
+        {../lab/src/Init_Initial.st}
+    \newpage
+\fi
+
+\ifdefined\CompileListings
+    \lstinputlisting[
+        firstline=4, 
+        lastline=48, 
+        caption="Program regulatora PID toru T1-G1"]
+        {../lab/src/PID_R_FixedScan.st}
+    \newpage
+\fi
 
 \subsubsection{Wyznaczenie modelu obiektu}
 

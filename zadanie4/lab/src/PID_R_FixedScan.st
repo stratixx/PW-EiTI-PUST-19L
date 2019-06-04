@@ -1,15 +1,27 @@
 simTime := simTime + 1;
 
 
+//Program: PID_R; Typ: FixedScan 4000ms
 IF PID_G1.Control_ON THEN
-//	//Ustawienie wartości PV
+//	//Ustawienie wartosci PV
 	PID_G1.PV := INT_TO_REAL(T_1)/100.0;
 	
 	
 	//Wyliczenie parametrow
-	PID_G1.Rp0 := PID_G1.K_gain*(1.0+(PID_G1.sampling_time/(2.0*PID_G1.TI))+PID_G1.TD/PID_G1.sampling_time);//r0 = K*( 1+(Tp/(2*Ti))+Td/Tp );
-	PID_G1.Rp1 := PID_G1.K_gain*((PID_G1.sampling_time/(2.0*PID_G1.TI))-(2.0*PID_G1.TD/PID_G1.sampling_time)-1.0);//r1 = K*( (Tp/(2*Ti))-(2*Td/Tp)-1 );
-	PID_G1.Rp2 := PID_G1.K_gain*PID_G1.TD/PID_G1.sampling_time;//K*Td/Tp;
+	//r0 = K*( 1+(Tp/(2*Ti))+Td/Tp );
+	PID_G1.Rp0 := PID_G1.K_gain*(
+		1.0
+		+(PID_G1.sampling_time/(2.0*PID_G1.TI))
+		+PID_G1.TD/PID_G1.sampling_time
+		);
+	//r1 = K*( (Tp/(2*Ti))-(2*Td/Tp)-1 );
+	PID_G1.Rp1 := PID_G1.K_gain*(
+		(PID_G1.sampling_time/(2.0*PID_G1.TI))
+		-(2.0*PID_G1.TD/PID_G1.sampling_time)
+		-1.0
+		);
+	//K*Td/Tp;
+	PID_G1.Rp2 := PID_G1.K_gain*PID_G1.TD/PID_G1.sampling_time;
 	
 	//Wyliczenie uchybu regulacji i przesuniecie historii
 	PID_G1.Ep2 := PID_G1.Ep1;
@@ -17,10 +29,13 @@ IF PID_G1.Control_ON THEN
 	PID_G1.Ep0 := PID_G1.SV - PID_G1.PV;
 
 	//Obliczenie sterowania
-	PID_G1.MV := PID_G1.Rp2*PID_G1.Ep2 + PID_G1.Rp1*PID_G1.Ep1 +
-	PID_G1.Rp0*PID_G1.Ep0 + PID_G1.MV;//u = R2*E2 + R1*E1 + R0*E0 + u;
+	//u = R2*E2 + R1*E1 + R0*E0 + u;
+	PID_G1.MV := PID_G1.Rp2*PID_G1.Ep2 
+		+PID_G1.Rp1*PID_G1.Ep1 
+		+PID_G1.Rp0*PID_G1.Ep0 
+		+PID_G1.MV;
 	
-	//ANTI WIND UP
+	//Ograniczenia sterowania
 	IF (PID_G1.MV > 100.0) THEN
 		PID_G1.MV := 100.0;
 	END_IF;
@@ -36,7 +51,7 @@ END_IF;
 
 
 IF PID_G2.Control_ON THEN
-	//Ustawienie wartości PV
+	//Ustawienie wartosci PV
 	PID_G2.PV := INT_TO_REAL(T_3)/100.0;
 	
 	

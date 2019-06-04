@@ -14,19 +14,23 @@ IF(Pomiar_MODBUS) THEN
 	MOV(TRUE, D102, T_3);
 END_IF;
 
-
+// Program: Modbus; Typ: Scan
+// Jesli czujnik T1 wskazuje ponad 150 stopni
 IF(T_1 >= K15000) THEN
 	SET(TRUE, T_1_alarm);
 END_IF;
 
+// Jesli czujnik T1 wskazuje ponad 150 stopni
 IF(T_3 >= K15000) THEN
 	SET(TRUE, T_3_alarm);
 END_IF;
 
+// Jesli aktywny alarm T1 wylacz grzalke G1
 IF(T_1_alarm) THEN
 	MOV(TRUE, K0, G_1);
 END_IF;
 
+// Jesli aktywny alarm T3 wylacz grzalke G2
 IF(T_3_alarm) THEN
 	MOV(TRUE, K0, G_2);
 END_IF;

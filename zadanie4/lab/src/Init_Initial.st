@@ -30,6 +30,7 @@ SD414 := 2; //timer 2n, ktorego odliczenie odczytujemy z SM414 // ustawiony okre
 T_1_zad := 390;
 T_3_zad := 410;
 
+//Program: Init; Typ: Initial
 //init regulatora PID_G1
 PID_G1.K_gain := 30.1;
 PID_G1.TI := 25.0;
@@ -44,6 +45,7 @@ PID_G1.sampling_time := 4.0;
 PID_G1.SV := 36.68;
 PID_G1.MV := 32.0;
 
+//Program: Init; Typ: Initial
 //init regulatora PID_G2
 PID_G2.K_gain := 30.7;
 PID_G2.TI := 25.5;
