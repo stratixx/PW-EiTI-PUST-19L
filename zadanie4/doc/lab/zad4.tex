@@ -22,6 +22,65 @@ Wykresy
 
 \subsubsection{Implementacja}
 
+\lstset{style=custommatlab}
+\ifdefined\CompileListings
+    \lstinputlisting[
+        firstline=6, 
+        lastline=41, 
+        caption="Skrypt generujący parametry regulatora DMC"]
+        {../lab/DMC/DMC_script.m}
+    %\newpage
+\fi
+
+\lstset{style=custommatlab}
+\ifdefined\CompileListings
+    \lstinputlisting[
+        firstline=6, 
+        lastline=24, 
+        caption="Skrypt wyliczający parametry regulatora DMC"]
+        {../lab/DMC/DMC_init.m}
+    \newpage
+\fi
+
+\lstset{style=custommatlab}
+\ifdefined\CompileListings
+    \lstinputlisting[
+        firstline=6, 
+        lastline=49, 
+        caption="Skrypt eksportujący parametry regulatora DMC do pliku"]
+        {../lab/DMC/exporter.m}
+    \newpage
+\fi
+
+\lstset{style=custommatlab}
+\ifdefined\CompileListings
+    \lstinputlisting[
+        firstline=1, 
+        lastline=51, 
+        caption="Wygenerowany program ST inicjujący regulatory DMC"]
+        {../lab/DMC/DMC_data.st}
+    \newpage
+\fi
+
+\lstset{style=customc}
+\ifdefined\CompileListings
+    \lstinputlisting[
+        firstline=1, 
+        lastline=39, 
+        caption="Program ST implementujący algorytm DMC toru G1-T1"]
+        {../lab/src/DMC_R_FixedScan.st}
+    \newpage
+\fi
+
+\lstset{style=customc}
+\ifdefined\CompileListings
+    \lstinputlisting[
+        firstline=42, 
+        lastline=80, 
+        caption="Program ST implementujący algorytm DMC toru G2-T3"]
+        {../lab/src/DMC_R_FixedScan.st}
+    \newpage
+\fi
 
 \subsubsection{Odpowiedzi skokowe}
 

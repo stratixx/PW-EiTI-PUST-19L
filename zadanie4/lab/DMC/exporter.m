@@ -3,8 +3,8 @@
 % E-mail:		konrad_winnicki@wp.pl
 % Przedmiot:	PUST
 % Semestr:		19L
-% Opis:			Skrypt eksportujący wyliczone parametry regulatora DMC do postaci
-%				zgodnej ze standardem języka ST
+% Opis: Skrypt eksportujacy wyliczone parametry regulatora DMC do postaci
+% zgodnej ze standardem jezyka ST
 
 % powstanie plik "DMC_data.h" w folderze Inc
 fileID = fopen('DMC_data.st','w');

@@ -2,17 +2,27 @@
 \label{lab:zad6}
 
 
-
-\ifdefined\CompileFigures
-%\begin{figure}[H] 
-%    \centering
-%    \input{lab/figure/zad1Setpoint.tex}
-%    \caption{Punkt pracy obiektu}
-%    \label{lab:zad1:figure}
-%\end{figure}
-\fi
-
 Zaimplementowac automat stanów, na podstawie którego modyfikowane beda wartosci
 zadane. Opisac implementacje.
+
+\lstset{style=customc}
+\ifdefined\CompileListings
+    \lstinputlisting[
+        firstline=10, 
+        lastline=61, 
+        caption="Automat stanów modyfikujący zadane wartości temperatur T1 i T3"]
+        {../lab/src/MAIN_Scan.st}
+    \newpage
+\fi
+
+\lstset{style=customc}
+\ifdefined\CompileListings
+    \lstinputlisting[
+        firstline=63, 
+        lastline=70, 
+        caption="Przypisanie zadanych wartości temperatur do regulatorów"]
+        {../lab/src/MAIN_Scan.st}
+    %\newpage
+\fi
 
 \newpage

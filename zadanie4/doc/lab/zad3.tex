@@ -12,24 +12,42 @@
 \fi
 
 Na	sterowniku	zaimplementowano	uwzględniając	ograniczenia	dwupętlowy	
-regulator	PID. Metodą	eksperymentalną	 dobrano	nastawy	regulatora.
+regulator	PID. Wyznaczając model dobrano nastawy regulatora.
 
-\subsubsection{Implementacja regulatora PID toru T1-G1}
+\subsubsection{Implementacja regulatora PID}
 
 \ifdefined\CompileListings
     \lstinputlisting[
-        firstline=33, 
-        lastline=46, 
-        caption="Inicjacja parametrów regulatora PID toru T1-G1"]
+        firstline=34, 
+        lastline=47, 
+        caption="Inicjacja parametrów regulatora PID toru G1-T1"]
+        {../lab/src/Init_Initial.st}
+    %\newpage
+\fi
+
+\ifdefined\CompileListings
+    \lstinputlisting[
+        firstline=49, 
+        lastline=62, 
+        caption="Inicjacja parametrów regulatora PID toru G2-T3"]
         {../lab/src/Init_Initial.st}
     \newpage
 \fi
 
 \ifdefined\CompileListings
     \lstinputlisting[
-        firstline=4, 
-        lastline=48, 
-        caption="Program regulatora PID toru T1-G1"]
+        firstline=3, 
+        lastline=46, 
+        caption="Program regulatora PID toru G1-T1"]
+        {../lab/src/PID_R_FixedScan.st}
+    \newpage
+\fi
+
+\ifdefined\CompileListings
+    \lstinputlisting[
+        firstline=48, 
+        lastline=91, 
+        caption="Program regulatora PID toru G2-T3"]
         {../lab/src/PID_R_FixedScan.st}
     \newpage
 \fi

@@ -2,8 +2,8 @@
 % Autor:		Konrad Winnicki
 % E-mail:		konrad_winnicki@wp.pl
 % Przedmiot:	STP
-% Semestr:		18L
-% Opis:			Skrypt wylicząjacy parametry regulatora DMC
+% Semestr:		19L
+% Opis: Skrypt wyliczajacy parametry regulatora DMC
 
 % Wyznaczenie macierzy M
 M = zeros(D,D);

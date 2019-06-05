@@ -24,9 +24,10 @@ MOV(TRUE, K0, simTime);
 //Ustawienie poczatkowe wyjsc procesu
 ZRST(TRUE, D110, D120);
 
-SD414 := 2; //timer 2n, ktorego odliczenie odczytujemy z SM414 // ustawiony okres 4 sekundy
+//timer 2n, ktorego odliczenie odczytujemy z SM414
+SD414 := 2;  // ustawiony okres 4 sekundy
 
-
+// początkowe wartości zadane
 T_1_zad := 390;
 T_3_zad := 410;
 
@@ -58,11 +59,4 @@ PID_G2.Rp1 := 0.0;
 PID_G2.Rp2 := 0.0;
 PID_G2.sampling_time := 4.0;
 PID_G2.SV := 38.68;
-PID_G1.MV := 37.0;
-
-
-
-//DMC_G1.SV := 36.68;
-//DMC_G2.SV := 38.68;
-//DMC_G1.MV := 32.0;
-//DMC_G2.MV := 37.0;
+PID_G2.MV := 37.0;

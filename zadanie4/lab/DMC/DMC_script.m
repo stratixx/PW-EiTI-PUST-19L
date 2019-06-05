@@ -3,10 +3,10 @@
 % E-mail:		konrad_winnicki@wp.pl
 % Przedmiot:	PUST
 % Semestr:		19L
-% Opis:			Skrypt wyliczający parametry regulatora DMC
-%				przeznaczonego do uruchomienia w systemie wbudowanym
+% Opis: Skrypt wyliczajacy parametry regulatora DMC
+% przeznaczonego do uruchomienia na PLC
 
-% Założone parametry regulatora
+% Zalozone parametry regulatora
 lam = 1
 load('../zad1/esy/s1.mat')
 s = s1aprox;
@@ -19,7 +19,6 @@ N=N1;
 Nu=Nu1;
 lambda = lambda1;
 run('DMC_init.m');
-
 Ke1 = sum(K(1,:));
 Ku1 = K(1,:)*Mp;
 
@@ -34,9 +33,9 @@ N=N2;
 Nu=Nu2;
 lambda = lambda2;
 run('DMC_init.m');
-
 Ke2 = sum(K(1,:));
 Ku2 = K(1,:)*Mp;
 
-% wyeksportowanie wyznaczonych parametrów do pliku nagłówkowego zgodnego ze standardem języka C
+% wyeksportowanie wyznaczonych parametrow do 
+%pliku naglowkowego zgodnego ze standardem jezyka ST
 run('exporter.m');
