@@ -8,10 +8,24 @@ Optymalizacji dokonano za pomocą wbudowanej funkcji MATLABa fmincon.
 
 \subsection{Optymalizacja PID}
 
-\subsubsection{PID bez u1}
-Kr1=2.438 Td1=0 Ti1=3.2542 Kr2=8.8647 Td2=0 Ti2=0.2623 Kr3=3.1042
-Td3=1.0262 Ti3=16.8144
-Wartość wskaźnika E=64.2991
+\subsubsection{Konfiguracja regulatorów PID niesterująca wejściem $u_{1}$}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|c|c|}
+    \hline
+         & Kr  & Ti  & Td  \\ \hline
+    PID1 & --- & --- & --- \\ \hline
+    PID2 & 2.438 & 3.2542 & 0.0 \\ \hline
+    PID3 & 8.8647 & 0.2623 & 0.0 \\ \hline
+    PID4 & 3.1042 & 16.8144 & 1.0262 \\ \hline
+    \end{tabular}
+    \caption[H]{Nastawy konfiguracji regulatorów bez PID1}
+\end{table}
+
+% Kr1=2.438 Td1=0 Ti1=3.2542 
+% Kr2=8.8647 Td2=0 Ti2=0.2623 
+% Kr3=3.1042 Td3=1.0262 Ti3=16.8144
 
 \ifdefined\CompileFigures
 \begin{figure}[H] 
@@ -31,11 +45,26 @@ Wartość wskaźnika E=64.2991
 \end{figure}
 \fi
 
-\subsubsection{PID bez u2}
-Kr1=2.2901 Td1=0.0187 Ti1=0.5102 
-Kr2=0.0219 Td2=39.5656 Ti2=0.0006
-Kr3=4.8545 Td3=0.4969 Ti3=17.6086 
-Wartość wskaźnika E=51.5533
+Wartość wskaźnika $E=\num{64.2991}$.
+
+\subsubsection{Konfiguracja regulatorów PID niesterująca wejściem $u_{2}$}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|c|c|}
+    \hline
+         & Kr  & Ti  & Td  \\ \hline
+    PID1 & 2.2901 & 0.5102 & 0.0187 \\ \hline
+    PID2 & --- & --- & --- \\ \hline
+    PID3 & 0.0219 & 0.0006 & 39.5656 \\ \hline
+    PID4 & 4.8545 & 17.6086 & 0.4969 \\ \hline
+    \end{tabular}
+    \caption[H]{Nastawy konfiguracji regulatorów bez PID2}
+\end{table}
+
+% Kr1=2.2901 Td1=0.0187 Ti1=0.5102 
+% Kr2=0.0219 Td2=39.5656 Ti2=0.0006
+% Kr3=4.8545 Td3=0.4969 Ti3=17.6086 
 
 \ifdefined\CompileFigures
 \begin{figure}[H] 
@@ -55,11 +84,26 @@ Wartość wskaźnika E=51.5533
 \end{figure}
 \fi
 
-\subsubsection{PID bez u3}
-Kr1=2.4231 Td1=0 Ti1=0.6438 
-Kr2=1.3759 Td2=0 Ti2=1.173 
-Kr3=6.4637 Td3=0.0984 Ti3=13.3023 
-Wartość wskaźnika E=42.5008
+Wartość wskaźnika $E=\num{51.5533}$.
+
+\subsubsection{Konfiguracja regulatorów PID niesterująca wejściem $u_{3}$}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|c|c|}
+    \hline
+         & Kr  & Ti  & Td  \\ \hline
+    PID1 & 2.4231 & 0.6438 & 0.0 \\ \hline
+    PID2 & 1.3759 & 1.173 & 0.0 \\ \hline
+    PID3 & --- & --- & --- \\ \hline
+    PID4 & 6.4637 & 13.3023 & 0.0984 \\ \hline
+    \end{tabular}
+    \caption[H]{Nastawy konfiguracji regulatorów bez PID3}
+\end{table}
+
+% Kr1=2.4231 Td1=0 Ti1=0.6438 
+% Kr2=1.3759 Td2=0 Ti2=1.173 
+% Kr3=6.4637 Td3=0.0984 Ti3=13.3023 
 
 \ifdefined\CompileFigures
 \begin{figure}[H] 
@@ -79,11 +123,26 @@ Wartość wskaźnika E=42.5008
 \end{figure}
 \fi
 
-\subsubsection{PID bez u4}
-Kr1=2.5885 Td1=0 Ti1=0.5918 
-Kr2=1.4396 Td2=0 Ti2=0.6631 
-Kr3=13.4882 Td3=0.029 Ti3=4.4987 
-Wartość wskaźnika E=43.3297
+Wartość wskaźnika $E=\num{42.5008}$.
+
+\subsubsection{Konfiguracja regulatorów PID niesterująca wejściem $u_{4}$}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|c|c|}
+    \hline
+         & Kr  & Ti  & Td  \\ \hline
+    PID1 & 2.5885 & 0.5918 & 0.0 \\ \hline
+    PID2 & 1.4396 & 0.6631 & 0.0 \\ \hline
+    PID3 & 13.4882 & 4.4987 & 0.029 \\ \hline
+    PID4 & --- & --- & --- \\ \hline
+    \end{tabular}
+    \caption[H]{Nastawy konfiguracji regulatorów bez PID4}
+\end{table}
+
+% Kr1=2.5885 Td1=0 Ti1=0.5918 
+% Kr2=1.4396 Td2=0 Ti2=0.6631 
+% Kr3=13.4882 Td3=0.029 Ti3=4.4987 
 
 \ifdefined\CompileFigures
 \begin{figure}[H] 
@@ -103,16 +162,22 @@ Wartość wskaźnika E=43.3297
 \end{figure}
 \fi
 
+Wartość wskaźnika $E=\num{43.3297}$.
 
 \subsection{Optymalizacja DMC}
 
-W regulatorze DMC dobierano współczynniki u1, u2, u3, lambda1, lambda2, lambda3, lambda4, natomiast horyzonty
-D, N, Nu przyjęto stałe.
+W regulatorze DMC dobierano współczynniki $\psi_1, \psi_2, \psi_3, \lambda_1, \lambda_2, 
+\lambda_3, \lambda_4$, 
+natomiast horyzonty $D, N, N_u$ przyjęto stałe.
 
-D=350 N=200 Nu=10 
-lambda1=0.9004 lambda2=-5.5093 lambda3=12.1642 lambda4=-0.0569 
-psi1=-0.5147 psi2=-9.3173 psi3=3.2215 
-Wartość wskaźnika E=77.9097
+
+$$D=350 \indent  N=200 \indent  Nu=10$$ 
+$$\psi_1=\num{-0.5147} \indent \psi_2=\num{-9.3173} \indent \psi_3=\num{3.2215 }$$
+$$\lambda_1=\num{0.9004} \indent \lambda_2=\num{-5.5093} \indent \lambda_3=\num{12.1642} \indent \lambda_4=\num{-0.0569}$$
+
+% D=350 N=200 Nu=10 
+% lambda1=0.9004 lambda2=-5.5093 lambda3=12.1642 lambda4=-0.0569 
+% psi1=-0.5147 psi2=-9.3173 psi3=3.2215 
 
 
 \ifdefined\CompileFigures
@@ -133,32 +198,45 @@ Wartość wskaźnika E=77.9097
 \end{figure}
 \fi
 
+Wartość wskaźnika $E=\num{77.9097}$.
+
 \subsection{Wnioski}
+
 Biorąc pod uwagę ocenę regulacji jakościową oraz ilościową najlepiej prezentuje się
-algorytm PID z dobranymi parametrami za pomocą optymalizacji funkcją fmincon,
-pokazuje to że prostota regulatora PID w takiej sytuacji dała możliwość lepszego
-dostrojenia oraz lepszych wyników.
+algorytm PID z dobranymi parametrami za pomocą optymalizacji funkcją $fmincon$,
+pokazuje to, że prostota regulatora PID w takiej sytuacji dała możliwość lepszego
+dostrojenia oraz osiągnięcia lepszych wyników.
+
 \subsubsection{Porównanie najlepszego DMC i PID}
 
-PID – PID bez u3
-\newline
-Kr1=2.4231 Td1=0 Ti1=0.6438 Kr2=1.3759 
-\newline
-Td2=0 Ti2=1.173 Kr3=6.4637
-\newline
-Td3=0.0984 Ti3=13.3023 
-\newline
-Wartość wskaźnika E=42.5008
+Konfiguracja regulatorów PID niesterująca wejściem $u_{3}$
 
-DMC – D=350 N=200 Nu=10 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|c|c|}
+    \hline
+         & Kr  & Ti  & Td  \\ \hline
+    PID1 & 2.4231 & 0.6438 & 0.0 \\ \hline
+    PID2 & 1.3759 & 1.173 & 0.0 \\ \hline
+    PID3 & --- & --- & --- \\ \hline
+    PID4 & 6.4637 & 13.3023 & 0.0984 \\ \hline
+    \end{tabular}
+    \caption[H]{Nastawy konfiguracji regulatorów bez PID3}
+\end{table}
+
+Wartość wskaźnika $E=\num{42.5008}$.
 \newline
-lambda1=0.9004 lambda2=-5.5093 lambda3=12.1642 lambda4=-0.0569 
+
+Regulator DMC z optymalizacji
+$$D=350 \indent  N=200 \indent  Nu=10$$ 
+$$\psi_1=\num{-0.5147} \indent \psi_2=\num{-9.3173} \indent \psi_3=\num{3.2215 }$$
+$$\lambda_1=\num{0.9004} \indent \lambda_2=\num{-5.5093} \indent \lambda_3=\num{12.1642} \indent \lambda_4=\num{-0.0569}$$
+
+Wartość wskaźnika $E=\num{77.9097}$.
 \newline
-psi1=-0.5147 psi2=-9.3173psi3=3.2215 
-\newline
-Wartość wskaźnika E=77.9097
-\newline
-Wskaźnik jakości jest prawie dwa razy większy w przypadku regulatora DMC
+
+Wskaźnik jakości jest prawie dwa razy większy w przypadku regulatora DMC.
+Regulator PID okazał się lepiej sterującym, jednak wymagał większego nakładu pracy na etapie strojenia.
 
 
 \newpage

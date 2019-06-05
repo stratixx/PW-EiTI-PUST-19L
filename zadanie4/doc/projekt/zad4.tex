@@ -1,23 +1,42 @@
 \section{Eksperymentalne dobranie konfiguracji i parametrów regulatorów PID i DMC}
 \label{projekt:zad4}
 
-Dla zaproponowanej trajektorii zmian sygnałów zadanych (kilka skoków o róznej amplitudzie)
-dobrac nastawy regulatora PID i parametry algorytmu DMC metoda eksperymentalna.
-Jakosc regulacji oceniac jakosciowo (na podstawie rysunków przebiegów
-sygnałów) oraz ilosciowo, wyznaczajac wskaznik jakosci regulacji
+Dla zaproponowanej trajektorii zmian sygnałów zadanych (kilka skoków o różnej amplitudzie)
+dobrano nastawy regulatora PID i parametry algorytmu DMC metodą eksperymentalną.
+Jakość regulacji oceniano jakościowo (na podstawie rysunków przebiegów
+sygnałów) oraz ilościowo, wyznaczając wskaźnik jakości regulacji
 
-gdzie kkonc oznacza koniec symulacji (zawsze taki sam). Zamiescic wybrane wyniki symulacji
-(przebiegi sygnałów wejsciowych i wyjsciowych procesu oraz wartosci wskaznika
-E).Wprzypadku algorytmu PID rozwazyc kilka mozliwych konfiguracji regulatora,
-tzn. uchyb e1 pierwszego wyjscia oddziałuje na pierwszy sygnał sterujacy u1, uchyb
-e2 oddziałuje na u2, uchyb e3 oddziałuje na u3 itd. Zamiescic wybrane wyniki symulacji
+$$
+E=\sum_{k=1}^{k_{konc}} \sum_{m=1}^{3} \quad (y_{zad}(k)-y(k))^{2}
+$$
+
+gdzie $k_{konc}$ oznacza koniec symulacji (zawsze taki sam). Poniżej zamieszczono wybrane wyniki symulacji
+(przebiegi sygnałów wejściowych i wyjściowych procesu oraz wartości wskaźnika
+E). 
+\newline
+W przypadku algorytmu PID przedstawiono kilka możliwych konfiguracji regulatora.
 
 \subsection{Konfiguracja i dobór parametrów regulatorów PID}
 
-\subsubsection{Pid bez u1}
+\subsubsection{Konfiguracja regulatorów PID niesterująca wejściem $u_{1}$}
 
-Kr1=1.5 Td1=0.01 Ti1=2 Kr2=5.5 Td2=0.2 Ti2=0.4 Kr3=2 Td3=1 Ti3=9
-Wartość wskaźnika E=79.893
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|c|c|}
+    \hline
+         & Kr  & Ti  & Td  \\ \hline
+    PID1 & --- & --- & --- \\ \hline
+    PID2 & 1.5 & 2 & 0.01  \\ \hline
+    PID3 & 5.5 & 0.4 & 0.2 \\ \hline
+    PID4 & 2.0 & 9.0 & 1.0 \\ \hline
+    \end{tabular}
+    \caption[H]{Nastawy konfiguracji regulatorów bez PID1}
+\end{table}
+
+% Kr1=1.5     Td1=0.01    Ti1=2 
+% Kr2=5.5     Td2=0.2     Ti2=0.4 
+% Kr3=2       Td3=1       Ti3=9
+Wartość wskaźnika $E=\num{79.893}$.
 
 \ifdefined\CompileFigures
     \begin{figure}[H] 
@@ -37,10 +56,23 @@ Wartość wskaźnika E=79.893
     \end{figure}
 \fi
 
-\subsubsection{Pid bez u2}
+\subsubsection{Konfiguracja regulatorów PID niesterująca wejściem $u_{2}$}
 
-Kr1=0.7 Td1=0.3 Ti1=0.2 Kr2=3.5 Td2=0.2 Ti2=0.2 Kr3=3 Td3=0.8 Ti3=7.5
-Wartość wskaźnika E=64.3445
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|c|c|}
+    \hline
+         & Kr  & Ti  & Td  \\ \hline
+    PID1 & 0.7 & 0.2 & 0.3 \\ \hline
+    PID2 & --- & --- & ---  \\ \hline
+    PID3 & 3.5 & 0.2 & 0.2 \\ \hline
+    PID4 & 3.0 & 7.5 & 0.8 \\ \hline
+    \end{tabular}
+    \caption[H]{Nastawy konfiguracji regulatorów bez PID2}
+\end{table}
+% Kr1=0.7 Td1=0.3 Ti1=0.2 
+% Kr2=3.5 Td2=0.2 Ti2=0.2 
+% Kr3=3 Td3=0.8 Ti3=7.5
 
 \ifdefined\CompileFigures
     \begin{figure}[H] 
@@ -60,10 +92,25 @@ Wartość wskaźnika E=64.3445
     \end{figure}
 \fi
 
+Wartość wskaźnika $E=\num{64.3445}$.
 
-\subsubsection{Pid bez u3}
-Kr1=0.7 Td1=0.3 Ti1=0.2 Kr2=0.7 Td2=0.6 Ti2=1.8 Kr3=1.4 Td3=0.6 Ti3=5.5
-Wartość wskaźnika E=74.1529
+\subsubsection{Konfiguracja regulatorów PID niesterująca wejściem $u_{3}$}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|c|c|}
+    \hline
+         & Kr  & Ti  & Td  \\ \hline
+    PID1 & 0.7 & 0.2 & 0.3 \\ \hline
+    PID2 & 0.7 & 1.8 & 0.6  \\ \hline
+    PID3 & --- & --- & --- \\ \hline
+    PID4 & 1.4 & 5.5 & 0.6 \\ \hline
+    \end{tabular}
+    \caption[H]{Nastawy konfiguracji regulatorów bez PID3}
+\end{table}
+
+% Kr1=0.7 Td1=0.3 Ti1=0.2 
+% Kr2=0.7 Td2=0.6 Ti2=1.8 
+% Kr3=1.4 Td3=0.6 Ti3=5.5
 
 \ifdefined\CompileFigures
     \begin{figure}[H] 
@@ -83,10 +130,25 @@ Wartość wskaźnika E=74.1529
     \end{figure}
 \fi
 
+Wartość wskaźnika $E=\num{74.1529}$.
 
-\subsubsection{Pid bez u4}
-Kr1=0.7 Td1=0.3 Ti1=0.2 Kr2=0.6 Td2=0.05 Ti2=0.3 Kr3=0.8 Td3=0.4 Ti3=0.4
-Wartość wskaźnika E=79.2468
+\subsubsection{Konfiguracja regulatorów PID niesterująca wejściem $u_{4}$}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|c|c|}
+    \hline
+         & Kr  & Ti  & Td  \\ \hline
+    PID1 & 0.7 & 0.2 & 0.3 \\ \hline
+    PID2 & 0.6 & 0.3 & 0.05 \\ \hline
+    PID3 & 0.8 & 0.4 & 0.4 \\ \hline
+    PID4 & --- & --- & --- \\ \hline
+    \end{tabular}
+    \caption[H]{Nastawy konfiguracji regulatorów bez PID4}
+\end{table}
+% Kr1=0.7 Td1=0.3 Ti1=0.2 
+% Kr2=0.6 Td2=0.05 Ti2=0.3 
+% Kr3=0.8 Td3=0.4 Ti3=0.4
 
 \ifdefined\CompileFigures
     \begin{figure}[H] 
@@ -105,14 +167,18 @@ Wartość wskaźnika E=79.2468
         \label{projekt:zad4:figure:projzadanie4PIDbezu4y}
     \end{figure}
 \fi
+Wartość wskaźnika $E=\num{79.2468}$.
 
 \subsection{Dobór parametrów regulatorów DMC}
 
+W regulatorze DMC dobierano współczynniki u1, u2, u3, lambda1, lambda2, lambda3, lambda4, natomiast horyzonty
+D, N, Nu przyjęto stałe.
 
-\subsubsection{DMC1}
-D=350 N=100 Nu=15 lambda1=0.9 lambda2=0.5 lambda3=0.2 lambda4=0.1
-psi1=1 psi2=0.54 psi3=1.3
-Wartość wskaźnika E=164.4355
+\subsubsection{Pierwszy eksperyment}
+
+$$D=350 \indent  N=100 \indent  Nu=15$$ 
+$$\psi_1=\num{1} \indent \psi_2=\num{0.54} \indent \psi_3=\num{1.3}$$
+$$\lambda_1=\num{0.9} \indent \lambda_2=\num{0.5} \indent \lambda_3=\num{0.2} \indent \lambda_4=\num{0.1}$$
 
 \ifdefined\CompileFigures
     \begin{figure}[H] 
@@ -132,10 +198,16 @@ Wartość wskaźnika E=164.4355
     \end{figure}
 \fi
 
-\subsubsection{DMC2}
-D=350 N=30 Nu=5 lambda1=0.9 lambda2=1.2 lambda3=0.5 lambda4=1
-psi1=0.89 psi2=1 psi3=1.5
-Wartość wskaźnika E=167.2731
+Wartość wskaźnika $E=\num{164.4355}$
+
+\subsubsection{Drugi eksperyment}
+
+$$D=350 \indent  N=30 \indent  Nu=5$$ 
+$$\psi_1=\num{0.89} \indent \psi_2=\num{1.0} \indent \psi_3=\num{1.5}$$
+$$\lambda_1=\num{0.9} \indent \lambda_2=\num{1.2} \indent \lambda_3=\num{0.5} \indent \lambda_4=\num{1.0}$$
+
+% psi1=0.89 psi2=1 psi3=1.5
+% lambda1=0.9 lambda2=1.2 lambda3=0.5 lambda4=1
 
 \ifdefined\CompileFigures
     \begin{figure}[H] 
@@ -155,9 +227,15 @@ Wartość wskaźnika E=167.2731
     \end{figure}
 \fi
 
-\subsubsection{DMC BEST}
-D=350 N=200 Nu=10 lambda1=0.15 lambda2=0.2 lambda3=0.7 lambda4=0.1
-psi1=1 psi2=1 psi3=1 Wartość wskaźnika E=103.2769
+Wartość wskaźnika $E=\num{167.2731}$
+
+\subsubsection{Trzeci ekperyment}
+
+$$D=350 \indent  N=200 \indent  Nu=10$$ 
+$$\psi_1=\num{1.0} \indent \psi_2=\num{1.0} \indent \psi_3=\num{1.0}$$
+$$\lambda_1=\num{0.15} \indent \lambda_2=\num{0.2} \indent \lambda_3=\num{0.7} \indent \lambda_4=\num{0.1}$$
+% lambda1=0.15 lambda2=0.2 lambda3=0.7 lambda4=0.1
+% psi1=1 psi2=1 psi3=1 
 
 
 \ifdefined\CompileFigures
@@ -169,9 +247,6 @@ psi1=1 psi2=1 psi3=1 Wartość wskaźnika E=103.2769
     \end{figure}
 \fi
 
-
-
-
 \ifdefined\CompileFigures
     \begin{figure}[H] 
         \centering
@@ -181,5 +256,8 @@ psi1=1 psi2=1 psi3=1 Wartość wskaźnika E=103.2769
     \end{figure}
 \fi
 
+Wartość wskaźnika $E=\num{103.2769}$
+\newline
+Nastawy regulatorów DMC z trzeciego eksperymentu dały najlepszą jakość regualcji.
 
 \newpage
