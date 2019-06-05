@@ -1,0 +1,1 @@
+DMC_G1 startuje na D2092, konczy na float D2408 w³¹cznie - 318 rejestrów D
