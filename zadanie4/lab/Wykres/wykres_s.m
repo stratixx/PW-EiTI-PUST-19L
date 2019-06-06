@@ -1,6 +1,6 @@
-addpath('matlab2tikz-master/src/');
-outputFile = 'WykresS2.tex';
-
+addpath('../../../matlab2tikz-master/src/');
+outputFile = 'WykresS1.tex';
+load('s1.mat')
 %y1 = dlmread('y1.csv','\t');
 % y2 = dlmread('y2.csv','\t');
 % y3 = dlmread('y3.csv','\t');

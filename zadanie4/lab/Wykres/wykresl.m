@@ -3,14 +3,21 @@ clear
 addpath('../../../matlab2tikz-master/src/');
 outputFile = 'skoki pid g1 g2 p 30 i 25 d 1.tex';
 load('../DANE/skoki pid g1 g2 p 30 i 25 d 1.mat')
+
+%DMC
 %dmc g1 g2  75 75 75 0_2
+
+%PID
 %skoki pid g1 g2 p 15 i 250 d 0_001 powtorzone - pierwszy pid,
 %proporcjonalny
-
 %skoki pid g1 g2 p 15 i 250 d 0_001
 %skoki pid g1 g2 p 30 i 25 d 0_001 - sprawdz - drugi PI
 %skoki pid g1 g2 p 30 i 25 d 1 - sprawdz - PID dobrany
 %skoki pidG1 p 30_1 i 250 d 0_001
+
+%esy
+
+%setpoint
 
 %y1 = dlmread('y1.csv','\t');
 % y2 = dlmread('y2.csv','\t');

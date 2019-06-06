@@ -1,6 +1,6 @@
-addpath('../../../../../../../../matlab2tikz-master/src/');
-outputFile = 'LAb_setpoint.tex';
-
+addpath('../../../matlab2tikz-master/src/');
+outputFile = 'lab_setpoint.tex';
+load('setpoint.mat')
 %y1 = dlmread('y1.csv','\t');
 % y2 = dlmread('y2.csv','\t');
 % y3 = dlmread('y3.csv','\t');
@@ -45,27 +45,27 @@ figure(2);
 title('y');
 
 subplot(2,1, 1);
-plot(t1);
+plot(y1);
 hold on;
-plot(t3);
+plot(y2);
 %%plot(y2);
 %plot(yz2);
 ylabel('y');
 xlabel('k');
 legend('t_1','t_{3}','y_2','y_{2zad}','Location', 'NorthEast');
 grid on;
-%ylim([0 4]);
+ylim([30 50]);
 
 
 subplot(2,1, 2);
-plot(g1);
+plot(u1);
 hold on;
-plot(g2);
+plot(u2);
 ylabel('u');
 xlabel('k');
 legend('g_1','g_{2}','Location', 'NorthEast');
 grid on;
-%ylim([0 4]);
+ylim([0 100]);
 %subplot(3,1, 3);
 
 % plot(y3);
