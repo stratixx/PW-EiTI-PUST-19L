@@ -45,14 +45,14 @@ load('s1.mat')
 title('y');
 
 %subplot(2,1, 1);
-plot(s2aprox);
+plot(s1aprox);
 hold on;
 %plot(yz1);
 %plot(y2);
 %plot(yz2);
 ylabel('y');
 xlabel('k');
-legend('s_2','y_{1zad}','y_2','y_{2zad}','Location', 'NorthEast');
+legend('s_1','y_{1zad}','y_2','y_{2zad}','Location', 'NorthEast');
 grid on;
 %ylim([0 4]);
 

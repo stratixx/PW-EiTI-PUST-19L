@@ -82,13 +82,40 @@ Wykresy
     \newpage
 \fi
 
-\subsubsection{Odpowiedzi skokowe}
+\subsubsection{Wyznaczenie wektorów s regulatorów DMC}
+
+
+\ifdefined\CompileFigures
+\begin{figure}[H] 
+    \centering
+    \input{../lab/Wykres/WykresS1.tex}
+    \caption{Wektor s regulatora DMC  G1}
+    \label{lab:zad4:figure:wektorS1}
+ \end{figure}
+\fi
+
+\ifdefined\CompileFigures
+\begin{figure}[H] 
+    \centering
+    \input{../lab/Wykres/WykresS2.tex}
+    \caption{Wektor s regulatora DMC G2}
+    \label{lab:zad4:figure:wektorS2}
+ \end{figure}
+\fi
 
 
 \subsubsection{Dobór parametrów regulatora}
 
+Dobrano postawowe nastawy regulatora DMC, regulator w obecnej postaci nie sprawdza się.
 
-%dmc g1 g2  75 75 75 0_2
-
+$$D = \num{75} \indent N = \num{75} \indent Nu = \num{75} \indent \lambda_{1} = \num{0.2} \indent \lambda_{2} = \num{0.2}$$
+\ifdefined\CompileFigures
+\begin{figure}[H] 
+    \centering
+    \input{../lab/Wykres/dmc_g1_g2_75_75_75_0_2.tex}
+    \caption{Eksperyment z regulatorem DMC}
+    \label{lab:zad4:figure:wektorS2}
+ \end{figure}
+\fi
 
 \newpage

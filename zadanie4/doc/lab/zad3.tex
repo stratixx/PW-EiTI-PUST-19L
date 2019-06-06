@@ -2,15 +2,6 @@
 \label{lab:zad3}
 
 
-\ifdefined\CompileFigures
-%\begin{figure}[H] 
-%    \centering
-%    \input{lab/figure/zad1Setpoint.tex}
-%    \caption{Punkt pracy obiektu}
-%    \label{lab:zad1:figure}
-%\end{figure}
-\fi
-
 Na	sterowniku	zaimplementowano	uwzględniając	ograniczenia	dwupętlowy	
 regulator	PID. Wyznaczając model dobrano nastawy regulatora.
 
@@ -49,19 +40,45 @@ regulator	PID. Wyznaczając model dobrano nastawy regulatora.
         lastline=91, 
         caption="Program regulatora PID toru G2-T3"]
         {../lab/src/PID_R_FixedScan.st}
-    \newpage
 \fi
-
-\subsubsection{Wyznaczenie modelu obiektu}
-
-
+\newpage
 \subsubsection{Dobranie nastaw regulatora}
 
+Metodą eksperymentalną etapami dobrano nastawy regulatorów PID.
+\newline
+Przyjęto takie same nastawy dla obydwu regulatorów.
 
-%skoki pid g1 g2 p 15 i 250 d 0_001 powtorzone - pierwszy pid,
-%proporcjonalny
-%skoki pid g1 g2 p 30 i 25 d 0_001 - sprawdz - drugi PI
-%skoki pid g1 g2 p 30 i 25 d 1 - sprawdz - PID dobrany
+$$Kr = \num{15.0} \indent Ti = \num{250.0} \indent Td = \num{0.001}$$
 
+\ifdefined\CompileFigures
+\begin{figure}[H] 
+    \centering
+    \input{../lab/Wykres/skoki_pidg1_g2_p_15_i_250_d_0_001_powtorzone.tex}
+    \caption{Eksperyment z regulatorem P}
+    \label{lab:zad3:figure:regulatorP}
+ \end{figure}
+ \fi
+
+ $$Kr = \num{30.0} \indent Ti = \num{25.0} \indent Td = \num{0.001}$$
+
+\ifdefined\CompileFigures
+\begin{figure}[H] 
+    \centering
+    \input{../lab/Wykres/skoki_pid_g1_g2_p_30_i_25_d_0_001.tex}
+    \caption{Eksperyment z regulatorem PI}
+    \label{lab:zad3:figure:regulatorPI}
+ \end{figure}
+ \fi
+
+ $$Kr = \num{30.0} \indent Ti = \num{25.0} \indent Td = \num{1}$$
+
+\ifdefined\CompileFigures
+\begin{figure}[H] 
+    \centering
+    \input{../lab/Wykres/skoki_pid_g1_g2_p_30_i_25_d_1.tex}
+    \caption{Eksperyment z regulatorem PID}
+    \label{lab:zad3:figure:regulatorPID}
+ \end{figure}
+ \fi
 
 \newpage

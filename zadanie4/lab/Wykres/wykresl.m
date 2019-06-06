@@ -1,14 +1,13 @@
-
 clear
 addpath('../../../matlab2tikz-master/src/');
-outputFile = 'skoki pid g1 g2 p 30 i 25 d 1.tex';
+outputFile = 'skoki_pid_g1_g2_p_30_i_25_d_1.tex';
 load('../DANE/skoki pid g1 g2 p 30 i 25 d 1.mat')
 
 %DMC
 %dmc g1 g2  75 75 75 0_2
 
 %PID
-%skoki pid g1 g2 p 15 i 250 d 0_001 powtorzone - pierwszy pid,
+%skoki_pid_g1_g2_p_15_i_250_d_0_001_powtorzone - pierwszy pid,
 %proporcjonalny
 %skoki pid g1 g2 p 15 i 250 d 0_001
 %skoki pid g1 g2 p 30 i 25 d 0_001 - sprawdz - drugi PI
@@ -72,18 +71,18 @@ ylabel('y');
 xlabel('k');
 legend('y_1','y_{1zad}','y_2','y_{2zad}','Location', 'NorthEast');
 grid on;
-%ylim([0 4]);
+ylim([30 60]);
 
 
 subplot(2,1, 2);
-plot(g1);
+plot(u1);
 hold on;
-plot(g2);
-ylabel('y');
+plot(u2);
+ylabel('u');
 xlabel('k');
 legend('u_1','u_{2}','Location', 'NorthEast');
 grid on;
-%ylim([0 4]);
+ylim([0 100]);
 %subplot(3,1, 3);
 
 % plot(y3);

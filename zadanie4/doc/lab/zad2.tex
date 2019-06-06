@@ -2,16 +2,19 @@
 \label{lab:zad2}
 
 W	celu	zabezpieczenia	stanowiska	przed	uszkodzeniem	na	sterowniku	został	
-zaimplementowany	mechanizm,	który	przy	przekroczeniu	temperatury	150	◦
-C	
+zaimplementowany	mechanizm,	który	przy	przekroczeniu	temperatury	\num{150.0} stopni Celsiusza 
 wyłącza	grzałkę	sąsiadującą	z	czujnikiem,	który	zmierzył	niebezpieczną	
-temperaturę.	Implementacja	takiego	mechanizmu	jest	prosta,	ale	niezwykle	
-istotna	w	tego	typu	procesach.	Zadeklarowano	wartość	krytyczną	temperatury	
+temperaturę.	
+\newline
+Implementacja	takiego	mechanizmu	jest	prosta,	ale	niezwykle	
+istotna	w	tego	typu	procesach.	
+\newline
+Zadeklarowano	wartość	krytyczną	temperatury	
 oraz	zaimplementowano	funkcję	sprawdzającą	czy	wskazanie	czujnika	nie	
 przekracza	tej	wartości. W	przypadku	jej	przekroczenia	grzałka	sąsiadująca	z	
-danym	czujnikiem	zostaje	wyłączona,	sterowanie	G	zostaje	ustawione	na	0.
+danym	czujnikiem	zostaje	wyłączona, a	sterowanie	$G1$ lub $G2$	zostaje	ustawione	na	\num{0}.
 
-\subsubsection{Implementacja mecahnizmu zabezpieczeń stanowiska na PLC}
+\subsubsection{Implementacja mechanizmu zabezpieczeń stanowiska na PLC}
 
 \ifdefined\CompileListings
     \lstinputlisting[

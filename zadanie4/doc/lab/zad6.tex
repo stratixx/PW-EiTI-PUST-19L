@@ -2,8 +2,7 @@
 \label{lab:zad6}
 
 
-Zaimplementowac automat stanów, na podstawie którego modyfikowane beda wartosci
-zadane. Opisac implementacje.
+\subsubsection{Implementacja}
 
 \lstset{style=customc}
 \ifdefined\CompileListings
@@ -25,4 +24,24 @@ zadane. Opisac implementacje.
     %\newpage
 \fi
 
+\subsubsection{Opis automatu}
+
+Automat stanów zaprojektowano tak aby co 200 sekund zmieniał on jedną wartość zadaną
+temperatury.
+\newline
+Stany automatu 0, 1, 2 i 3 odpowiadają za skok wartosci zadanej T1 o 15 stopni Celsiusza, 
+a stany 4, 5, 6 i 7 odpowiadają za skok wartosci zadanej T3 o 15 stopni Celsiusza.
+\newline
+Ostatni stan 7 odpowiada również za zapętlenie autmatu poprzez powrót do stanu 0.
+\newline
+Przykładowy wykres poniżej pokazuje przebieg wartosci zadanych temperatur T1 i T3.
+
+%\ifdefined\CompileFigures
+\begin{figure}[H] 
+    \centering
+    \input{../lab/Wykres/skoki_pid_g1_g2_p_30_i_25_d_1.tex}
+    \caption{Eksperyment z regulatorem PID}
+    \label{lab:zad3:figure:regulatorPID}
+ \end{figure}
+ %\fi
 \newpage
